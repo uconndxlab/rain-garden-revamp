@@ -159,7 +159,7 @@ body {
   width: 85%;
 }
 
-.info_cont>img {
+.info_cont>img, .info_cont>iframe {
   margin-bottom: 6vw;
   width: 100%;
 }
@@ -283,7 +283,7 @@ body {
     flex-wrap: wrap;
   }
 
-  .info_cont>img {
+  .info_cont>img, .info_cont>iframe {
     margin-bottom: 6vw;
     width: 100%;
   }
@@ -321,6 +321,10 @@ body {
   .img_cont>img, .vid_cont>iframe {
     width: 100%;
     align-self: center;
+  }
+
+  .info_cont>iframe{
+    height: 30vh;
   }
 }
 
@@ -541,7 +545,7 @@ body {
     overflow: auto;
   }
 
-  .info_cont>img {
+  .info_cont>img, .info_cont>iframe {
     margin-bottom: 0vw;
     float: left;
     width: 40%;

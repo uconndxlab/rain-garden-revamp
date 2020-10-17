@@ -76,6 +76,52 @@ var basics_obj = {
     },
   }
 }
+var design_obj = {
+  locations: {
+    swappable: "Planning your rain garden is an important step and should not be overlooked. For most residential settings, you will be trying to capture runoff from your house roof and directing it to your rain garden. This can be accomplished by piping the downspout directly into your garden,or by letting it run over grass before entering the garden. Here are several points to consider when choosing the site in your yard.<br/><br/>1. Avoid placing the rain garden in a low spot in the yard that always seems wet. A rain garden is not a water garden or a wetland. Placing it poorly drained soils may lead to slow infiltration and unwanted long term ponding.<br/><br/>2. Keep your rain garden at least 1O feet away from your house if you have a basement. Infiltrating water close to your foundation can lead to water problems in the basement.<br/><br/>3. Do not install a rain garden in an area where bedrock or stone outcrops are closer than 2 feet to the surface.<br/><br/>4. Place your rain garden at least 25 feet away from wells and septic systems. Rain gardens placed downnhill from a septic field should be at least 50 feet away. Rain gardens placed too close to these areas could cause unwanted infiltration into drinking water, add excess water to a septic field, or collect septic effluent.<br/><br/>5. Avoid steep slopes. Rain gardens can be installed using a retaining wall design on moderate slopes, but the construction of this type of garden is more complicated.<br/><br/>6. Plan for overflow from the garden. Although your garden will be sized to contain the most frequent storms, it will likely not contain the increased volumes of water from larger storms. In most cases the garden will overflow to your lawn, but just make sure overflow is not directed towards your foundation.",
+    title: "Location",
+    iframe_src: "https://www.youtube.com/embed/lJ8N_SiSiu8"
+  },
+  soils: {
+    swappable: "Checking your soil is a critical step in choosing a site for your rain garden. The soil drainage map will give you a general idea of how well the soils should drain in your location. Soils with drainage between moderately well drained and excessively drained are generally suitable for a rain garden. However, even if the map says that your soils are well drained, your site could have compacted soils that may keep your garden from draining. It is a good idea to do a percolation test at your site to verify that your soils are OK.",
+    iframe_src: "https://www.youtube.com/embed/0SNUGClCieo",
+    button_title: "View Soils Map",
+    button_href: "https://www.google.com" /*This is a placeholder*/ ,
+    title: "Soils"
+  },
+  sizing: {
+    swappable: "The size of your rain garden is determined by how much impervious area such as a roof or driveway drains to it. A typical rain garden has about a 6 inch deep surface depression. The two methods here will give you a recommended size for your garden.<br /><br />To use the sizing calculator, you will need to take some measurements of the dimensions of your home.<br /><br /> 1. Measure the footprint of your house. This is the area taken up by your house if looking down from above. Multiply the length by the width of the house, the answer will be in square feet.<br /><br />2. Estimate how much of the area actually drains to the area where you want to install the garden. Typically, gutters drain to both ends of the house, so the length can be cut in half, but this is not always the case.<br /><br />3. If you are collecting runoff from your driveway or a section of road, just estimate the size of the impervious surface draining to the spot where you want to put the garden, and continue to step 4.<br /><br />4. Enter this area into the sizing calculator, and it will give you the recommended rain garden size.<br /><br />To use the sizing map, locate your building on the aerial image. Tap on the screen to make a shape of the area the drains to the area where you want to install your garden. The app will calculate the size of this area, and give you the recommended rain garden size.",
+    title: "Sizing"
+  },
+  cbyd: {
+    swappable: "Although you are not required to notify Call Before You Dig (CBYO) for shallow excavations done by hand, CBYO encourages you to call. Even hand tools can damage utility lines. If you are using any type of heavy equipment, you are required by law to call. Dial 1 ·800-922-4455 (for Connecticut), or 811 (for most states). One important note: this service will not locate small utility lines such as wires run from your house to outside fixtures. These things are your responsibility to locate.",
+    button_title: "Dial Call Before You Dig (CBYD)",
+    button_href: "https://www.google.com" /*This is a placeholder*/ ,
+    title: "CBYD"
+  }
+}
+var install_obj = {
+  excavate: {
+    swappable: "1. Mark out the area of the garden, based on the size you calculated for the drainage area. If the area is flat, you can remove 8-9 inches of soil from the whole area. Shape a gentle slope from the bottom of the garden to the surrounding lawn area.<br /><br />2. If the area is sloped, you can use some of the soil that you removed from the garden to build a berm at the lower end. If you are removing turf to install your garden, you can use some of the turf pieces on the berm so vegetation can be established quickly, and erosion potential can be reduced. When you are constructing the berm, try to make it the same level across the berm. If there is one area that is lower than the rest, overflow from the garden during a large storm may concentrate there, and cause erosion as water flows out. Keeping the water spread out is the best way to avoid erosion.<br /><br />3. Take a shovel full of soil from the bottom, in the area where you will be planting. If the soil at the bottom looks the same as the top layer of soil that you removed, you can plant directly into it. If the subsoil is lighter in color, or appears compacted, you may need to loosen it and add an amendment like compost when planting. A rototiller can be used to loosen the soil and integrate compost at the same time.<br /><br />If your soils were slow to drain, it may mean that you have high clay content. If you have the means, you can make the garden a little bigger to account for slower infiltration rate. Alternatively, you can dig the garden a little deeper, and mix some compost in. If these things are not possible, don't worry. The garden will still infiltrate some water, and every little bit helps.",
+    iframe_src: "https://www.youtube.com/embed/hF1rqCaPhd4",
+    title: "Excavate"
+  },
+  layout: {
+    swappable: "There are some general concepts that you can follow when planting to make your garden function well, and look pleasing to the eye.<br /><br />1. Plan for future growth. Plant descriptions will include the mature size, so don't over-plant. However, if a 'fuller' look is desired early on, it is OK to have plants a bit close together.<br /><br />2. Try to group plants in odd numbers, and avoid planting in straight lines.<br /><br />3. Arrange plants so that taller ones won't block the view of shorter ones.<br /><br />4. Some plants will do better in different parts of the rain garden, like the bottom or the side slope. Many will do OK in any area in the garden. The plant catalog will specify this.<br /><br />5. Have fun! You will be the one looking at this garden, so make it however feels right for you.",
+    iframe_src: "https://www.youtube.com/embed/OLoeABcqhHs",
+    title: "Lay Out Plants"
+  },
+  planting: {
+    swappable: "1. Dig the holes for the plants. The holes should be at least twice as wide as the plant's root structure and deep enough so that the surface of soil in the pot is level with the soil in the bottom of the garden.<br /><br />2. Amend the soil as needed.<br /><br />3. If the plants are root-bound, try to loosen up the roots before planting them.<br /><br />4. Once all the plants are installed, you are ready for mulching, Add about 2-3 inches of mulch, being careful not to put the mulch too close to the plants base.<br /><br />5. Water your plants immediately after planting and one inch of water per week (unless it rains) until the plants are established.",
+    iframe_src: "https://www.youtube.com/embed/OLoeABcqhHs",
+    title: "Planting"
+  },
+  maintain: {
+    swappable: "Although native plants have low fertilizer and water needs once established, they will need care in the short term.<br /><br /><strong>Short-term</strong><br /><br />1. After planting, the plants should get an inch of water per week. If it does not rain, provide supplemental irrigation for 1-2 months, or longer if drought conditions exist.<br /><br />2. Inspect the area(s) where water enters and exists the garden for erosion. Make repairs as necessary, and add extra stones if needed to dissipate energy.<br /><br />3. Remove any weeds or invasive species that may start to grow in the garden.<br /><br /><strong>Long-term</strong><br /><br />1. Remove any dead branches from shrubs or trees, and dead vegetation from perennials and grasses. Depending on the look that you want from your garden, you can prune shrubs to keep them smaller, or let them grow larger. This will not impact the function of the garden.<br /><br />2. Remove weeds/invasives as needed.<br /><br />3. Add a thin layer of mulch ar.nually, if desired. Alternatively, vegetated ground covers can be used. USE CAUTION WHEN ADDING MULCH! Do not add excessive amounts of mulch; this can fill up the storage area, or block the flow of entrance to the garden.<br /><br />4. Inspect for erosion at the entrance/exit points, and/or sediment buildup in the top layer of the garden. If erosion occurred, remove the sediment and correct the problem.",
+    iframe_src: "https://www.youtube.com/embed/wTvoNRAk4bM",
+    title: "Maintain"
+  }
+}
 
 //** These try/catch blocks are for handling the basics switching cases **//
 try{
@@ -201,5 +247,49 @@ try{
   page_title.innerHTML = basics_obj.how.title;
   document.querySelector('.info_cont > img').src = "../assets/how_photo.jpg";
   document.querySelector('.info_cont > p').innerHTML = basics_obj.how.swappable;
+});
+} catch {}
+
+//** These try/catch blocks are for handling the design switching cases **//
+try{
+  document.querySelector('.locations_btn').addEventListener('click', () => {
+
+});
+} catch {}
+try{
+  document.querySelector('.soils_btn').addEventListener('click', () => {
+
+});
+} catch {}
+try{
+  document.querySelector('.sizing_btn').addEventListener('click', () => {
+
+});
+} catch {}
+try{
+  document.querySelector('.cbyd_btn').addEventListener('click', () => {
+
+});
+} catch {}
+
+//** These try/catch blocks are for handling the install switching cases **//
+try{
+  document.querySelector('.excavate_btn').addEventListener('click', () => {
+
+});
+} catch {}
+try{
+  document.querySelector('.layout_btn').addEventListener('click', () => {
+
+});
+} catch {}
+try{
+  document.querySelector('.planting_btn').addEventListener('click', () => {
+
+});
+} catch {}
+try{
+  document.querySelector('.maintain_btn').addEventListener('click', () => {
+
 });
 } catch {}
