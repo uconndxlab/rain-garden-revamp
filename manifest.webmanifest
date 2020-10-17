@@ -4,12 +4,12 @@
   "description": "UConn CLEAR Rain Garden",
   "icons": [
     {
-      "src": "https://github.com/uconndxlab/rain-garden-revamp/assets/rg_192_icon.png",
+      "src": "assets/rg_192_icon.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "https://github.com/uconndxlab/rain-garden-revamp/assets/rg_512_icon.png",
+      "src": "assets/rg_512_icon.png",
       "type": "image/png",
       "sizes": "512x512"
     }
