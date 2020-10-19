@@ -4,8 +4,7 @@ if ('serviceWorker' in navigator) {
     .catch(() => console.log('Service Worker Not Registered'))
 }
 
-var currently_selected_basics = document.querySelector('.selected_menu');
-
+var currently_selected = document.querySelector('.selected_menu');
 var page_title = document.querySelector('.section_header');
 
 var basics_obj = {
@@ -123,7 +122,7 @@ var install_obj = {
   }
 }
 
-//** These try/catch blocks are for handling the basics switching cases **//
+//** These try/catch blocks are for handling the basics content-switching cases **//
 try{
   document.querySelector('.videos_btn').addEventListener('click', () => {
   try {
@@ -131,9 +130,9 @@ try{
   } catch {
 
   }
-  currently_selected_basics.classList.remove('selected_menu');
+  currently_selected.classList.remove('selected_menu');
   document.querySelector('.videos_btn').classList.add('selected_menu');
-  currently_selected_basics = document.querySelector('.videos_btn');
+  currently_selected = document.querySelector('.videos_btn');
   document.querySelector('.info_cont > img').style.display = "none";
   document.querySelector('.info_cont > p').style.display = "none";
   page_title.innerHTML = "VIDEOS";
@@ -171,9 +170,9 @@ try{
   } catch{
 
   }
-  currently_selected_basics.classList.remove('selected_menu');
+  currently_selected.classList.remove('selected_menu');
   document.querySelector('.gallery_btn').classList.add('selected_menu');
-  currently_selected_basics = document.querySelector('.gallery_btn');
+  currently_selected = document.querySelector('.gallery_btn');
   document.querySelector('.info_cont > img').style.display = "none";
   document.querySelector('.info_cont > p').style.display = "none";
   page_title.innerHTML = "GALLERY";
@@ -217,9 +216,9 @@ try{
   } catch{
 
   }
-  currently_selected_basics.classList.remove('selected_menu');
+  currently_selected.classList.remove('selected_menu');
   document.querySelector('.what_btn').classList.add('selected_menu');
-  currently_selected_basics = document.querySelector('.what_btn');
+  currently_selected = document.querySelector('.what_btn');
   document.querySelector('.info_cont > img').style.display = "flex";
   document.querySelector('.info_cont > p').style.display = "flex";
   page_title.innerHTML = basics_obj.what.title;
@@ -239,9 +238,9 @@ try{
   } catch{
 
   }
-  currently_selected_basics.classList.remove('selected_menu');
+  currently_selected.classList.remove('selected_menu');
   document.querySelector('.how_btn').classList.add('selected_menu');
-  currently_selected_basics = document.querySelector('.how_btn');
+  currently_selected = document.querySelector('.how_btn');
   document.querySelector('.info_cont > img').style.display = "flex";
   document.querySelector('.info_cont > p').style.display = "flex";
   page_title.innerHTML = basics_obj.how.title;
@@ -250,29 +249,87 @@ try{
 });
 } catch {}
 
-//** These try/catch blocks are for handling the design switching cases **//
+//** These try/catch blocks are for handling the design content-switching cases **//
+
+function remove_existing_buttons(){
+  var all_buttons = document.querySelectorAll('.column_start > a');
+  all_buttons.forEach((item) => {
+    document.querySelector('.column_start').removeChild(item);
+  });
+}
+
 try{
   document.querySelector('.locations_btn').addEventListener('click', () => {
-
+    remove_existing_buttons();
+    document.querySelector('.info_cont > .column_start > iframe').style.display = "flex";
+    currently_selected.classList.remove('selected_menu');
+    document.querySelector('.locations_btn').classList.add('selected_menu');
+    currently_selected = document.querySelector('.locations_btn');
+    document.querySelector('.info_cont > .column_start > iframe').src = design_obj.locations.iframe_src;
+    document.querySelector('.info_cont > p').innerHTML = design_obj.locations.swappable;
+    page_title.innerHTML = "DESIGN";
 });
 } catch {}
 try{
   document.querySelector('.soils_btn').addEventListener('click', () => {
+    remove_existing_buttons();
+    document.querySelector('.info_cont > .column_start > iframe').style.display = "flex";
+    currently_selected.classList.remove('selected_menu');
+    document.querySelector('.soils_btn').classList.add('selected_menu');
+    currently_selected = document.querySelector('.soils_btn');
+    document.querySelector('.info_cont > .column_start > iframe').src = design_obj.soils.iframe_src;
+    document.querySelector('.info_cont > p').innerHTML = design_obj.soils.swappable;
+    page_title.innerHTML = design_obj.soils.title;
 
+    var new_btn = document.createElement('a');
+    new_btn.innerHTML = design_obj.soils.button_title;
+    new_btn.setAttribute('href', design_obj.soils.button_href);
+
+    document.querySelector('.column_start').appendChild(new_btn);
 });
 } catch {}
 try{
   document.querySelector('.sizing_btn').addEventListener('click', () => {
+    remove_existing_buttons();
+    currently_selected.classList.remove('selected_menu');
+    document.querySelector('.sizing_btn').classList.add('selected_menu');
+    currently_selected = document.querySelector('.sizing_btn');
 
+    document.querySelector('.info_cont > .column_start > iframe').style.display = "none";
+    document.querySelector('.info_cont > p').innerHTML = design_obj.sizing.swappable;
+    page_title.innerHTML = design_obj.sizing.title;
+
+    var new_btn = document.createElement('a');
+    var new_btn_2 = document.createElement('a');
+    new_btn.innerHTML = "View Sizing Map";
+    new_btn.setAttribute('href', 'pages/sizing_map.html');
+    new_btn_2.innerHTML = "Use Sizing Calculator";
+    new_btn_2.setAttribute('href', 'pages/sizing_calculator.html');
+
+    document.querySelector('.column_start').appendChild(new_btn);
+    document.querySelector('.column_start').appendChild(new_btn_2);
 });
 } catch {}
 try{
   document.querySelector('.cbyd_btn').addEventListener('click', () => {
+    remove_existing_buttons();
+    currently_selected.classList.remove('selected_menu');
+    document.querySelector('.cbyd_btn').classList.add('selected_menu');
+    currently_selected = document.querySelector('.cbyd_btn');
 
+    document.querySelector('.info_cont > .column_start > iframe').style.display = "none";
+    document.querySelector('.info_cont > p').innerHTML = design_obj.cbyd.swappable;
+    page_title.innerHTML = design_obj.cbyd.title;
+
+    var new_btn = document.createElement('a');
+    new_btn.innerHTML = design_obj.cbyd.button_title;
+    new_btn.setAttribute('href', design_obj.cbyd.button_href);
+
+    document.querySelector('.column_start').appendChild(new_btn);
 });
 } catch {}
 
-//** These try/catch blocks are for handling the install switching cases **//
+//** These try/catch blocks are for handling the install content-switching cases **//
 try{
   document.querySelector('.excavate_btn').addEventListener('click', () => {
 
