@@ -9,7 +9,7 @@
       "sizes": "192x192"
     },
     {
-      "src": "assets/maskable_icon.png",
+      "src": "https://raw.githubusercontent.com/uconndxlab/rain-garden-revamp/main/assets/maskable_icon.png",
       "sizes": "196x196",
       "type": "image/png",
       "purpose": "maskable"
