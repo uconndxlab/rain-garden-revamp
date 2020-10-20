@@ -6,6 +6,14 @@ self.addEventListener('activate', e => {
   console.log('Service Worker has been activated');
 });
 
-self.addEventListener('fetch', e => {
-  //I will write a more robust service worker to finish off the project, closer to the deadline for added functionality such as offline file caching
+const preCacheName = "pre-cache-hbp", preCacheFiles = [ "/", "css/general.css", "css/index.css", "pages/basics.html", "pages/choose_plants.html", "pages/design.html", "pages/install.html", "pages/video_tutorials.html", "js/jquery3.5.1.min.js", "js/index.js" ]; 
+
+self.addEventListener("fetch", event => {
+  event.respondWith(caches.match(event.request).then(response => {
+    if (!response) {
+      //fall back to the network fetch
+      return fetch(event.request);
+    }
+    return response;
+  }))
 });

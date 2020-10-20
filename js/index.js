@@ -1,7 +1,13 @@
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('../service_worker.js')
-    .then(() => console.log("Service Worker Registered"))
-    .catch(() => console.log('Service Worker Not Registered'))
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('../service_worker.js').then(function(registration) {
+      // Registration was successful
+      console.log('Service Worker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('Service Worker registration failed: ', err);
+    });
+  });
 }
 
 var currently_selected = document.querySelector('.selected_menu');
