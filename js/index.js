@@ -338,21 +338,41 @@ try{
 //** These try/catch blocks are for handling the install content-switching cases **//
 try{
   document.querySelector('.excavate_btn').addEventListener('click', () => {
-
+    currently_selected.classList.remove('selected_menu');
+    document.querySelector('.excavate_btn').classList.add('selected_menu');
+    currently_selected = document.querySelector('.excavate_btn');
+    document.querySelector('.info_cont > .column_start > iframe').src = install_obj.excavate.iframe_src;
+    document.querySelector('.info_cont > p').innerHTML = install_obj.excavate.swappable;
+    page_title.innerHTML = install_obj.excavate.title;
 });
 } catch {}
 try{
   document.querySelector('.layout_btn').addEventListener('click', () => {
-
+    currently_selected.classList.remove('selected_menu');
+    document.querySelector('.layout_btn').classList.add('selected_menu');
+    currently_selected = document.querySelector('.layout_btn');
+    document.querySelector('.info_cont > .column_start > iframe').src = install_obj.layout.iframe_src;
+    document.querySelector('.info_cont > p').innerHTML = install_obj.layout.swappable;
+    page_title.innerHTML = install_obj.layout.title;
 });
 } catch {}
 try{
   document.querySelector('.planting_btn').addEventListener('click', () => {
-
+    currently_selected.classList.remove('selected_menu');
+    document.querySelector('.planting_btn').classList.add('selected_menu');
+    currently_selected = document.querySelector('.planting_btn');
+    document.querySelector('.info_cont > .column_start > iframe').src = install_obj.planting.iframe_src;
+    document.querySelector('.info_cont > p').innerHTML = install_obj.planting.swappable;
+    page_title.innerHTML = install_obj.planting.title;
 });
 } catch {}
 try{
   document.querySelector('.maintain_btn').addEventListener('click', () => {
-
+    currently_selected.classList.remove('selected_menu');
+    document.querySelector('.maintain_btn').classList.add('selected_menu');
+    currently_selected = document.querySelector('.maintain_btn');
+    document.querySelector('.info_cont > .column_start > iframe').src = install_obj.maintain.iframe_src;
+    document.querySelector('.info_cont > p').innerHTML = install_obj.maintain.swappable;
+    page_title.innerHTML = install_obj.maintain.title;
 });
 } catch {}
