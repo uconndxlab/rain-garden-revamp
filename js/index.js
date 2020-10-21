@@ -5,7 +5,13 @@ if ('serviceWorker' in navigator) {
       console.log('Service Worker registration successful with scope: ', registration.scope);
     }, function(err) {
       // registration failed :(
-      console.log('Service Worker registration failed: ', err);
+      navigator.serviceWorker.register('service_worker.js').then(function(registration) {
+        // Registration was successful
+        console.log('Service Worker registration successful with scope: ', registration.scope);
+      }, function(err) {
+        // registration failed :(
+        console.log('Service Worker registration still failed: ', err);
+      });
     });
   });
 }
@@ -129,142 +135,142 @@ var install_obj = {
 }
 
 //** These try/catch blocks are for handling the basics content-switching cases **//
-try{
+try {
   document.querySelector('.videos_btn').addEventListener('click', () => {
-  try {
-    document.querySelector('.img_cont_wrapper').style.display = "none";
-  } catch {
+    try {
+      document.querySelector('.img_cont_wrapper').style.display = "none";
+    } catch {
 
-  }
-  currently_selected.classList.remove('selected_menu');
-  document.querySelector('.videos_btn').classList.add('selected_menu');
-  currently_selected = document.querySelector('.videos_btn');
-  document.querySelector('.info_cont > img').style.display = "none";
-  document.querySelector('.info_cont > p').style.display = "none";
-  page_title.innerHTML = "VIDEOS";
-  try {
-    document.querySelector('.vid_cont_wrapper').style.display = "flex";
-  } catch {
-    var vid_wrapper = document.createElement('div');
-    vid_wrapper.setAttribute('class', 'vid_cont_wrapper');
+    }
+    currently_selected.classList.remove('selected_menu');
+    document.querySelector('.videos_btn').classList.add('selected_menu');
+    currently_selected = document.querySelector('.videos_btn');
+    document.querySelector('.info_cont > img').style.display = "none";
+    document.querySelector('.info_cont > p').style.display = "none";
+    page_title.innerHTML = "VIDEOS";
+    try {
+      document.querySelector('.vid_cont_wrapper').style.display = "flex";
+    } catch {
+      var vid_wrapper = document.createElement('div');
+      vid_wrapper.setAttribute('class', 'vid_cont_wrapper');
 
-    Object.keys(basics_obj.videos).forEach((item) => {
-      var curr_obj = basics_obj.videos[item];
-      console.log(curr_obj);
-      var new_div_cont = document.createElement('div');
-      new_div_cont.setAttribute('class', 'vid_cont');
+      Object.keys(basics_obj.videos).forEach((item) => {
+        var curr_obj = basics_obj.videos[item];
+        console.log(curr_obj);
+        var new_div_cont = document.createElement('div');
+        new_div_cont.setAttribute('class', 'vid_cont');
 
-      var new_header = document.createElement('h1');
-      new_header.innerHTML = curr_obj.title;
+        var new_header = document.createElement('h1');
+        new_header.innerHTML = curr_obj.title;
 
-      var new_vid = document.createElement('iframe');
-      new_vid.src = curr_obj.video_src;
+        var new_vid = document.createElement('iframe');
+        new_vid.src = curr_obj.video_src;
 
-      new_div_cont.appendChild(new_header);
-      new_div_cont.appendChild(new_vid);
+        new_div_cont.appendChild(new_header);
+        new_div_cont.appendChild(new_vid);
 
-      vid_wrapper.appendChild(new_div_cont);
-    });
-  }
+        vid_wrapper.appendChild(new_div_cont);
+      });
+    }
     document.querySelector('.info_cont').appendChild(vid_wrapper);
-});
+  });
 } catch {}
-try{
+try {
   document.querySelector('.gallery_btn').addEventListener('click', () => {
-  try{
-    document.querySelector('.vid_cont_wrapper').style.display = "none";
-  } catch{
+    try {
+      document.querySelector('.vid_cont_wrapper').style.display = "none";
+    } catch {
 
-  }
-  currently_selected.classList.remove('selected_menu');
-  document.querySelector('.gallery_btn').classList.add('selected_menu');
-  currently_selected = document.querySelector('.gallery_btn');
-  document.querySelector('.info_cont > img').style.display = "none";
-  document.querySelector('.info_cont > p').style.display = "none";
-  page_title.innerHTML = "GALLERY";
-  try {
-    document.querySelector('.img_cont_wrapper').style.display = "flex";
-  } catch {
-    var img_wrapper = document.createElement('div');
-    img_wrapper.setAttribute('class', 'img_cont_wrapper');
+    }
+    currently_selected.classList.remove('selected_menu');
+    document.querySelector('.gallery_btn').classList.add('selected_menu');
+    currently_selected = document.querySelector('.gallery_btn');
+    document.querySelector('.info_cont > img').style.display = "none";
+    document.querySelector('.info_cont > p').style.display = "none";
+    page_title.innerHTML = "GALLERY";
+    try {
+      document.querySelector('.img_cont_wrapper').style.display = "flex";
+    } catch {
+      var img_wrapper = document.createElement('div');
+      img_wrapper.setAttribute('class', 'img_cont_wrapper');
 
-    Object.keys(basics_obj.gallery).forEach((item) => {
-      var curr_obj = basics_obj.gallery[item];
-      console.log(curr_obj);
-      var new_div_cont = document.createElement('div');
-      new_div_cont.setAttribute('class', 'img_cont');
+      Object.keys(basics_obj.gallery).forEach((item) => {
+        var curr_obj = basics_obj.gallery[item];
+        console.log(curr_obj);
+        var new_div_cont = document.createElement('div');
+        new_div_cont.setAttribute('class', 'img_cont');
 
-      var new_header = document.createElement('h1');
-      new_header.innerHTML = curr_obj.title;
+        var new_header = document.createElement('h1');
+        new_header.innerHTML = curr_obj.title;
 
-      var new_img = document.createElement('img');
-      new_img.src = curr_obj.img_src;
+        var new_img = document.createElement('img');
+        new_img.src = curr_obj.img_src;
 
-      new_div_cont.appendChild(new_header);
-      new_div_cont.appendChild(new_img);
+        new_div_cont.appendChild(new_header);
+        new_div_cont.appendChild(new_img);
 
-      img_wrapper.appendChild(new_div_cont);
-    });
-  }
-  console.log(img_wrapper);
-  document.querySelector('.info_cont').appendChild(img_wrapper);
-});
+        img_wrapper.appendChild(new_div_cont);
+      });
+    }
+    console.log(img_wrapper);
+    document.querySelector('.info_cont').appendChild(img_wrapper);
+  });
 } catch {}
-try{
+try {
   document.querySelector('.what_btn').addEventListener('click', () => {
-  try {
-    document.querySelector('.img_cont_wrapper').style.display = "none";
-  } catch {
+    try {
+      document.querySelector('.img_cont_wrapper').style.display = "none";
+    } catch {
 
-  }
-  try{
-    document.querySelector('.vid_cont_wrapper').style.display = "none";
-  } catch{
+    }
+    try {
+      document.querySelector('.vid_cont_wrapper').style.display = "none";
+    } catch {
 
-  }
-  currently_selected.classList.remove('selected_menu');
-  document.querySelector('.what_btn').classList.add('selected_menu');
-  currently_selected = document.querySelector('.what_btn');
-  document.querySelector('.info_cont > img').style.display = "flex";
-  document.querySelector('.info_cont > p').style.display = "flex";
-  page_title.innerHTML = basics_obj.what.title;
-  document.querySelector('.info_cont > img').src = "../assets/basics_photo.jpg";
-  document.querySelector('.info_cont > p').innerHTML = basics_obj.what.swappable;
-});
+    }
+    currently_selected.classList.remove('selected_menu');
+    document.querySelector('.what_btn').classList.add('selected_menu');
+    currently_selected = document.querySelector('.what_btn');
+    document.querySelector('.info_cont > img').style.display = "flex";
+    document.querySelector('.info_cont > p').style.display = "flex";
+    page_title.innerHTML = basics_obj.what.title;
+    document.querySelector('.info_cont > img').src = "../assets/basics_photo.jpg";
+    document.querySelector('.info_cont > p').innerHTML = basics_obj.what.swappable;
+  });
 } catch {}
-try{
+try {
   document.querySelector('.how_btn').addEventListener('click', () => {
-  try {
-    document.querySelector('.img_cont_wrapper').style.display = "none";
-  } catch {
+    try {
+      document.querySelector('.img_cont_wrapper').style.display = "none";
+    } catch {
 
-  }
-  try{
-    document.querySelector('.vid_cont_wrapper').style.display = "none";
-  } catch{
+    }
+    try {
+      document.querySelector('.vid_cont_wrapper').style.display = "none";
+    } catch {
 
-  }
-  currently_selected.classList.remove('selected_menu');
-  document.querySelector('.how_btn').classList.add('selected_menu');
-  currently_selected = document.querySelector('.how_btn');
-  document.querySelector('.info_cont > img').style.display = "flex";
-  document.querySelector('.info_cont > p').style.display = "flex";
-  page_title.innerHTML = basics_obj.how.title;
-  document.querySelector('.info_cont > img').src = "../assets/how_photo.jpg";
-  document.querySelector('.info_cont > p').innerHTML = basics_obj.how.swappable;
-});
+    }
+    currently_selected.classList.remove('selected_menu');
+    document.querySelector('.how_btn').classList.add('selected_menu');
+    currently_selected = document.querySelector('.how_btn');
+    document.querySelector('.info_cont > img').style.display = "flex";
+    document.querySelector('.info_cont > p').style.display = "flex";
+    page_title.innerHTML = basics_obj.how.title;
+    document.querySelector('.info_cont > img').src = "../assets/how_photo.jpg";
+    document.querySelector('.info_cont > p').innerHTML = basics_obj.how.swappable;
+  });
 } catch {}
 
 //** These try/catch blocks are for handling the design content-switching cases **//
 
-function remove_existing_buttons(){
+function remove_existing_buttons() {
   var all_buttons = document.querySelectorAll('.column_start > a');
   all_buttons.forEach((item) => {
     document.querySelector('.column_start').removeChild(item);
   });
 }
 
-try{
+try {
   document.querySelector('.locations_btn').addEventListener('click', () => {
     remove_existing_buttons();
     document.querySelector('.info_cont > .column_start > iframe').style.display = "flex";
@@ -274,9 +280,9 @@ try{
     document.querySelector('.info_cont > .column_start > iframe').src = design_obj.locations.iframe_src;
     document.querySelector('.info_cont > p').innerHTML = design_obj.locations.swappable;
     page_title.innerHTML = "DESIGN";
-});
+  });
 } catch {}
-try{
+try {
   document.querySelector('.soils_btn').addEventListener('click', () => {
     remove_existing_buttons();
     document.querySelector('.info_cont > .column_start > iframe').style.display = "flex";
@@ -292,9 +298,9 @@ try{
     new_btn.setAttribute('href', design_obj.soils.button_href);
 
     document.querySelector('.column_start').appendChild(new_btn);
-});
+  });
 } catch {}
-try{
+try {
   document.querySelector('.sizing_btn').addEventListener('click', () => {
     remove_existing_buttons();
     currently_selected.classList.remove('selected_menu');
@@ -314,9 +320,9 @@ try{
 
     document.querySelector('.column_start').appendChild(new_btn);
     document.querySelector('.column_start').appendChild(new_btn_2);
-});
+  });
 } catch {}
-try{
+try {
   document.querySelector('.cbyd_btn').addEventListener('click', () => {
     remove_existing_buttons();
     currently_selected.classList.remove('selected_menu');
@@ -332,11 +338,11 @@ try{
     new_btn.setAttribute('href', design_obj.cbyd.button_href);
 
     document.querySelector('.column_start').appendChild(new_btn);
-});
+  });
 } catch {}
 
 //** These try/catch blocks are for handling the install content-switching cases **//
-try{
+try {
   document.querySelector('.excavate_btn').addEventListener('click', () => {
     currently_selected.classList.remove('selected_menu');
     document.querySelector('.excavate_btn').classList.add('selected_menu');
@@ -344,9 +350,9 @@ try{
     document.querySelector('.info_cont > .column_start > iframe').src = install_obj.excavate.iframe_src;
     document.querySelector('.info_cont > p').innerHTML = install_obj.excavate.swappable;
     page_title.innerHTML = install_obj.excavate.title;
-});
+  });
 } catch {}
-try{
+try {
   document.querySelector('.layout_btn').addEventListener('click', () => {
     currently_selected.classList.remove('selected_menu');
     document.querySelector('.layout_btn').classList.add('selected_menu');
@@ -354,9 +360,9 @@ try{
     document.querySelector('.info_cont > .column_start > iframe').src = install_obj.layout.iframe_src;
     document.querySelector('.info_cont > p').innerHTML = install_obj.layout.swappable;
     page_title.innerHTML = install_obj.layout.title;
-});
+  });
 } catch {}
-try{
+try {
   document.querySelector('.planting_btn').addEventListener('click', () => {
     currently_selected.classList.remove('selected_menu');
     document.querySelector('.planting_btn').classList.add('selected_menu');
@@ -364,9 +370,9 @@ try{
     document.querySelector('.info_cont > .column_start > iframe').src = install_obj.planting.iframe_src;
     document.querySelector('.info_cont > p').innerHTML = install_obj.planting.swappable;
     page_title.innerHTML = install_obj.planting.title;
-});
+  });
 } catch {}
-try{
+try {
   document.querySelector('.maintain_btn').addEventListener('click', () => {
     currently_selected.classList.remove('selected_menu');
     document.querySelector('.maintain_btn').classList.add('selected_menu');
@@ -374,5 +380,5 @@ try{
     document.querySelector('.info_cont > .column_start > iframe').src = install_obj.maintain.iframe_src;
     document.querySelector('.info_cont > p').innerHTML = install_obj.maintain.swappable;
     page_title.innerHTML = install_obj.maintain.title;
-});
+  });
 } catch {}
