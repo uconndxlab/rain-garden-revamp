@@ -318,6 +318,12 @@ body {
   align-self: center;
 }
 
+.soils_map{
+  width: 95vw;
+  height: 70vh;
+  margin-bottom: 2vh;
+}
+
 #address_search {
   width: 95vw;
   display: flex;
@@ -582,6 +588,10 @@ body {
 
   .info_cont>iframe {
     height: 30vh;
+  }
+
+  .soils_map{
+    height: 70vh;
   }
 
   #address_search {
@@ -978,6 +988,12 @@ body {
     border: 0;
     width: 90%;
     height: 11vw;
+  }
+
+  .soils_map{
+    width: 50vw;
+    height: 70vh;
+    margin-bottom: 0;
   }
 
   #address_search {
