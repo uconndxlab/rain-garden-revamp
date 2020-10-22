@@ -130,7 +130,7 @@ var install_obj = {
   excavate: {
     swappable: "1. Mark out the area of the garden, based on the size you calculated for the drainage area. If the area is flat, you can remove 8-9 inches of soil from the whole area. Shape a gentle slope from the bottom of the garden to the surrounding lawn area.<br /><br />2. If the area is sloped, you can use some of the soil that you removed from the garden to build a berm at the lower end. If you are removing turf to install your garden, you can use some of the turf pieces on the berm so vegetation can be established quickly, and erosion potential can be reduced. When you are constructing the berm, try to make it the same level across the berm. If there is one area that is lower than the rest, overflow from the garden during a large storm may concentrate there, and cause erosion as water flows out. Keeping the water spread out is the best way to avoid erosion.<br /><br />3. Take a shovel full of soil from the bottom, in the area where you will be planting. If the soil at the bottom looks the same as the top layer of soil that you removed, you can plant directly into it. If the subsoil is lighter in color, or appears compacted, you may need to loosen it and add an amendment like compost when planting. A rototiller can be used to loosen the soil and integrate compost at the same time.<br /><br />If your soils were slow to drain, it may mean that you have high clay content. If you have the means, you can make the garden a little bigger to account for slower infiltration rate. Alternatively, you can dig the garden a little deeper, and mix some compost in. If these things are not possible, don't worry. The garden will still infiltrate some water, and every little bit helps.",
     iframe_src: "https://www.youtube.com/embed/hF1rqCaPhd4",
-    title: "Excavate"
+    title: "Install"
   },
   layout: {
     swappable: "There are some general concepts that you can follow when planting to make your garden function well, and look pleasing to the eye.<br /><br />1. Plan for future growth. Plant descriptions will include the mature size, so don't over-plant. However, if a 'fuller' look is desired early on, it is OK to have plants a bit close together.<br /><br />2. Try to group plants in odd numbers, and avoid planting in straight lines.<br /><br />3. Arrange plants so that taller ones won't block the view of shorter ones.<br /><br />4. Some plants will do better in different parts of the rain garden, like the bottom or the side slope. Many will do OK in any area in the garden. The plant catalog will specify this.<br /><br />5. Have fun! You will be the one looking at this garden, so make it however feels right for you.",
@@ -143,7 +143,7 @@ var install_obj = {
     title: "Planting"
   },
   maintain: {
-    swappable: "Although native plants have low fertilizer and water needs once established, they will need care in the short term.<br /><br /><strong>Short-term</strong><br /><br />1. After planting, the plants should get an inch of water per week. If it does not rain, provide supplemental irrigation for 1-2 months, or longer if drought conditions exist.<br /><br />2. Inspect the area(s) where water enters and exists the garden for erosion. Make repairs as necessary, and add extra stones if needed to dissipate energy.<br /><br />3. Remove any weeds or invasive species that may start to grow in the garden.<br /><br /><strong>Long-term</strong><br /><br />1. Remove any dead branches from shrubs or trees, and dead vegetation from perennials and grasses. Depending on the look that you want from your garden, you can prune shrubs to keep them smaller, or let them grow larger. This will not impact the function of the garden.<br /><br />2. Remove weeds/invasives as needed.<br /><br />3. Add a thin layer of mulch ar.nually, if desired. Alternatively, vegetated ground covers can be used. USE CAUTION WHEN ADDING MULCH! Do not add excessive amounts of mulch; this can fill up the storage area, or block the flow of entrance to the garden.<br /><br />4. Inspect for erosion at the entrance/exit points, and/or sediment buildup in the top layer of the garden. If erosion occurred, remove the sediment and correct the problem.",
+    swappable: "Although native plants have low fertilizer and water needs once established, they will need care in the short term.<br /><br />Short-term<br /><br />1. After planting, the plants should get an inch of water per week. If it does not rain, provide supplemental irrigation for 1-2 months, or longer if drought conditions exist.<br /><br />2. Inspect the area(s) where water enters and exists the garden for erosion. Make repairs as necessary, and add extra stones if needed to dissipate energy.<br /><br />3. Remove any weeds or invasive species that may start to grow in the garden.<br /><br />Long-term<br /><br />1. Remove any dead branches from shrubs or trees, and dead vegetation from perennials and grasses. Depending on the look that you want from your garden, you can prune shrubs to keep them smaller, or let them grow larger. This will not impact the function of the garden.<br /><br />2. Remove weeds/invasives as needed.<br /><br />3. Add a thin layer of mulch ar.nually, if desired. Alternatively, vegetated ground covers can be used. USE CAUTION WHEN ADDING MULCH! Do not add excessive amounts of mulch; this can fill up the storage area, or block the flow of entrance to the garden.<br /><br />4. Inspect for erosion at the entrance/exit points, and/or sediment buildup in the top layer of the garden. If erosion occurred, remove the sediment and correct the problem.",
     iframe_src: "https://www.youtube.com/embed/wTvoNRAk4bM",
     title: "Maintain"
   }
@@ -362,17 +362,18 @@ try{
     currently_selected.classList.remove('selected_menu');
     document.querySelector('.excavate_btn').classList.add('selected_menu');
     currently_selected = document.querySelector('.excavate_btn');
-    document.querySelector('.info_cont > .column_start > iframe').src = install_obj.excavate.iframe_src;
+    document.querySelector('.info_cont > iframe').src = install_obj.excavate.iframe_src;
     document.querySelector('.info_cont > p').innerHTML = install_obj.excavate.swappable;
     page_title.innerHTML = install_obj.excavate.title;
 });
 } catch {}
 try{
   document.querySelector('.layout_btn').addEventListener('click', () => {
+    console.log(install_obj.layout.iframe_src);
     currently_selected.classList.remove('selected_menu');
     document.querySelector('.layout_btn').classList.add('selected_menu');
     currently_selected = document.querySelector('.layout_btn');
-    document.querySelector('.info_cont > .column_start > iframe').src = install_obj.layout.iframe_src;
+    document.querySelector('.info_cont > iframe').src = install_obj.layout.iframe_src;
     document.querySelector('.info_cont > p').innerHTML = install_obj.layout.swappable;
     page_title.innerHTML = install_obj.layout.title;
 });
@@ -382,7 +383,7 @@ try{
     currently_selected.classList.remove('selected_menu');
     document.querySelector('.planting_btn').classList.add('selected_menu');
     currently_selected = document.querySelector('.planting_btn');
-    document.querySelector('.info_cont > .column_start > iframe').src = install_obj.planting.iframe_src;
+    document.querySelector('.info_cont > iframe').src = install_obj.planting.iframe_src;
     document.querySelector('.info_cont > p').innerHTML = install_obj.planting.swappable;
     page_title.innerHTML = install_obj.planting.title;
 });
@@ -392,7 +393,7 @@ try{
     currently_selected.classList.remove('selected_menu');
     document.querySelector('.maintain_btn').classList.add('selected_menu');
     currently_selected = document.querySelector('.maintain_btn');
-    document.querySelector('.info_cont > .column_start > iframe').src = install_obj.maintain.iframe_src;
+    document.querySelector('.info_cont > iframe').src = install_obj.maintain.iframe_src;
     document.querySelector('.info_cont > p').innerHTML = install_obj.maintain.swappable;
     page_title.innerHTML = install_obj.maintain.title;
 });

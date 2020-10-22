@@ -317,6 +317,7 @@ body {
 .img_cont>img, .vid_cont>iframe {
   width: 90%;
   align-self: center;
+  border: 0;
 }
 
 .soils_map{
