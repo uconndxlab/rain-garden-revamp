@@ -10,6 +10,32 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+var state_translations = {
+  connecticut: "7",
+  delaware: "8",
+  georgia: "11",
+  hawaii: "12",
+  indiana: "15",
+  iowa: "16",
+  maine: "20",
+  maryland: "21",
+  massachusetts: "22",
+  michigan: "23",
+  minnesota: "24",
+  nevada: "29",
+  new_hampshire: "30",
+  new_jersey: "31",
+  new_york: "33",
+  north_carolina: "34",
+  ohio: "36",
+  oklahoma: "37",
+  pennsylvania: "39",
+  rhode_island: "41",
+  south_carolina: "42",
+  vermont: "47",
+  virginia: "48"
+}
+
 var currently_selected = document.querySelector('.selected_menu');
 var page_title = document.querySelector('.section_header');
 var sidebar_is_open = false;

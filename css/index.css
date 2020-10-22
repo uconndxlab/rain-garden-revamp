@@ -431,6 +431,49 @@ body {
   font-weight: 600;
 }
 
+.rain_gardens{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 90vw;
+}
+
+.rain_gardens > div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 3vw solid #B54542;
+  color: #B54542;
+  box-shadow: 0px 3px 10px lightgray;
+  width: 43vw;
+  height: 43vw;
+  margin-bottom: 4vw;
+}
+
+.rain_gardens > .add_rg{
+  box-shadow: none;
+  border: 0;
+  background: #B54542;
+  color: white;
+}
+
+.rain_gardens > .add_rg > h3{
+  font-size: 5vw;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+
+.rain_gardens > .add_rg > h2{
+  font-size: 12vw;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+
 @media only screen and (min-width: 768px) {
   .menu_bar, .bottom_bar {
     background: #7BAE18;
