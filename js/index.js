@@ -12,6 +12,27 @@ if ('serviceWorker' in navigator) {
 
 var currently_selected = document.querySelector('.selected_menu');
 var page_title = document.querySelector('.section_header');
+var sidebar_is_open = false;
+
+function toggle_sidebar(){
+  var sidebar = document.querySelector('.sidebar');
+  if(sidebar_is_open){
+    // we want to close it
+    sidebar.style.left = "100%";
+    sidebar_is_open = false;
+    var timeout = setTimeout(() => {
+      sidebar.style.display = "none";
+      clearTimeout(timeout);
+    }, 500);
+  } else {
+    sidebar.style.display = "flex";
+    var timeout = setTimeout(() => {
+      sidebar.style.left = "0%";
+      sidebar_is_open = true;
+      clearTimeout(timeout);
+    }, 100);
+  }
+}
 
 var basics_obj = {
   what: {
