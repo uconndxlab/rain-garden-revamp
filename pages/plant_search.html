@@ -28,9 +28,9 @@
     <img src="../assets/hamburger.svg" class="mobile hamburger_menu" alt="Hamburger Menu">
     <div class="desktop arrow_collection">
       <div class="row_between">
-        <a href="#" class="row_start">
+        <a href="index.html" class="row_start">
           <img src="../assets/back_arrow.svg" alt="Back Arrow">
-          <p>Back</p>
+          <p>Home</p>
         </a>
       </div>
       <p class="copyright">&copy; UConn CLEAR</p>
@@ -56,7 +56,7 @@
   <script src="../js/index.js" charset="utf-8"></script>
   <script src="../js/jquery3.5.1.min.js" charset="utf-8"></script>
   <script type="text/javascript">
-    $.get("https://nemo.uconn.edu/raingardens/getPlants.php?state_id=" + state_translations["massachusetts"], res => {
+    $.get("https://nemo.uconn.edu/raingardens/getPlants.php?state_id=" + state_translations["massachusetts"], (res, status) => {
       console.log(res);
     });
   </script>
