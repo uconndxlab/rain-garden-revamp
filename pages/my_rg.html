@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <div class="name_modal">
+      <img src="../assets/close_modal.svg" onclick="close_modal()">
+      <h3>Name Your Rain Garden</h3>
+      <div class="input_flex">
+        <input type="text" placeholder="Enter a unique name...">
+        <button type="button" class="submit_name">Name It</button>
+      </div>
+    </div>
     <div class="mobile sidebar">
       <img src="../assets/close_sidebar.svg" onclick="toggle_sidebar()">
       <div class="sidebar_hrefs">
@@ -63,7 +71,7 @@
             <img src="../assets/back_arrow.svg" alt="Back Arrow">
             <p>Home</p>
           </a>
-          <a href="#" class="row_start">
+          <a href="settings.html" class="row_start">
             <img src="../assets/front_arrow.svg" alt="Front Arrow">
             <p>Settings</p>
           </a>
@@ -86,20 +94,40 @@
         <img src="../assets/back_arrow.svg" alt="Back Arrow">
         <p>Home</p>
       </a>
-      <a href="../index.html" class="how_btn row_start">
+      <a href="settings.html" class="how_btn row_start">
         <img src="../assets/front_arrow.svg" alt="Front Arrow">
-        <p>Home</p>
+        <p>Settings</p>
       </a>
     </div>
 
     <script src="../js/index.js" charset="utf-8"></script>
     <script src="../js/jquery3.5.1.min.js" charset="utf-8"></script>
     <script type="text/javascript">
-      // Initializing persistence of Rain Garden data in localstorage, else populate existing ones
+
+      var modal = document.querySelector('.name_modal');
+
+      function close_modal() {
+        modal.style.opacity = "0";
+        var x = setTimeout(() => {
+          modal.style.display = "none";
+          clearTimeout(x);
+        });
+      }
+
+      function open_modal() {
+        modal.style.display = "flex";
+        var x = setTimeout(() => {
+          modal.style.opacity = "1";
+          clearTimeout(x);
+        });
+      }
+
       var rg_sect = document.querySelector('.rain_gardens');
+
+      // Initializing persistence of Rain Garden data in localstorage, else populate existing ones
       if (window.localStorage.rain_gardens) {
         var rg_obj = JSON.parse(window.localStorage.rain_gardens);
-        if (rg_obj.length > 0) {
+        if (Object.keys(rg_obj).length > 0) {
           Object.keys(rg_obj).forEach((key) => {
             var new_div = document.createElement('div');
             var new_name = document.createElement('h3');
@@ -115,33 +143,34 @@
       }
 
       document.querySelector('.add_rg').addEventListener('click', () => {
-        // Create an empty object with name.
-        var updated_ls_obj = JSON.parse(window.localStorage.rain_gardens);
-        var new_returned = get_name();
-        var new_div = document.createElement('div');
-        var new_name = document.createElement('h3');
-
-        new_name.innerHTML = new_returned;
-        new_div.appendChild(new_name);
-
-        rg_sect.appendChild(new_div);
-
-        // Append to localstorage
-
-        updated_ls_obj[new_returned] = {};
-        window.localStorage.rain_gardens = JSON.stringify(updated_ls_obj);
+        open_modal();
       });
 
-      function get_name() {
-        let name = "Robby";
-        console.log(JSON.parse(window.localStorage.rain_gardens)[name]);
-        if (JSON.parse(window.localStorage.rain_gardens)[name]) {
-          alert(name + " already exists");
-          return "Linda";
+      document.querySelector('.submit_name').addEventListener('click', () => {
+        // Create an empty object with name.
+        var new_returned = document.querySelector('.name_modal > div > input').value;
+        if (JSON.parse(window.localStorage.rain_gardens)[new_returned]) {
+          alert(new_returned + " already exists");
         } else {
-          return "Robby";
+          var updated_ls_obj = JSON.parse(window.localStorage.rain_gardens);
+          var new_div = document.createElement('div');
+          var new_name = document.createElement('h3');
+
+          new_name.innerHTML = new_returned;
+          new_div.appendChild(new_name);
+
+          rg_sect.appendChild(new_div);
+
+          // Append to localstorage
+
+          updated_ls_obj[new_returned] = {};
+          window.localStorage.rain_gardens = JSON.stringify(updated_ls_obj);
+
+          document.querySelector('.name_modal > div > input').value = "";
+          close_modal();
         }
-      }
+
+      })
     </script>
   </body>
 
