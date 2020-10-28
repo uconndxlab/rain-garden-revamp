@@ -11,6 +11,31 @@ body {
   display: none;
 }
 
+.input_row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 80vw;
+}
+
+.input_row > h2{
+  font-weight: 500;
+  font-size: 5vw;
+}
+.input_row > input{
+  padding: 2vw;
+  border: 0;
+  outline: none;
+  font-size: 4vw;
+  width: 100%;
+  margin-left: 5vw;
+}
+
+.input_row > input:empty{
+  border-bottom: .75vw solid #7BAE18;
+}
+
 .sidebar {
   z-index: 50 !important;
   display: none;
@@ -431,7 +456,7 @@ body {
   font-weight: 600;
 }
 
-.rain_gardens {
+.rain_gardens, .rain_garden_options {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -440,7 +465,7 @@ body {
   width: 90vw;
 }
 
-.rain_gardens>div {
+.rain_gardens>div, .rain_garden_options > div:not(.input_row) {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -451,6 +476,16 @@ body {
   width: 43vw;
   height: 43vw;
   margin-bottom: 4vw;
+}
+
+.rain_garden_options > .input_row{
+  margin-bottom: 4vh;
+  width: 100%;
+}
+
+.rain_garden_options > div:not(.input_row) > img{
+  width: 25%;
+  margin-bottom: 3vh;
 }
 
 .rain_gardens>.add_rg {
@@ -532,6 +567,68 @@ body {
   background: #7BAE18;
   color: white;
   font-weight: 500;
+}
+
+.sizeloc_bar, .plantlist_bar, .reminders_bar{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  right: -100%;
+  top: 0;
+  opacity: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  background: white;
+  border-top: 2vw solid #7BAE18;
+  border-bottom: 2vw solid #7BAE18;
+  padding: 15vw;
+  transition: 0.5s ease;
+}
+
+.sizeloc_bar > h3, .plantlist_bar > h3, .reminders_bar > h3{
+  text-transform: uppercase;
+  color: #B54542;
+  font-size: 5vw;
+}
+
+.sizeloc_bar > .content, .plantlist_bar > .content, .reminders_bar > .content{
+  height: 100%;
+  width: 100%;
+  padding-top: 3vw;
+  padding-bottom: 3vw;
+  overflow-y: auto;
+}
+
+.sizeloc_bar > .btns, .plantlist_bar > .btns, .reminders_bar > .btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.sizeloc_bar > .btns > button, .reminders_bar > .btns > button, .plantlist_bar > .btns > button{
+  width: 48%;
+  padding-top: 3vw;
+  outline: none;
+  padding-bottom: 3vw;
+  border-radius: 5px;
+  border: 0;
+  font-size: 4vw;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .25vw;
+  color: white;
+  background: #4c6c0e;
+}
+
+.sizeloc_bar > .btns > button:first-of-type,
+.reminders_bar > .btns > button:first-of-type,
+.plantlist_bar > .btns > button:first-of-type{
+  background: #b91818;
 }
 
 @media only screen and (min-width: 768px) {
@@ -1282,4 +1379,5 @@ body {
     outline-offset: -.125vw;
     background: white;
   }
+}
 }
