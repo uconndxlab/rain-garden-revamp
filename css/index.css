@@ -11,7 +11,7 @@ body {
   display: none;
 }
 
-.input_row{
+.input_row {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -19,11 +19,30 @@ body {
   width: 80vw;
 }
 
-.input_row > h2{
+.update_msg{
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: 0.2s ease;
+  padding: 2vh 3vh;
+  background: #00a807;
+  z-index: 46;
+  color: white;
+  border-radius: 100px;
+}
+
+.error{
+  background: #dd293e;
+}
+
+.input_row>h2 {
   font-weight: 500;
   font-size: 5vw;
 }
-.input_row > input{
+
+.input_row>input {
   padding: 2vw;
   border: 0;
   outline: none;
@@ -32,7 +51,7 @@ body {
   margin-left: 5vw;
 }
 
-.input_row > input:empty{
+.input_row>input:empty {
   border-bottom: .75vw solid #7BAE18;
 }
 
@@ -465,27 +484,32 @@ body {
   width: 90vw;
 }
 
-.rain_gardens>div, .rain_garden_options > div:not(.input_row) {
+.rain_gardens>div, .rain_garden_options>div:not(.input_row) {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  border-top: 3vw solid #B54542;
+  padding: 4vw;
+  justify-content: flex-start;
+  border-left: 2vw solid #B54542;
   color: #B54542;
   box-shadow: 0px 3px 10px lightgray;
-  width: 43vw;
-  height: 43vw;
+  width: 100vw;
   margin-bottom: 4vw;
 }
 
-.rain_garden_options > .input_row{
+.rain_gardens>div:first-of-type {
+  text-align: center;
+  justify-content: center;
+}
+
+.rain_garden_options>.input_row {
   margin-bottom: 4vh;
   width: 100%;
 }
 
-.rain_garden_options > div:not(.input_row) > img{
-  width: 25%;
-  margin-bottom: 3vh;
+.rain_garden_options>div:not(.input_row)>img {
+  width: 15vw;
+  margin-right: 4vw;
 }
 
 .rain_gardens>.add_rg {
@@ -569,7 +593,7 @@ body {
   font-weight: 500;
 }
 
-.sizeloc_bar, .plantlist_bar, .reminders_bar{
+.sizeloc_bar, .plantlist_bar, .reminders_bar {
   width: 100vw;
   height: 100vh;
   position: absolute;
@@ -588,21 +612,25 @@ body {
   transition: 0.5s ease;
 }
 
-.sizeloc_bar > h3, .plantlist_bar > h3, .reminders_bar > h3{
+.sizeloc_bar>h3, .plantlist_bar>h3, .reminders_bar>h3 {
   text-transform: uppercase;
   color: #B54542;
   font-size: 5vw;
 }
 
-.sizeloc_bar > .content, .plantlist_bar > .content, .reminders_bar > .content{
+.sizeloc_bar>.content, .plantlist_bar>.content, .reminders_bar>.content {
   height: 100%;
   width: 100%;
   padding-top: 3vw;
   padding-bottom: 3vw;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.sizeloc_bar > .btns, .plantlist_bar > .btns, .reminders_bar > .btns {
+.sizeloc_bar>.btns, .plantlist_bar>.btns, .reminders_bar>.btns {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -610,7 +638,7 @@ body {
   width: 100%;
 }
 
-.sizeloc_bar > .btns > button, .reminders_bar > .btns > button, .plantlist_bar > .btns > button{
+.sizeloc_bar>.btns>button, .reminders_bar>.btns>button, .plantlist_bar>.btns>button {
   width: 48%;
   padding-top: 3vw;
   outline: none;
@@ -625,10 +653,66 @@ body {
   background: #4c6c0e;
 }
 
-.sizeloc_bar > .btns > button:first-of-type,
-.reminders_bar > .btns > button:first-of-type,
-.plantlist_bar > .btns > button:first-of-type{
+.sizeloc_bar>.btns>button:first-of-type,
+.reminders_bar>.btns>button:first-of-type,
+.plantlist_bar>.btns>button:first-of-type {
   background: #b91818;
+}
+
+.sizeloc_bar>.content > div{
+  width: 100%;
+}
+
+.sizeloc_bar>.content > div > .row_between{
+  margin-bottom: 3vw;
+}
+
+.sizeloc_bar>.content > div > .row_between > h3{
+  font-weight: 500;
+  font-size: 4.5vw;
+}
+
+.sizeloc_bar>.content > div > .row_between > input{
+  font-weight: 500;
+  padding: 2vw;
+  border: 0;
+  outline: none;
+  color: gray;
+  text-align: right;
+  background: transparent;
+  font-size: 4vw;
+}
+
+.sizeloc_bar>.content > div > button{
+  width: 100%;
+  padding: 4vw 2vw;
+  outline: none;
+  border-radius: 5px;
+  margin-bottom: 2vw;
+  background: #399AB5;
+  border: 0;
+  color: white;
+  font-size: 3.5vw;
+}
+
+.sizeloc_bar>.content > div{
+  margin-bottom: 5vw;
+}
+
+.sizeloc_bar>.content > button{
+  outline: none;
+  margin-top: 5vw;
+  width: 100%;
+  padding: 4vw 2vw;
+  border-radius: 5px;
+  background: #7BAD18;
+  border: 0;
+  color: white;
+  font-size: 3.5vw;
+}
+
+.sizeloc_bar>.content > button:last-of-type{
+  background: #a12517;
 }
 
 @media only screen and (min-width: 768px) {
@@ -931,6 +1015,82 @@ body {
   .name_modal>div>button {
     font-size: 3vw;
     width: 30%;
+  }
+
+  .rain_gardens>div, .rain_garden_options>div:not(.input_row) {
+    padding: 3vw;
+    width: 43vw;
+  }
+
+  .rain_garden_options>.input_row {
+    margin-bottom: 4vh;
+    width: 100%;
+  }
+
+  .rain_garden_options>.input_row>h2 {
+    font-size: 3vw;
+  }
+
+  .rain_garden_options>.input_row>input {
+    font-size: 3vw;
+  }
+
+  .rain_garden_options>div:not(.input_row)>img {
+    width: 15%;
+    margin-right: 3vw;
+  }
+
+  .sizeloc_bar>h3, .plantlist_bar>h3, .reminders_bar>h3 {
+    font-size: 3vw;
+  }
+
+  .sizeloc_bar>.content, .plantlist_bar>.content, .reminders_bar>.content {
+    height: 100%;
+    width: 100%;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    overflow-y: auto;
+  }
+
+  .sizeloc_bar>.btns>button, .reminders_bar>.btns>button, .plantlist_bar>.btns>button {
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+    font-size: 2.5vw;
+    letter-spacing: .25vw;
+  }
+
+  .sizeloc_bar>.content > div > .row_between{
+    margin-bottom: 2vw;
+  }
+
+  .sizeloc_bar>.content > div > .row_between > h3{
+    font-size: 3vw;
+  }
+
+  .sizeloc_bar>.content > div > .row_between > input{
+    padding: 2vw;
+    width: 100%;
+    font-size: 3vw;
+  }
+
+  .sizeloc_bar>.content > div > button{
+    width: 100%;
+    padding: 2vw 1vw;
+    font-size: 2.5vw;
+  }
+
+  .sizeloc_bar>.content > div{
+    margin-bottom: 5vw;
+  }
+
+  .sizeloc_bar>.content > button{
+    margin-top: 5vw;
+    padding: 2vw 1vw;
+    font-size: 2.5vw;
+  }
+
+  .sizeloc_bar>.content > button:last-of-type{
+    background: #a12517;
   }
 }
 
@@ -1312,6 +1472,9 @@ body {
   .rain_gardens>div {
     border-top: .5vw solid #B54542;
     box-shadow: 0px 0px 10px lightgray;
+    border-left: 0;
+    align-items: center;
+    justify-content: center;
     width: 10vw;
     height: 10vw;
     margin-left: 0.5vw;
@@ -1379,5 +1542,155 @@ body {
     outline-offset: -.125vw;
     background: white;
   }
-}
+
+  .rain_garden_options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 60vw;
+  }
+
+  .rain_garden_options>div:not(.input_row) {
+    padding: 1vw;
+    border-left: .5vw solid #B54542;
+    box-shadow: 0px 3px 10px lightgray;
+    width: 14.5vw;
+    margin-bottom: 1vw;
+    transition: .2s ease;
+  }
+
+  .rain_garden_options>.input_row {
+    margin-bottom: 4vh;
+    align-items: baseline;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .rain_garden_options>.input_row>h2 {
+    font-size: 1.5vw;
+    margin: 0;
+    padding: 0;
+  }
+
+  .rain_garden_options>.input_row>input {
+    font-size: 1.5vw;
+    padding: .25vw .75vw;
+    width: -webkit-min-content;
+    width: -moz-min-content;
+    width: min-content;
+    border-bottom-width: .25vw;
+    margin-left: 1vw;
+  }
+
+  .rain_garden_options>div:not(.input_row)>img {
+    width: 3vw;
+    margin-right: 1vw;
+    transition: 0.2s ease;
+  }
+
+  .rain_garden_options>div:not(.input_row) > h3{
+    transition: 0.2s ease;
+  }
+
+  .rain_garden_options>div:not(.input_row):hover{
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px gray;
+    transform: translate(0vw, -.5vw);
+    transform: rotate(-2deg);
+    background: #B54542;
+  }
+
+  .rain_garden_options>div:not(.input_row):hover > img{
+    transform: rotate(-15deg);
+    background: white;
+    padding: 0.5vw;
+    border-radius: 5px;
+  }
+
+  .rain_garden_options>div:not(.input_row):hover > h3{
+    width: 100%;
+    color: white;
+    margin-left: .25vw;
+  }
+
+  .sizeloc_bar, .plantlist_bar, .reminders_bar {
+    width: 30vw;
+    height: 100vh;
+    right: -30vw;
+    border-top: 0;
+    border-left: .5vw solid #7BAE18;
+    border-bottom: 0;
+    padding: 2vw;
+    z-index: 1;
+  }
+
+  .sizeloc_bar>h3, .plantlist_bar>h3, .reminders_bar>h3 {
+    text-transform: uppercase;
+    color: #B54542;
+    font-size: 1.5vw;
+  }
+
+  .sizeloc_bar>.content, .plantlist_bar>.content, .reminders_bar>.content {
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+  }
+
+  .sizeloc_bar>.btns>button, .reminders_bar>.btns>button, .plantlist_bar>.btns>button {
+    width: 45%;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    font-size: 1vw;
+    letter-spacing: .0625vw;
+    transition: 0.2s ease;
+  }
+
+  .sizeloc_bar>.btns>button:hover, .reminders_bar>.btns>button:hover, .plantlist_bar>.btns>button:hover{
+    cursor: pointer;
+    background: white;
+    box-shadow: 0px 3px 6px gray;
+    color: #4C6C0E;
+  }
+
+  .sizeloc_bar>.btns>button:first-of-type:hover, .reminders_bar>.btns>button:first-of-type:hover, .plantlist_bar>.btns>button:first-of-type:hover{
+    color: #B91818;
+  }
+
+  .sizeloc_bar>.content > div > .row_between{
+    margin-bottom: 0vw;
+  }
+
+  .sizeloc_bar>.content > div > .row_between > h3{
+    font-size: 1vw;
+  }
+
+  .sizeloc_bar>.content > div > .row_between > input{
+    padding: 1vw;
+    width: 100%;
+    font-size: 1vw;
+  }
+
+  .sizeloc_bar>.content > div > button{
+    width: 100%;
+    padding: .75vw .25vw;
+    font-size: 1vw;
+    margin-bottom: .5vw;
+  }
+
+  .sizeloc_bar>.content > div{
+    margin-bottom: 3vw;
+  }
+
+  .sizeloc_bar>.content > button{
+    margin-top: .5vw;
+    margin-bottom: 0vw;
+    padding: .75vw .25vw;
+    font-size: 1vw;
+  }
+
+  .sizeloc_bar>.content > button:last-of-type{
+    background: #a12517;
+  }
 }

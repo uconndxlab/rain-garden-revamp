@@ -11,14 +11,33 @@
 </head>
 
 <body>
+
+  <div class="update_msg error">
+    <p>"<span class="new_rg_name_span"></span>" already exists.</p>
+  </div>
+
   <div class="sizeloc_bar">
     <h3>Size & Location</h3>
     <div class="content">
+      <div class="location">
+        <div class="row_between">
+          <h3>Location</h3>
+          <input type="text" class="loc_input" placeholder="Set your location...">
+        </div>
+        <button type="button" class="use_currloc" onclick="use_location()">Use my current location</button>
+      </div>
+      <div class="size">
+        <div class="row_between">
+          <h3>Size</h3>
+          <input type="text" class="size_input" placeholder="Set your garden size...">
+        </div>
+        <button type="button" class="use_sc" onclick="use_sc()">Use sizing calculator</button>
+        <button type="button" class="use_sm" onclick="use_sm()">Use sizing map</button>
+      </div>
 
-    </div>
-    <div class="btns">
+      <button type="button" class="save_rg">Save Rain Garden Information</button>
       <button type="button" class="sizeloc_cancel">Cancel</button>
-      <button type="button" class="sizeloc_save">Save</button>
+
     </div>
   </div>
   <div class="reminders_bar">
@@ -89,7 +108,7 @@
         <img src="../assets/reminders.svg">
         <h3>Reminders</h3>
       </div>
-      <div>
+      <div class="delete_rg">
         <img src="../assets/trash.svg">
         <h3>Delete</h3>
       </div>
@@ -112,53 +131,116 @@
   <script src="../js/jquery3.5.1.min.js" charset="utf-8"></script>
   <script type="text/javascript">
     var ls = window.localStorage;
-    var rg_name = window.location.search.split('=')[1];
+    var split_url = window.location.search.split(/[=&]/);
+    var rg_name = split_url[1];
+    try {
+      var size = decodeURIComponent(split_url[3]);
+      if (size != "undefined") {
+        size_input_update(size);
+        open_sizeloc();
+      }
+    } catch {}
+
+    var update_msg = document.querySelector('.update_msg');
+
     document.querySelector('.rg_placeholder').innerHTML = rg_name;
 
     var name_input = document.querySelector('.name_input');
-    var location_input = document.querySelector('.location_input');
-    var size_input = document.querySelector('.rg_size');
+    var location_input = document.querySelector('.loc_input');
+    var size_input = document.querySelector('.size_input');
     var parsed = JSON.parse(ls.rain_gardens)[rg_name];
+
+    if (parsed.size != '') {
+      size_input_update(parsed.size);
+    }
+
+    if (parsed.location != '') {
+      location_input_update(parsed.location);
+    }
+
+    function location_input_update(val) {
+      location_input.value = val;
+    }
+
+    function size_input_update(val) {
+      size_input.value = val + ' sq. ft.';
+    }
 
     if (parsed['name'].toLowerCase() != '') {
       name_input.value = parsed['name'];
     }
 
+    size_input.addEventListener('change', () => {
+      size_input.value = size_input.value + ' sq. ft.';
+    });
+
+    name_input.addEventListener('change', () => {
+      var curr_obj = JSON.parse(window.localStorage.rain_gardens);
+      if (curr_obj[name_input.value]) {
+        document.querySelector('.new_rg_name_span').innerHTML = name_input.value;
+        show_updated_message();
+
+        function show_updated_message() {
+          var x = setTimeout(() => {
+            update_msg.style.top = "90%";
+            update_msg.style.opacity = "1";
+          }, 200);
+          var y = setTimeout(() => {
+            update_msg.style.top = "100%";
+            update_msg.style.opacity = "0";
+          }, 5000);
+        }
+      }
+      // add a save button that only unblurs when a valid name is entered.
+    });
+
+    document.querySelector('.delete_rg').addEventListener('click', () => {
+      var new_json_del = JSON.parse(window.localStorage.rain_gardens);
+      delete new_json_del[rg_name];
+      window.localStorage.rain_gardens = JSON.stringify(new_json_del);
+      console.log(window.localStorage.rain_gardens);
+      window.location = "my_rg.html";
+    });
+
     document.querySelector('.sizeloc_cancel').addEventListener('click', () => {
       var this_bar = document.querySelector('.sizeloc_bar');
       this_bar.style.opacity = "0";
-      this_bar.style.right = "-100%";
+      this_bar.style.right = "-" + this_bar.offsetWidth + 'px';
       var x = setTimeout(() => {
-        this_bar.style.display = "flex";
+        this_bar.style.display = "none";
       }, 600);
     });
 
     document.querySelector('.reminders_cancel').addEventListener('click', () => {
       var this_bar = document.querySelector('.reminders_bar');
       this_bar.style.opacity = "0";
-      this_bar.style.right = "-100%";
+      this_bar.style.right = "-" + this_bar.offsetWidth + 'px';
       var x = setTimeout(() => {
-        this_bar.style.display = "flex";
+        this_bar.style.display = "none";
       }, 600);
     });
 
     document.querySelector('.plantlist_cancel').addEventListener('click', () => {
       var this_bar = document.querySelector('.plantlist_bar');
       this_bar.style.opacity = "0";
-      this_bar.style.right = "-100%";
+      this_bar.style.right = "-" + this_bar.offsetWidth + 'px';
       var x = setTimeout(() => {
-        this_bar.style.display = "flex";
+        this_bar.style.display = "none";
       }, 600);
     });
 
     document.querySelector('.sizeloc_btn').addEventListener('click', () => {
+      open_sizeloc();
+    });
+
+    function open_sizeloc() {
       var this_bar = document.querySelector('.sizeloc_bar');
       this_bar.style.display = "flex";
       var x = setTimeout(() => {
         this_bar.style.opacity = "1";
         this_bar.style.right = "0";
       }, 100);
-    });
+    }
 
     document.querySelector('.reminders_btn').addEventListener('click', () => {
       var this_bar = document.querySelector('.reminders_bar');
@@ -178,36 +260,43 @@
       }, 100);
     });
 
-    /*
     document.querySelector('.save_rg').addEventListener('click', () => {
-      if (name_input.value.toLowerCase().trim() != ls_filter.toLowerCase().trim()) {
+      var curr_obj = JSON.parse(window.localStorage.rain_gardens);
+      var identifier;
+      var size_input = document.querySelector('.size_input'),
+        loc_input = document.querySelector('.loc_input');
+      if (name_input.value.toLowerCase().trim() != rg_name.toLowerCase().trim()) {
+
         // Create new object with new name, copy over all existing attributes
-        var updated_obj = JSON.parse(ls.getItem(ls_filter));
-        updated_obj["name"] = name_input.value;
-        var update_flag = true;
+        curr_obj[name_input.value] = curr_obj[rg_name];
+        curr_obj[name_input.value].name = name_input.value;
+
+        delete curr_obj[rg_name];
+
+        console.log(curr_obj);
+
+        identifier = name_input.value;
       } else {
-        // Proceed editing the existing object
-        var update_flag = false;
-        var updated_obj = {
-          "name": ls_filter
-        }
+        identifier = rg_name;
       }
 
-      ls.setItem(updated_obj["name"], JSON.stringify(updated_obj));
-      if (update_flag) {
-        delete ls[ls_filter];
+      if (size_input.value.toLowerCase().trim() != '') {
+        curr_obj[identifier].size = size_input.value.split(' ')[0];
       }
-      console.log(ls);
-      //location.reload();
+      if (loc_input.value.toLowerCase().trim() != '') {
+        curr_obj[identifier].location = loc_input.value;
+      }
+
+      window.localStorage.setItem('rain_gardens', JSON.stringify(curr_obj));
+
     });
-    */
+
     function use_location() {
 
       navigator.geolocation.getCurrentPosition(success, error);
 
       function success(position) {
-        console.log(position.coords.latitude)
-        console.log(position.coords.longitude)
+        document.querySelector('.loc_input').value = position.coords.latitude + ', ' + position.coords.longitude;
 
         var GEOCODING = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + '%2C' + position.coords.longitude + '&language=en';
 
@@ -222,7 +311,11 @@
     }
 
     function use_sc() {
-      window.location = "./sizing_calculator.html";
+      window.location = "sizing_calculator.html";
+    }
+
+    function use_sm() {
+      window.location = "sizing_map.html?rg_name=" + rg_name;
     }
   </script>
 </body>

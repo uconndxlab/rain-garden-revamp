@@ -11,6 +11,11 @@
   </head>
 
   <body>
+
+    <div class="update_msg error">
+      <p>"<span class="new_rg_name_span"></span>" already exists.</p>
+    </div>
+
     <div class="mobile sidebar">
       <img src="../assets/close_sidebar.svg" onclick="toggle_sidebar()">
       <div class="sidebar_hrefs">
@@ -125,6 +130,7 @@
     <script type="text/javascript">
 
       var modal = document.querySelector('.name_modal');
+      var update_msg = document.querySelector('.update_msg');
 
       function close_modal() {
         modal.style.opacity = "0";
@@ -147,7 +153,6 @@
       // Initializing persistence of Rain Garden data in localstorage, else populate existing ones
       if (window.localStorage.rain_gardens) {
         var rg_obj = JSON.parse(window.localStorage.rain_gardens);
-        console.log(rg_obj);
         if (Object.keys(rg_obj).length > 0) {
           Object.keys(rg_obj).forEach((key) => {
             var new_div = document.createElement('div');
@@ -175,7 +180,19 @@
         // Create an empty object with name.
         var new_returned = document.querySelector('.name_modal > div > input').value;
         if (JSON.parse(window.localStorage.rain_gardens)[new_returned]) {
-          alert(new_returned + " already exists");
+          document.querySelector('.new_rg_name_span').innerHTML = new_returned;
+          show_updated_message();
+
+          function show_updated_message() {
+            var x = setTimeout(() => {
+              update_msg.style.top = "90%";
+              update_msg.style.opacity = "1";
+            }, 200);
+            var y = setTimeout(() => {
+              update_msg.style.top = "100%";
+              update_msg.style.opacity = "0";
+            }, 5000);
+          }
         } else {
           var updated_ls_obj = JSON.parse(window.localStorage.rain_gardens);
           var new_div = document.createElement('div');

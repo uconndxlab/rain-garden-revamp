@@ -14,6 +14,10 @@ h1, h2, h3, h4, h5, h6, p, span, textarea, input, small {
   padding: 0;
 }
 
+button, input, textarea{
+  outline: none;
+}
+
 h1{
   font-size: var(--h1_font_size);
 }
