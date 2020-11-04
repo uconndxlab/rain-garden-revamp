@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="icon" href="../assets/new_icon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rain Garden App Home</title>
+  </head>
+
+  <body>
+
+    <div class="update_msg column_center align_center">
+      <p>State Set:
+        <span class="state_chosen"></span></p>
+    </div>
+
+    <div class="mobile sidebar">
+      <img src="../assets/close_sidebar.svg" onclick="toggle_sidebar()">
+      <div class="sidebar_hrefs">
+        <a href="video_tutorials.html">Video Tutorials</a>
+        <a href="#">Sizing Calculator</a>
+        <a href="sizing_map.html">Sizing Map</a>
+        <a href="soils_map.html">Soil Drainage Map</a>
+        <a href="#">Call State CBYD</a>
+        <a href="tel:811">Call 811</a>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 191 31.409">
+        <g id="Group_32" data-name="Group 32" transform="translate(-15 -20.171)">
+          <g id="Group_1" data-name="Group 1" transform="translate(15 1630.462)">
+            <path
+              id="Path_1"
+              data-name="Path 1"
+              d="M8.924-1585.374A10.44,10.44,0,0,0,4.891-1589c-.116-.052,3.912,3.558,4.718,7.546,0,.005.611,0,.611,0s2.59-11.537,11.512-17.731a16.268,16.268,0,0,0-8.015,6.7c-.773,1.314-4.726-11.142,4.663-13.536,7.144-1.822,11.889-.3,11.889-4.222,0-.029.035-.04.084-.042a.286.286,0,0,1,.209.079.285.285,0,0,1,.088.206c0,1,0,4.747,0,4.747v4.861s-.43,10.509-9.033,10.509c-1.181,0-3.7-.27-5.713-.465-.343-.033-4.68,7.4-4.68,11.472H9.1a5.942,5.942,0,0,0-1.679-5.066c-.1-.1-6.415.915-6.415-3.579v-6.194s.138-1.211-.771-1.211,1.077-.028,1.077-.028S12.516-1593.931,8.924-1585.374Z"
+              transform="translate(0)"
+              fill="#fff"
+              fill-rule="evenodd"/>
+          </g>
+          <text id="RAIN_GARDEN" data-name="RAIN GARDEN" transform="translate(61 43)" fill="#fff" font-size="20" font-family="RedHatText-Bold, Red Hat Text" font-weight="700">
+            <tspan x="0" y="0">RAIN GARDEN</tspan>
+          </text>
+        </g>
+      </svg>
+
+    </div>
+    <div class="menu_bar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="191" height="31.409" viewbox="0 0 191 31.409">
+        <g id="Group_32" data-name="Group 32" transform="translate(-15 -20.171)">
+          <g id="Group_1" data-name="Group 1" transform="translate(15 1630.462)">
+            <path
+              id="Path_1"
+              data-name="Path 1"
+              d="M8.924-1585.374A10.44,10.44,0,0,0,4.891-1589c-.116-.052,3.912,3.558,4.718,7.546,0,.005.611,0,.611,0s2.59-11.537,11.512-17.731a16.268,16.268,0,0,0-8.015,6.7c-.773,1.314-4.726-11.142,4.663-13.536,7.144-1.822,11.889-.3,11.889-4.222,0-.029.035-.04.084-.042a.286.286,0,0,1,.209.079.285.285,0,0,1,.088.206c0,1,0,4.747,0,4.747v4.861s-.43,10.509-9.033,10.509c-1.181,0-3.7-.27-5.713-.465-.343-.033-4.68,7.4-4.68,11.472H9.1a5.942,5.942,0,0,0-1.679-5.066c-.1-.1-6.415.915-6.415-3.579v-6.194s.138-1.211-.771-1.211,1.077-.028,1.077-.028S12.516-1593.931,8.924-1585.374Z"
+              transform="translate(0)"
+              fill="#fff"
+              fill-rule="evenodd"/>
+          </g>
+          <text id="RAIN_GARDEN" data-name="RAIN GARDEN" transform="translate(61 43)" fill="#fff" font-size="20" font-family="RedHatText-Bold, Red Hat Text" font-weight="700">
+            <tspan x="0" y="0">RAIN GARDEN</tspan>
+          </text>
+        </g>
+      </svg>
+      <img src="../assets/hamburger.svg" class="mobile hamburger_menu" alt="Hamburger Menu" onclick="toggle_sidebar()">
+      <div class="desktop arrow_collection">
+        <div class="row_between">
+          <a href="../index.html" class="row_start">
+            <img src="../assets/back_arrow.svg" alt="Back Arrow">
+            <p>Home</p>
+          </a>
+        </div>
+        <p class="copyright">&copy; UConn CLEAR</p>
+      </div>
+    </div>
+
+    <div class="content_container">
+      <h1 class="section_header">Sizing Calculator</h1>
+      <div class="sizing_banner column_end align_end">
+        <h1 class="total">0 sq. ft.</h1>
+        <small>Recommended rain garden size</small>
+      </div>
+      <div class="sizing_calc_opts">
+        <div>
+          <p class="gray_banner">Drainage Area</p>
+        </div>
+        <div class="sc_options">
+          <div class="option">
+            <p>Width (ft.)</p>
+            <input type="number" class="width_input" name="rg_name" placeholder="0">
+          </div>
+          <div class="option">
+            <p>Length (ft.)</p>
+            <input type="number" class="length_input" name="rg_name" placeholder="0">
+          </div>
+        </div>
+        <div class="calculated_surface_area">
+          <p>
+            <span class="sf_area">0.00</span>
+            sq. ft</p>
+          <small>Calculated surface area (W*L)</small>
+        </div>
+        <div>
+          <p class="gray_banner">Design Storm & Storage Depth</p>
+        </div>
+        <div class="scd_options">
+          <div class="option">
+            <p>Storm Depth (in)</p>
+            <div>
+              <input type="range" min="1" max="4" step="0.01" class="range_input strm_depth" name="storm_depth" value="1">
+              <input type="number" class="storm_depth_val" value="0.00">
+            </div>
+          </div>
+          <div class="option">
+            <p>Storm Depth (in)</p>
+            <div>
+              <input type="range" min="1" max="14" step="0.01" class="range_input stge_depth" name="storage_depth" value="6">
+              <input type="number" class="storage_depth_val" value="0.00">
+            </div>
+          </div>
+          <div class="option">
+            <p>Set Selected State:</p>
+            <div>
+              <select class="preferred_state">
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District Of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div id="sizing_map_btns">
+          <button class="save_results">Confirm Sizes</button>
+          <button onclick="clear_inputs();">Clear Inputs</button>
+        </div>
+      </div>
+    </div>
+    <div class="mobile bottom_bar">
+      <a href="../index.html" class="home_btn row_start">
+        <img src="../assets/back_arrow.svg" alt="Back Arrow">
+        <p>Home</p>
+      </a>
+      <a href="../index.html" class="how_btn row_start">
+        <img src="../assets/front_arrow.svg" alt="Front Arrow">
+        <p>Home</p>
+      </a>
+    </div>
+    <script type="text/javascript">
+      const ls = window.localStorage;
+
+      var width_input = document.querySelector('.width_input'),
+        length_input = document.querySelector('.length_input'),
+        sf_area = document.querySelector('.sf_area'),
+        total = document.querySelector('.total'),
+        update_msg = document.querySelector('.update_msg'),
+        storm_depth_slider = document.querySelector('.strm_depth'),
+        storage_depth_slider = document.querySelector('.stge_depth'),
+        storm_depth_span = document.querySelector('.storm_depth_val'),
+        storage_depth_span = document.querySelector('.storage_depth_val'),
+        preferred_state = document.querySelector('.preferred_state'),
+        save_results = document.querySelector('.save_results'),
+        result = window.location.search.split('=')[1];
+
+      try {
+        if (result.toLowerCase().trim() != '') {
+          save_results.style.display = "block";
+          save_results.addEventListener('click', () => {
+            window.location = "rg_page.html?rg_name=" + result + "&res=" + total.innerHTML.split(' ')[0];
+          })
+        } else {
+          save_results.style.display = "none";
+        }
+      } catch  {
+        save_results.style.display = "none";
+      }
+
+      function clear_inputs(){
+        width_input.value = '';
+        length_input.value = '';
+        sf_area.innerHTML = "0.00";
+        storm_depth_slider.value = "0.00";
+        storage_depth_slider.value = "6.00";
+        storm_depth_span.value = "0.00";
+        storage_depth_span.value = "6.00";
+        total.innerHTML = "0.00 sq. ft.";
+      }
+
+      function show_updated_message() {
+        var x = setTimeout(() => {
+          update_msg.style.top = "90%";
+          update_msg.style.opacity = "1";
+        }, 200);
+        var y = setTimeout(() => {
+          update_msg.style.top = "100%";
+          update_msg.style.opacity = "0";
+        }, 2000);
+      }
+
+      storage_depth_span.value = parseFloat(storage_depth_slider.value).toFixed(2);
+
+      width_input.addEventListener('input', () => {
+        sf_area.innerHTML = parseFloat(width_input.value * length_input.value).toFixed(2);
+      });
+      length_input.addEventListener('input', () => {
+        sf_area.innerHTML = parseFloat(width_input.value * length_input.value).toFixed(2);
+      });
+
+      storm_depth_slider.addEventListener('input', () => {
+        storm_depth_span.value = parseFloat(storm_depth_slider.value).toFixed(2);
+        if (!isNaN(storm_depth_span.value) && !isNaN(storage_depth_span.value)) {
+          total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2)) * 10;
+          total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
+        }
+      });
+      storage_depth_slider.addEventListener('input', () => {
+        storage_depth_span.value = parseFloat(storage_depth_slider.value).toFixed(2);
+        if (!isNaN(storm_depth_span.value) && !isNaN(storage_depth_span.value)) {
+          total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2)) * 10;
+          total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
+        }
+      });
+
+      storm_depth_span.addEventListener('input', () => {
+        storm_depth_slider.value = parseFloat(storm_depth_span.value).toFixed(2);
+        if (!isNaN(storm_depth_span.value) && !isNaN(storage_depth_span.value)) {
+          total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2)) * 10;
+          total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
+        }
+      });
+      storage_depth_span.addEventListener('input', () => {
+        storage_depth_slider.value = parseFloat(storage_depth_span.value).toFixed(2);
+        if (!isNaN(storm_depth_span.value) && !isNaN(storage_depth_span.value)) {
+          total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2)) * 10;
+          total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
+        }
+      });
+    </script>
+    <script src="../js/index.js"></script>
+  </body>
+
+</html>

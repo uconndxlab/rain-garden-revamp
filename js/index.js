@@ -146,7 +146,7 @@ var design_obj = {
     title: "Sizing"
   },
   cbyd: {
-    swappable: "Although you are not required to notify Call Before You Dig (CBYO) for shallow excavations done by hand, CBYO encourages you to call. Even hand tools can damage utility lines. If you are using any type of heavy equipment, you are required by law to call. Dial 1 ·800-922-4455 (for Connecticut), or 811 (for most states). One important note: this service will not locate small utility lines such as wires run from your house to outside fixtures. These things are your responsibility to locate.",
+    swappable: "Although you are not required to notify Call Before You Dig (CBYD) for shallow excavations done by hand, CBYD encourages you to call. Even hand tools can damage utility lines. If you are using any type of heavy equipment, you are required by law to call. Dial 1 ·800-922-4455 (for Connecticut), or 811 (for most states). One important note: this service will not locate small utility lines such as wires run from your house to outside fixtures. These things are your responsibility to locate.",
     button_title: "Dial Call Before You Dig (CBYD)",
     button_href: "https://www.google.com" /*This is a placeholder*/ ,
     title: "CBYD"

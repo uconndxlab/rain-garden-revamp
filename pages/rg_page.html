@@ -133,9 +133,14 @@
     var ls = window.localStorage;
     var split_url = window.location.search.split(/[=&]/);
     var rg_name = split_url[1];
+    var name_input = document.querySelector('.name_input');
+    var location_input = document.querySelector('.loc_input');
+    var size_input = document.querySelector('.size_input');
+    var parsed = JSON.parse(ls.rain_gardens)[rg_name];
     try {
       var size = decodeURIComponent(split_url[3]);
       if (size != "undefined") {
+        update_size_obj(size);
         size_input_update(size);
         open_sizeloc();
       }
@@ -145,13 +150,16 @@
 
     document.querySelector('.rg_placeholder').innerHTML = rg_name;
 
-    var name_input = document.querySelector('.name_input');
-    var location_input = document.querySelector('.loc_input');
-    var size_input = document.querySelector('.size_input');
-    var parsed = JSON.parse(ls.rain_gardens)[rg_name];
+    function update_size_obj(val){
+      var rgs = JSON.parse(ls.rain_gardens);
+      rgs[rg_name].size = val;
+      ls.setItem('rain_gardens', JSON.stringify(rgs));
+    }
 
-    if (parsed.size != '') {
-      size_input_update(parsed.size);
+    function update_loc_obj(val){
+      var rgs = JSON.parse(ls.rain_gardens);
+      rgs[rg_name].location = val;
+      ls.setItem('rain_gardens', JSON.stringify(rgs));
     }
 
     if (parsed.location != '') {
@@ -203,12 +211,7 @@
     });
 
     document.querySelector('.sizeloc_cancel').addEventListener('click', () => {
-      var this_bar = document.querySelector('.sizeloc_bar');
-      this_bar.style.opacity = "0";
-      this_bar.style.right = "-" + this_bar.offsetWidth + 'px';
-      var x = setTimeout(() => {
-        this_bar.style.display = "none";
-      }, 600);
+      close_sidebar();
     });
 
     document.querySelector('.reminders_cancel').addEventListener('click', () => {
@@ -289,7 +292,18 @@
 
       window.localStorage.setItem('rain_gardens', JSON.stringify(curr_obj));
 
+      close_sidebar();
+
     });
+
+    function close_sidebar(){
+      var this_bar = document.querySelector('.sizeloc_bar');
+      this_bar.style.opacity = "0";
+      this_bar.style.right = "-" + this_bar.offsetWidth + 'px';
+      var x = setTimeout(() => {
+        this_bar.style.display = "none";
+      }, 600);
+    }
 
     function use_location() {
 
@@ -311,7 +325,7 @@
     }
 
     function use_sc() {
-      window.location = "sizing_calculator.html";
+      window.location = "sizing_calculator.html?rg_name=" + rg_name;
     }
 
     function use_sm() {

@@ -715,6 +715,126 @@ body {
   background: #a12517;
 }
 
+.sizing_banner{
+  width: 95vw;
+  background: #218EAD;
+  color: white;
+  padding: 4vw;
+}
+
+.sizing_calc_opts{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 95vw;
+}
+
+.gray_banner{
+  width: 95vw;
+  background: #e7e7e7;
+  font-weight: 500;
+  padding: 2vw;
+}
+
+.sc_options{
+  width: 95vw;
+}
+
+.sc_options > .option{
+  width: 100%;
+  padding: 2vw;
+  background: rgba(33, 142, 173, 0.08);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sc_options > .option > p{
+  width: 30vw;
+  margin-right: 5vw;
+}
+
+.sc_options > .option > input{
+  background: transparent;
+  border: 0px;
+  text-align: right;
+  font-size: 4vw;
+  width: 100%;
+}
+
+.scd_options{
+  width: 95vw;
+}
+
+.scd_options > .option{
+  width: 100%;
+  padding: 2vw;
+  background: rgba(33, 142, 173, 0.08);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scd_options > .option > p{
+  width: 45%;
+  margin-right: 5vw;
+}
+
+.scd_options > .option > div{
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.scd_options > .option > div > input[type="range"]{
+  background: transparent;
+  border: 0px;
+  text-align: right;
+  font-size: 4vw;
+  width: 90%;
+}
+
+.scd_options > .option > div > input[type="number"]{
+  width: 30%;
+  background: transparent;
+  border: 0px;
+  text-align: right;
+  font-size: 4vw;
+  margin-left: 5vw;
+}
+
+.scd_options > .option > div > select{
+  padding: 2vw;
+  background: white;
+  border: 0px;
+  outline: none;
+  font-size: 4vw;
+  box-shadow: 0px 3px 10px lightgray;
+  border-radius: 5px;
+}
+
+.calculated_surface_area{
+  width: 95vw;
+  padding: 2vw;
+  background: #21a662;
+  font-weight: 500;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.calculated_surface_area > p > span{
+  font-size: 6vw;
+  font-weight: 700;
+}
+
 @media only screen and (min-width: 768px) {
   .menu_bar, .bottom_bar {
     background: #7BAE18;
@@ -1091,6 +1211,57 @@ body {
 
   .sizeloc_bar>.content > button:last-of-type{
     background: #a12517;
+  }
+
+  .sc_options{
+    width: 95vw;
+  }
+
+  .sc_options > .option{
+    padding: 2vw;
+  }
+
+  .sc_options > .option > p{
+    font-size: 3vw;
+  }
+
+  .sc_options > .option > input{
+    font-size: 3vw;
+  }
+
+  .scd_options{
+    width: 95vw;
+  }
+
+  .scd_options > .option{
+    padding: 2vw;
+  }
+
+  .scd_options > .option > p{
+    font-size: 3vw;
+  }
+
+  .scd_options > .option > div{
+    width: 70%;
+  }
+
+  .scd_options > .option > div > input[type="number"]{
+    width: 30%;
+    font-size: 3vw;
+  }
+
+  .scd_options > .option > div > select{
+    padding: 2vw;
+    font-size: 3vw;
+    box-shadow: 0px 3px 10px lightgray;
+  }
+
+  .calculated_surface_area{
+    padding: 2vw;
+  }
+
+  .calculated_surface_area > p > span{
+    font-size: 4vw;
   }
 }
 
@@ -1692,5 +1863,85 @@ body {
 
   .sizeloc_bar>.content > button:last-of-type{
     background: #a12517;
+  }
+
+  .sizing_banner{
+    width: 50vw;
+    padding: 1.5vw;
+  }
+
+  .sizing_calc_opts{
+    width: 50vw;
+  }
+
+  .gray_banner{
+    width: 50vw;
+    padding: 1vw;
+  }
+
+  .sc_options{
+    width: 50vw;
+  }
+
+  .sc_options > .option{
+    width: 100%;
+    padding: 1vw;
+  }
+
+  .sc_options > .option > p{
+    width: 30vw;
+    margin-right: 5vw;
+    font-size: 1vw;
+  }
+
+  .sc_options > .option > input{
+    font-size: 1vw;
+    width: 100%;
+  }
+
+  .scd_options{
+    width: 50vw;
+  }
+
+  .scd_options > .option{
+    width: 100%;
+    padding: 2vw;
+  }
+
+  .scd_options > .option > p{
+    width: 45%;
+    margin-right: 5vw;
+    font-size: 1vw;
+  }
+
+  .scd_options > .option > div{
+    width: 70%;
+  }
+
+  .scd_options > .option > div > input[type="range"]{
+    width: 90%;
+  }
+
+  .scd_options > .option > div > input[type="number"]{
+    width: 30%;
+    font-size: 1vw;
+    margin-left: 5vw;
+  }
+
+  .scd_options > .option > div > select{
+    padding: .5vw;
+    font-size: 1vw;
+    box-shadow: 0px 3px 10px lightgray;
+    border-radius: 5px;
+  }
+
+  .calculated_surface_area{
+    width: 50vw;
+    padding: 1vw;
+  }
+
+  .calculated_surface_area > p > span{
+    font-size: 1.5vw;
+    font-weight: 700;
   }
 }
