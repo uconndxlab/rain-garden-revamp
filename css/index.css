@@ -19,7 +19,7 @@ body {
   width: 80vw;
 }
 
-.update_msg{
+.update_msg {
   position: absolute;
   left: 50%;
   top: 100%;
@@ -33,7 +33,7 @@ body {
   border-radius: 100px;
 }
 
-.error{
+.error {
   background: #dd293e;
 }
 
@@ -475,6 +475,37 @@ body {
   font-weight: 600;
 }
 
+.ack_cont, .priv_cont, .how_cont{
+  width: 100vw;
+  padding: 5vw;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ack_cont > p, .priv_cont > p, .how_cont > p{
+  text-align: left;
+  font-size: 4vw;
+  margin-bottom: 5vw;
+}
+
+.ack_cont > div, .priv_cont > div, .how_cont > div{
+  width: 100vw;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.ack_cont > div > img{
+  width: 49%;
+  padding: 3vw;
+}
+
 .rain_gardens, .rain_garden_options {
   display: flex;
   flex-direction: row;
@@ -659,20 +690,20 @@ body {
   background: #b91818;
 }
 
-.sizeloc_bar>.content > div{
+.sizeloc_bar>.content>div {
   width: 100%;
 }
 
-.sizeloc_bar>.content > div > .row_between{
+.sizeloc_bar>.content>div>.row_between {
   margin-bottom: 3vw;
 }
 
-.sizeloc_bar>.content > div > .row_between > h3{
+.sizeloc_bar>.content>div>.row_between>h3 {
   font-weight: 500;
   font-size: 4.5vw;
 }
 
-.sizeloc_bar>.content > div > .row_between > input{
+.sizeloc_bar>.content>div>.row_between>input {
   font-weight: 500;
   padding: 2vw;
   border: 0;
@@ -683,7 +714,7 @@ body {
   font-size: 4vw;
 }
 
-.sizeloc_bar>.content > div > button{
+.sizeloc_bar>.content>div>button {
   width: 100%;
   padding: 4vw 2vw;
   outline: none;
@@ -695,11 +726,11 @@ body {
   font-size: 3.5vw;
 }
 
-.sizeloc_bar>.content > div{
+.sizeloc_bar>.content>div {
   margin-bottom: 5vw;
 }
 
-.sizeloc_bar>.content > button{
+.sizeloc_bar>.content>button {
   outline: none;
   margin-top: 5vw;
   width: 100%;
@@ -711,18 +742,75 @@ body {
   font-size: 3.5vw;
 }
 
-.sizeloc_bar>.content > button:last-of-type{
+.sizeloc_bar>.content>button:last-of-type {
   background: #a12517;
 }
 
-.sizing_banner{
+.reminders_bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.reminders_bar>.content {
+  width: 80vw;
+}
+
+.reminders_bar>div>.add_rm {
+  outline: none;
+  background: #399AB5;
+  border: 0;
+  color: white;
+  width: 100%;
+  padding: 3vw;
+  font-size: 4vw;
+  border-radius: 5px;
+}
+
+.reminders_bar>div>div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.reminders_bar>div>div>.reminder {
+  margin-top: 2vh;
+  width: 100%;
+  padding: 4vw;
+  background: white;
+  box-shadow: 0px 3px 6px #c9c9c9;
+  border-radius: 5px;
+}
+
+.reminders_bar>div>div>div:last-of-type {
+  width: 40%;
+  margin-top: 2vh;
+  align-self: center;
+}
+
+.reminders_bar>div>div>div:last-of-type>a:first-of-type{
+  color: #399AB5;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.reminders_bar>div>div>div:last-of-type>a:last-of-type{
+  color: #e24747;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.sizing_banner {
   width: 95vw;
   background: #218EAD;
   color: white;
   padding: 4vw;
 }
 
-.sizing_calc_opts{
+.sizing_calc_opts {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -730,18 +818,54 @@ body {
   width: 95vw;
 }
 
-.gray_banner{
+.gray_banner {
   width: 95vw;
   background: #e7e7e7;
   font-weight: 500;
   padding: 2vw;
 }
 
-.sc_options{
+.gray_banner select{
+  padding: 1vw 2vw;
+  background: rgba(0,0,0,0.0625);
+  border-radius: 5px;
+  font-weight: 500;
+  border: 0;
+}
+
+.button_row{
+  margin-top: 1vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   width: 95vw;
 }
 
-.sc_options > .option{
+.button_row a{
+  width: 49%;
+}
+
+.button_row button{
+  width: 49%;
+  padding: 4vw;
+  border-radius: 5px;
+  border: 0;
+  color: white;
+  margin-bottom: 1vh;
+  background: #399AB5;
+}
+
+.button_row a button{
+  width: 100%;
+}
+
+.sc_options {
+  width: 95vw;
+}
+
+.sc_options>.option {
   width: 100%;
   padding: 2vw;
   background: rgba(33, 142, 173, 0.08);
@@ -751,12 +875,12 @@ body {
   justify-content: space-between;
 }
 
-.sc_options > .option > p{
+.sc_options>.option>p {
   width: 30vw;
   margin-right: 5vw;
 }
 
-.sc_options > .option > input{
+.sc_options>.option>input {
   background: transparent;
   border: 0px;
   text-align: right;
@@ -764,11 +888,11 @@ body {
   width: 100%;
 }
 
-.scd_options{
+.scd_options {
   width: 95vw;
 }
 
-.scd_options > .option{
+.scd_options>.option {
   width: 100%;
   padding: 2vw;
   background: rgba(33, 142, 173, 0.08);
@@ -778,12 +902,12 @@ body {
   justify-content: space-between;
 }
 
-.scd_options > .option > p{
+.scd_options>.option>p {
   width: 45%;
   margin-right: 5vw;
 }
 
-.scd_options > .option > div{
+.scd_options>.option>div {
   width: 70%;
   display: flex;
   flex-direction: row;
@@ -791,7 +915,7 @@ body {
   justify-content: flex-end;
 }
 
-.scd_options > .option > div > input[type="range"]{
+.scd_options>.option>div>input[type="range"] {
   background: transparent;
   border: 0px;
   text-align: right;
@@ -799,7 +923,7 @@ body {
   width: 90%;
 }
 
-.scd_options > .option > div > input[type="number"]{
+.scd_options>.option>div>input[type="number"] {
   width: 30%;
   background: transparent;
   border: 0px;
@@ -808,7 +932,7 @@ body {
   margin-left: 5vw;
 }
 
-.scd_options > .option > div > select{
+.scd_options>.option>div>select {
   padding: 2vw;
   background: white;
   border: 0px;
@@ -818,7 +942,7 @@ body {
   border-radius: 5px;
 }
 
-.calculated_surface_area{
+.calculated_surface_area {
   width: 95vw;
   padding: 2vw;
   background: #21a662;
@@ -830,7 +954,7 @@ body {
   justify-content: center;
 }
 
-.calculated_surface_area > p > span{
+.calculated_surface_area>p>span {
   font-size: 6vw;
   font-weight: 700;
 }
@@ -1096,6 +1220,43 @@ body {
     font-weight: 600;
   }
 
+  .ack_cont, .priv_cont, .how_cont{
+    padding: 8vw;
+    padding-bottom: 0;
+  }
+
+  .ack_cont > p, .priv_cont > p, .how_cont > p{
+    font-size: 3vw;
+  }
+
+  .ack_cont > div, .priv_cont > div, .how_cont > div{
+    width: 100vw;
+  }
+
+  .ack_cont > div > img{
+    width: 30%;
+  }
+
+  .gray_banner > p{
+    font-size: 3vw;
+  }
+
+  .gray_banner select{
+    padding: 2vw 2vw;
+    font-size: 3vw;
+  }
+
+  .button_row{
+    margin-top: 1vh;
+    width: 95vw;
+  }
+
+  .button_row button{
+    width: 49%;
+    padding: 4vw;
+    font-size: 3vw;
+  }
+
   .rain_gardens {
     width: 90vw;
   }
@@ -1179,88 +1340,88 @@ body {
     letter-spacing: .25vw;
   }
 
-  .sizeloc_bar>.content > div > .row_between{
+  .sizeloc_bar>.content>div>.row_between {
     margin-bottom: 2vw;
   }
 
-  .sizeloc_bar>.content > div > .row_between > h3{
+  .sizeloc_bar>.content>div>.row_between>h3 {
     font-size: 3vw;
   }
 
-  .sizeloc_bar>.content > div > .row_between > input{
+  .sizeloc_bar>.content>div>.row_between>input {
     padding: 2vw;
     width: 100%;
     font-size: 3vw;
   }
 
-  .sizeloc_bar>.content > div > button{
+  .sizeloc_bar>.content>div>button {
     width: 100%;
     padding: 2vw 1vw;
     font-size: 2.5vw;
   }
 
-  .sizeloc_bar>.content > div{
+  .sizeloc_bar>.content>div {
     margin-bottom: 5vw;
   }
 
-  .sizeloc_bar>.content > button{
+  .sizeloc_bar>.content>button {
     margin-top: 5vw;
     padding: 2vw 1vw;
     font-size: 2.5vw;
   }
 
-  .sizeloc_bar>.content > button:last-of-type{
+  .sizeloc_bar>.content>button:last-of-type {
     background: #a12517;
   }
 
-  .sc_options{
+  .sc_options {
     width: 95vw;
   }
 
-  .sc_options > .option{
+  .sc_options>.option {
     padding: 2vw;
   }
 
-  .sc_options > .option > p{
+  .sc_options>.option>p {
     font-size: 3vw;
   }
 
-  .sc_options > .option > input{
+  .sc_options>.option>input {
     font-size: 3vw;
   }
 
-  .scd_options{
+  .scd_options {
     width: 95vw;
   }
 
-  .scd_options > .option{
+  .scd_options>.option {
     padding: 2vw;
   }
 
-  .scd_options > .option > p{
+  .scd_options>.option>p {
     font-size: 3vw;
   }
 
-  .scd_options > .option > div{
+  .scd_options>.option>div {
     width: 70%;
   }
 
-  .scd_options > .option > div > input[type="number"]{
+  .scd_options>.option>div>input[type="number"] {
     width: 30%;
     font-size: 3vw;
   }
 
-  .scd_options > .option > div > select{
+  .scd_options>.option>div>select {
     padding: 2vw;
     font-size: 3vw;
     box-shadow: 0px 3px 10px lightgray;
   }
 
-  .calculated_surface_area{
+  .calculated_surface_area {
     padding: 2vw;
   }
 
-  .calculated_surface_area > p > span{
+  .calculated_surface_area>p>span {
     font-size: 4vw;
   }
 }
@@ -1631,6 +1792,71 @@ body {
     font-weight: 600;
   }
 
+  .ack_cont, .priv_cont, .how_cont{
+    max-height: 75vh;
+    padding: 1vw;
+    padding-top: 30vw;
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    width: 60vw;
+    padding-bottom: 1vw;
+    overflow: auto;
+  }
+
+  .how_cont{
+    padding-top: 0vw;
+  }
+
+  .ack_cont{
+    padding-top: 40vw;
+  }
+
+  .ack_cont > p, .priv_cont > p, .how_cont > p{
+    padding-top: 2vw;
+    font-size: .85vw;
+    margin-bottom: 1vw;
+  }
+
+  .ack_cont > div, .priv_cont > div, .how_cont > div{
+    width: 100%;
+  }
+
+  .ack_cont > div > img{
+    width: 24%;
+  }
+
+  .gray_banner > p{
+    font-size: 1vw;
+  }
+
+  .gray_banner select{
+    padding: 1vw 1vw;
+    font-size: 1vw;
+  }
+
+  .button_row{
+    margin-top: 1vh;
+    width: 50vw;
+  }
+
+  .button_row a{
+    width: 24%;
+    transition: 0.2s ease;
+  }
+
+  .button_row button{
+    width: 24%;
+    padding: 1vw;
+    font-size: 1vw;
+    transition: 0.2s ease;
+  }
+
+  .button_row button:hover{
+    cursor: pointer;
+    transform: rotate(-2deg);
+    background: rgba(57, 154, 181, 0.69);
+  }
+
   .rain_gardens {
     width: 50%;
     overflow-y: auto;
@@ -1761,11 +1987,11 @@ body {
     transition: 0.2s ease;
   }
 
-  .rain_garden_options>div:not(.input_row) > h3{
+  .rain_garden_options>div:not(.input_row)>h3 {
     transition: 0.2s ease;
   }
 
-  .rain_garden_options>div:not(.input_row):hover{
+  .rain_garden_options>div:not(.input_row):hover {
     cursor: pointer;
     border-radius: 5px;
     box-shadow: 0px 3px 6px gray;
@@ -1774,14 +2000,14 @@ body {
     background: #B54542;
   }
 
-  .rain_garden_options>div:not(.input_row):hover > img{
+  .rain_garden_options>div:not(.input_row):hover>img {
     transform: rotate(-15deg);
     background: white;
     padding: 0.5vw;
     border-radius: 5px;
   }
 
-  .rain_garden_options>div:not(.input_row):hover > h3{
+  .rain_garden_options>div:not(.input_row):hover>h3 {
     width: 100%;
     color: white;
     margin-left: .25vw;
@@ -1795,6 +2021,8 @@ body {
     border-left: .5vw solid #7BAE18;
     border-bottom: 0;
     padding: 2vw;
+    opacity: 0;
+    display: none;
     z-index: 1;
   }
 
@@ -1818,129 +2046,129 @@ body {
     transition: 0.2s ease;
   }
 
-  .sizeloc_bar>.btns>button:hover, .reminders_bar>.btns>button:hover, .plantlist_bar>.btns>button:hover{
+  .sizeloc_bar>.btns>button:hover, .reminders_bar>.btns>button:hover, .plantlist_bar>.btns>button:hover {
     cursor: pointer;
     background: white;
     box-shadow: 0px 3px 6px gray;
     color: #4C6C0E;
   }
 
-  .sizeloc_bar>.btns>button:first-of-type:hover, .reminders_bar>.btns>button:first-of-type:hover, .plantlist_bar>.btns>button:first-of-type:hover{
+  .sizeloc_bar>.btns>button:first-of-type:hover, .reminders_bar>.btns>button:first-of-type:hover, .plantlist_bar>.btns>button:first-of-type:hover {
     color: #B91818;
   }
 
-  .sizeloc_bar>.content > div > .row_between{
+  .sizeloc_bar>.content>div>.row_between {
     margin-bottom: 0vw;
   }
 
-  .sizeloc_bar>.content > div > .row_between > h3{
+  .sizeloc_bar>.content>div>.row_between>h3 {
     font-size: 1vw;
   }
 
-  .sizeloc_bar>.content > div > .row_between > input{
+  .sizeloc_bar>.content>div>.row_between>input {
     padding: 1vw;
     width: 100%;
     font-size: 1vw;
   }
 
-  .sizeloc_bar>.content > div > button{
+  .sizeloc_bar>.content>div>button {
     width: 100%;
     padding: .75vw .25vw;
     font-size: 1vw;
     margin-bottom: .5vw;
   }
 
-  .sizeloc_bar>.content > div{
+  .sizeloc_bar>.content>div {
     margin-bottom: 3vw;
   }
 
-  .sizeloc_bar>.content > button{
+  .sizeloc_bar>.content>button {
     margin-top: .5vw;
     margin-bottom: 0vw;
     padding: .75vw .25vw;
     font-size: 1vw;
   }
 
-  .sizeloc_bar>.content > button:last-of-type{
+  .sizeloc_bar>.content>button:last-of-type {
     background: #a12517;
   }
 
-  .sizing_banner{
+  .sizing_banner {
     width: 50vw;
     padding: 1.5vw;
   }
 
-  .sizing_calc_opts{
+  .sizing_calc_opts {
     width: 50vw;
   }
 
-  .gray_banner{
+  .gray_banner {
     width: 50vw;
     padding: 1vw;
   }
 
-  .sc_options{
+  .sc_options {
     width: 50vw;
   }
 
-  .sc_options > .option{
+  .sc_options>.option {
     width: 100%;
     padding: 1vw;
   }
 
-  .sc_options > .option > p{
+  .sc_options>.option>p {
     width: 30vw;
     margin-right: 5vw;
     font-size: 1vw;
   }
 
-  .sc_options > .option > input{
+  .sc_options>.option>input {
     font-size: 1vw;
     width: 100%;
   }
 
-  .scd_options{
+  .scd_options {
     width: 50vw;
   }
 
-  .scd_options > .option{
+  .scd_options>.option {
     width: 100%;
     padding: 2vw;
   }
 
-  .scd_options > .option > p{
+  .scd_options>.option>p {
     width: 45%;
     margin-right: 5vw;
     font-size: 1vw;
   }
 
-  .scd_options > .option > div{
+  .scd_options>.option>div {
     width: 70%;
   }
 
-  .scd_options > .option > div > input[type="range"]{
+  .scd_options>.option>div>input[type="range"] {
     width: 90%;
   }
 
-  .scd_options > .option > div > input[type="number"]{
+  .scd_options>.option>div>input[type="number"] {
     width: 30%;
     font-size: 1vw;
     margin-left: 5vw;
   }
 
-  .scd_options > .option > div > select{
+  .scd_options>.option>div>select {
     padding: .5vw;
     font-size: 1vw;
     box-shadow: 0px 3px 10px lightgray;
     border-radius: 5px;
   }
 
-  .calculated_surface_area{
+  .calculated_surface_area {
     width: 50vw;
     padding: 1vw;
   }
 
-  .calculated_surface_area > p > span{
+  .calculated_surface_area>p>span {
     font-size: 1.5vw;
     font-weight: 700;
   }
