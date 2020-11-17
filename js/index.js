@@ -10,6 +10,72 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+var cbyds = document.querySelectorAll('.call_state_cbyd');
+
+var cbyd_numbers = {
+  "AL": "tel:1-800-292-8525",
+  "AK": "tel:1-800-478-3121",
+  "AZ": "tel:1-800-782-5348",
+  "AR": "tel:1-800-482-8998",
+  "CA": "tel:1-800-642-2444",
+  "CO": "tel:1-800-922-1987",
+  "CT": "tel:1-800-922-4455",
+  "DE": "tel:1-800-282-8555",
+  "DC": "tel:1-202-265-7177",
+  "FL": "tel:1-800-432-4770",
+  "GA": "tel:1-800-282-7411",
+  "HI": "tel:1-866-423-7287",
+  "ID": "tel:1-800-342-1585",
+  "IL": "tel:1-800-892-0123",
+  "IN": "tel:1-800-382-5544",
+  "IA": "tel:1-800-292-8989",
+  "KS": "tel:1-800-344-7233",
+  "KY": "tel:1-800-752-6007",
+  "LA": "tel:1-800-272-3020",
+  "ME": "tel:1-888-344-7233",
+  "MD": "tel:1-800-257-7777",
+  "MA": "tel:1-888-344-7233",
+  "MI": "tel:1-800-482-7171",
+  "MN": "tel:1-800-252-1166",
+  "MS": "tel:1-800-227-6477",
+  "MO": "tel:1-800-344-7483",
+  "MT": "tel:1-800-551-8344",
+  "NE": "tel:1-800-331-5666",
+  "NV": "tel:1-800-642-2444",
+  "NH": "tel:1-888-344-7233",
+  "NJ": "tel:1-800-272-1000",
+  "NM": "tel:1-800-321-2537",
+  "NY": "tel:1-800-962-7962",
+  "NC": "tel:1-800-632-4949",
+  "ND": "tel:1-800-795-0555",
+  "OH": "tel:1-800-362-2764",
+  "OK": "tel:1-800-522-6543",
+  "OR": "tel:1-800-332-2344",
+  "PA": "tel:1-800-242-1776",
+  "RI": "tel:1-888-344-7233",
+  "SC": "tel:1-888-721-7877",
+  "SD": "tel:1-800-781-7474",
+  "TN": "tel:1-800-351-1111",
+  "TX": "tel:1-800-344-8377",
+  "UT": "tel:1-800-662-4111",
+  "VT": "tel:1-888-344-7233",
+  "VA": "tel:1-800-552-7001",
+  "WA": "tel:1-800-424-5555",
+  "WV": "tel:1-800-245-4848",
+  "WI": "tel:1-800-242-8511",
+  "WY": "tel:1-800-849-2476"
+}
+
+cbyds.forEach((item) => {
+  if (window.localStorage.getItem('preferred_state_code')) {
+    item.setAttribute('href', cbyd_numbers[window.localStorage.getItem('preferred_state_code')]);
+  } else {
+    // get the current state and set that to localstorage
+    // window.localStorage.setItem('preferred_state', found_state);
+    // window.localStorage.setItem('preferred_state_code', found_state_code);
+  }
+});
+
 var state_translations = {
   connecticut: "7",
   delaware: "8",
@@ -40,9 +106,9 @@ var currently_selected = document.querySelector('.selected_menu');
 var page_title = document.querySelector('.section_header');
 var sidebar_is_open = false;
 
-function toggle_sidebar(){
+function toggle_sidebar() {
   var sidebar = document.querySelector('.sidebar');
-  if(sidebar_is_open){
+  if (sidebar_is_open) {
     // we want to close it
     sidebar.style.left = "100%";
     sidebar_is_open = false;
@@ -58,6 +124,11 @@ function toggle_sidebar(){
       clearTimeout(timeout);
     }, 100);
   }
+}
+
+function get_plant_data(filters) {
+  var selected_state = filters[0];
+  var plant_type = filters[1];
 }
 
 var basics_obj = {
@@ -138,7 +209,7 @@ var design_obj = {
     swappable: "Checking your soil is a critical step in choosing a site for your rain garden. The soil drainage map will give you a general idea of how well the soils should drain in your location. Soils with drainage between moderately well drained and excessively drained are generally suitable for a rain garden. However, even if the map says that your soils are well drained, your site could have compacted soils that may keep your garden from draining. It is a good idea to do a percolation test at your site to verify that your soils are OK.",
     iframe_src: "https://www.youtube.com/embed/0SNUGClCieo",
     button_title: "View Soils Map",
-    button_href: "https://www.google.com" /*This is a placeholder*/ ,
+    button_href: "soils_map.html",
     title: "Soils"
   },
   sizing: {
@@ -148,7 +219,7 @@ var design_obj = {
   cbyd: {
     swappable: "Although you are not required to notify Call Before You Dig (CBYD) for shallow excavations done by hand, CBYD encourages you to call. Even hand tools can damage utility lines. If you are using any type of heavy equipment, you are required by law to call. Dial 1 ·800-922-4455 (for Connecticut), or 811 (for most states). One important note: this service will not locate small utility lines such as wires run from your house to outside fixtures. These things are your responsibility to locate.",
     button_title: "Dial Call Before You Dig (CBYD)",
-    button_href: "https://www.google.com" /*This is a placeholder*/ ,
+    button_href: "tel:811",
     title: "CBYD"
   }
 }
@@ -176,142 +247,142 @@ var install_obj = {
 }
 
 //** These try/catch blocks are for handling the basics content-switching cases **//
-try{
+try {
   document.querySelector('.videos_btn').addEventListener('click', () => {
-  try {
-    document.querySelector('.img_cont_wrapper').style.display = "none";
-  } catch {
+    try {
+      document.querySelector('.img_cont_wrapper').style.display = "none";
+    } catch {
 
-  }
-  currently_selected.classList.remove('selected_menu');
-  document.querySelector('.videos_btn').classList.add('selected_menu');
-  currently_selected = document.querySelector('.videos_btn');
-  document.querySelector('.info_cont > img').style.display = "none";
-  document.querySelector('.info_cont > p').style.display = "none";
-  page_title.innerHTML = "VIDEOS";
-  try {
-    document.querySelector('.vid_cont_wrapper').style.display = "flex";
-  } catch {
-    var vid_wrapper = document.createElement('div');
-    vid_wrapper.setAttribute('class', 'vid_cont_wrapper');
+    }
+    currently_selected.classList.remove('selected_menu');
+    document.querySelector('.videos_btn').classList.add('selected_menu');
+    currently_selected = document.querySelector('.videos_btn');
+    document.querySelector('.info_cont > img').style.display = "none";
+    document.querySelector('.info_cont > p').style.display = "none";
+    page_title.innerHTML = "VIDEOS";
+    try {
+      document.querySelector('.vid_cont_wrapper').style.display = "flex";
+    } catch {
+      var vid_wrapper = document.createElement('div');
+      vid_wrapper.setAttribute('class', 'vid_cont_wrapper');
 
-    Object.keys(basics_obj.videos).forEach((item) => {
-      var curr_obj = basics_obj.videos[item];
-      console.log(curr_obj);
-      var new_div_cont = document.createElement('div');
-      new_div_cont.setAttribute('class', 'vid_cont');
+      Object.keys(basics_obj.videos).forEach((item) => {
+        var curr_obj = basics_obj.videos[item];
+        console.log(curr_obj);
+        var new_div_cont = document.createElement('div');
+        new_div_cont.setAttribute('class', 'vid_cont');
 
-      var new_header = document.createElement('h1');
-      new_header.innerHTML = curr_obj.title;
+        var new_header = document.createElement('h1');
+        new_header.innerHTML = curr_obj.title;
 
-      var new_vid = document.createElement('iframe');
-      new_vid.src = curr_obj.video_src;
+        var new_vid = document.createElement('iframe');
+        new_vid.src = curr_obj.video_src;
 
-      new_div_cont.appendChild(new_header);
-      new_div_cont.appendChild(new_vid);
+        new_div_cont.appendChild(new_header);
+        new_div_cont.appendChild(new_vid);
 
-      vid_wrapper.appendChild(new_div_cont);
-    });
-  }
+        vid_wrapper.appendChild(new_div_cont);
+      });
+    }
     document.querySelector('.info_cont').appendChild(vid_wrapper);
-});
+  });
 } catch {}
-try{
+try {
   document.querySelector('.gallery_btn').addEventListener('click', () => {
-  try{
-    document.querySelector('.vid_cont_wrapper').style.display = "none";
-  } catch{
+    try {
+      document.querySelector('.vid_cont_wrapper').style.display = "none";
+    } catch {
 
-  }
-  currently_selected.classList.remove('selected_menu');
-  document.querySelector('.gallery_btn').classList.add('selected_menu');
-  currently_selected = document.querySelector('.gallery_btn');
-  document.querySelector('.info_cont > img').style.display = "none";
-  document.querySelector('.info_cont > p').style.display = "none";
-  page_title.innerHTML = "GALLERY";
-  try {
-    document.querySelector('.img_cont_wrapper').style.display = "flex";
-  } catch {
-    var img_wrapper = document.createElement('div');
-    img_wrapper.setAttribute('class', 'img_cont_wrapper');
+    }
+    currently_selected.classList.remove('selected_menu');
+    document.querySelector('.gallery_btn').classList.add('selected_menu');
+    currently_selected = document.querySelector('.gallery_btn');
+    document.querySelector('.info_cont > img').style.display = "none";
+    document.querySelector('.info_cont > p').style.display = "none";
+    page_title.innerHTML = "GALLERY";
+    try {
+      document.querySelector('.img_cont_wrapper').style.display = "flex";
+    } catch {
+      var img_wrapper = document.createElement('div');
+      img_wrapper.setAttribute('class', 'img_cont_wrapper');
 
-    Object.keys(basics_obj.gallery).forEach((item) => {
-      var curr_obj = basics_obj.gallery[item];
-      console.log(curr_obj);
-      var new_div_cont = document.createElement('div');
-      new_div_cont.setAttribute('class', 'img_cont');
+      Object.keys(basics_obj.gallery).forEach((item) => {
+        var curr_obj = basics_obj.gallery[item];
+        console.log(curr_obj);
+        var new_div_cont = document.createElement('div');
+        new_div_cont.setAttribute('class', 'img_cont');
 
-      var new_header = document.createElement('h1');
-      new_header.innerHTML = curr_obj.title;
+        var new_header = document.createElement('h1');
+        new_header.innerHTML = curr_obj.title;
 
-      var new_img = document.createElement('img');
-      new_img.src = curr_obj.img_src;
+        var new_img = document.createElement('img');
+        new_img.src = curr_obj.img_src;
 
-      new_div_cont.appendChild(new_header);
-      new_div_cont.appendChild(new_img);
+        new_div_cont.appendChild(new_header);
+        new_div_cont.appendChild(new_img);
 
-      img_wrapper.appendChild(new_div_cont);
-    });
-  }
-  console.log(img_wrapper);
-  document.querySelector('.info_cont').appendChild(img_wrapper);
-});
+        img_wrapper.appendChild(new_div_cont);
+      });
+    }
+    console.log(img_wrapper);
+    document.querySelector('.info_cont').appendChild(img_wrapper);
+  });
 } catch {}
-try{
+try {
   document.querySelector('.what_btn').addEventListener('click', () => {
-  try {
-    document.querySelector('.img_cont_wrapper').style.display = "none";
-  } catch {
+    try {
+      document.querySelector('.img_cont_wrapper').style.display = "none";
+    } catch {
 
-  }
-  try{
-    document.querySelector('.vid_cont_wrapper').style.display = "none";
-  } catch{
+    }
+    try {
+      document.querySelector('.vid_cont_wrapper').style.display = "none";
+    } catch {
 
-  }
-  currently_selected.classList.remove('selected_menu');
-  document.querySelector('.what_btn').classList.add('selected_menu');
-  currently_selected = document.querySelector('.what_btn');
-  document.querySelector('.info_cont > img').style.display = "flex";
-  document.querySelector('.info_cont > p').style.display = "flex";
-  page_title.innerHTML = basics_obj.what.title;
-  document.querySelector('.info_cont > img').src = "../assets/basics_photo.jpg";
-  document.querySelector('.info_cont > p').innerHTML = basics_obj.what.swappable;
-});
+    }
+    currently_selected.classList.remove('selected_menu');
+    document.querySelector('.what_btn').classList.add('selected_menu');
+    currently_selected = document.querySelector('.what_btn');
+    document.querySelector('.info_cont > img').style.display = "flex";
+    document.querySelector('.info_cont > p').style.display = "flex";
+    page_title.innerHTML = basics_obj.what.title;
+    document.querySelector('.info_cont > img').src = "../assets/basics_photo.jpg";
+    document.querySelector('.info_cont > p').innerHTML = basics_obj.what.swappable;
+  });
 } catch {}
-try{
+try {
   document.querySelector('.how_btn').addEventListener('click', () => {
-  try {
-    document.querySelector('.img_cont_wrapper').style.display = "none";
-  } catch {
+    try {
+      document.querySelector('.img_cont_wrapper').style.display = "none";
+    } catch {
 
-  }
-  try{
-    document.querySelector('.vid_cont_wrapper').style.display = "none";
-  } catch{
+    }
+    try {
+      document.querySelector('.vid_cont_wrapper').style.display = "none";
+    } catch {
 
-  }
-  currently_selected.classList.remove('selected_menu');
-  document.querySelector('.how_btn').classList.add('selected_menu');
-  currently_selected = document.querySelector('.how_btn');
-  document.querySelector('.info_cont > img').style.display = "flex";
-  document.querySelector('.info_cont > p').style.display = "flex";
-  page_title.innerHTML = basics_obj.how.title;
-  document.querySelector('.info_cont > img').src = "../assets/how_photo.jpg";
-  document.querySelector('.info_cont > p').innerHTML = basics_obj.how.swappable;
-});
+    }
+    currently_selected.classList.remove('selected_menu');
+    document.querySelector('.how_btn').classList.add('selected_menu');
+    currently_selected = document.querySelector('.how_btn');
+    document.querySelector('.info_cont > img').style.display = "flex";
+    document.querySelector('.info_cont > p').style.display = "flex";
+    page_title.innerHTML = basics_obj.how.title;
+    document.querySelector('.info_cont > img').src = "../assets/how_photo.jpg";
+    document.querySelector('.info_cont > p').innerHTML = basics_obj.how.swappable;
+  });
 } catch {}
 
 //** These try/catch blocks are for handling the design content-switching cases **//
 
-function remove_existing_buttons(){
+function remove_existing_buttons() {
   var all_buttons = document.querySelectorAll('.column_start > a');
   all_buttons.forEach((item) => {
     document.querySelector('.column_start').removeChild(item);
   });
 }
 
-try{
+try {
   document.querySelector('.locations_btn').addEventListener('click', () => {
     remove_existing_buttons();
     document.querySelector('.info_cont > .column_start > iframe').style.display = "flex";
@@ -321,9 +392,9 @@ try{
     document.querySelector('.info_cont > .column_start > iframe').src = design_obj.locations.iframe_src;
     document.querySelector('.info_cont > p').innerHTML = design_obj.locations.swappable;
     page_title.innerHTML = "DESIGN";
-});
+  });
 } catch {}
-try{
+try {
   document.querySelector('.soils_btn').addEventListener('click', () => {
     remove_existing_buttons();
     document.querySelector('.info_cont > .column_start > iframe').style.display = "flex";
@@ -339,9 +410,9 @@ try{
     new_btn.setAttribute('href', design_obj.soils.button_href);
 
     document.querySelector('.column_start').appendChild(new_btn);
-});
+  });
 } catch {}
-try{
+try {
   document.querySelector('.sizing_btn').addEventListener('click', () => {
     remove_existing_buttons();
     currently_selected.classList.remove('selected_menu');
@@ -355,15 +426,15 @@ try{
     var new_btn = document.createElement('a');
     var new_btn_2 = document.createElement('a');
     new_btn.innerHTML = "View Sizing Map";
-    new_btn.setAttribute('href', 'pages/sizing_map.html');
+    new_btn.setAttribute('href', 'sizing_map.html');
     new_btn_2.innerHTML = "Use Sizing Calculator";
-    new_btn_2.setAttribute('href', 'pages/sizing_calculator.html');
+    new_btn_2.setAttribute('href', 'sizing_calculator.html');
 
     document.querySelector('.column_start').appendChild(new_btn);
     document.querySelector('.column_start').appendChild(new_btn_2);
-});
+  });
 } catch {}
-try{
+try {
   document.querySelector('.cbyd_btn').addEventListener('click', () => {
     remove_existing_buttons();
     currently_selected.classList.remove('selected_menu');
@@ -379,11 +450,11 @@ try{
     new_btn.setAttribute('href', design_obj.cbyd.button_href);
 
     document.querySelector('.column_start').appendChild(new_btn);
-});
+  });
 } catch {}
 
 //** These try/catch blocks are for handling the install content-switching cases **//
-try{
+try {
   document.querySelector('.excavate_btn').addEventListener('click', () => {
     currently_selected.classList.remove('selected_menu');
     document.querySelector('.excavate_btn').classList.add('selected_menu');
@@ -391,9 +462,9 @@ try{
     document.querySelector('.info_cont > iframe').src = install_obj.excavate.iframe_src;
     document.querySelector('.info_cont > p').innerHTML = install_obj.excavate.swappable;
     page_title.innerHTML = install_obj.excavate.title;
-});
+  });
 } catch {}
-try{
+try {
   document.querySelector('.layout_btn').addEventListener('click', () => {
     console.log(install_obj.layout.iframe_src);
     currently_selected.classList.remove('selected_menu');
@@ -402,9 +473,9 @@ try{
     document.querySelector('.info_cont > iframe').src = install_obj.layout.iframe_src;
     document.querySelector('.info_cont > p').innerHTML = install_obj.layout.swappable;
     page_title.innerHTML = install_obj.layout.title;
-});
+  });
 } catch {}
-try{
+try {
   document.querySelector('.planting_btn').addEventListener('click', () => {
     currently_selected.classList.remove('selected_menu');
     document.querySelector('.planting_btn').classList.add('selected_menu');
@@ -412,9 +483,9 @@ try{
     document.querySelector('.info_cont > iframe').src = install_obj.planting.iframe_src;
     document.querySelector('.info_cont > p').innerHTML = install_obj.planting.swappable;
     page_title.innerHTML = install_obj.planting.title;
-});
+  });
 } catch {}
-try{
+try {
   document.querySelector('.maintain_btn').addEventListener('click', () => {
     currently_selected.classList.remove('selected_menu');
     document.querySelector('.maintain_btn').classList.add('selected_menu');
@@ -422,5 +493,5 @@ try{
     document.querySelector('.info_cont > iframe').src = install_obj.maintain.iframe_src;
     document.querySelector('.info_cont > p').innerHTML = install_obj.maintain.swappable;
     page_title.innerHTML = install_obj.maintain.title;
-});
+  });
 } catch {}

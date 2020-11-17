@@ -21,10 +21,10 @@
       <img src="../assets/close_sidebar.svg" onclick="toggle_sidebar()">
       <div class="sidebar_hrefs">
         <a href="video_tutorials.html">Video Tutorials</a>
-        <a href="#">Sizing Calculator</a>
+        <a href="sizing_calculator.html">Sizing Calculator</a>
         <a href="sizing_map.html">Sizing Map</a>
         <a href="soils_map.html">Soil Drainage Map</a>
-        <a href="#">Call State CBYD</a>
+        <a class="call_state_cbyd">Call State CBYD</a>
         <a href="tel:811">Call 811</a>
       </div>
       <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 191 31.409">
@@ -121,7 +121,7 @@
           <div class="option">
             <p>Set Selected State:</p>
             <div>
-              <select class="preferred_state">
+              <!--select class="preferred_state">
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
                 <option value="AZ">Arizona</option>
@@ -173,6 +173,31 @@
                 <option value="WV">West Virginia</option>
                 <option value="WI">Wisconsin</option>
                 <option value="WY">Wyoming</option>
+              </select-->
+              <select class="preferred_state">
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="NV">Nevada</option>
+                <option value="MA">Massachusetts</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
               </select>
             </div>
           </div>
@@ -208,6 +233,10 @@
         preferred_state = document.querySelector('.preferred_state'),
         save_results = document.querySelector('.save_results'),
         result = window.location.search.split('=')[1];
+
+      if(ls.getItem('preferred_state_code')){
+        document.querySelector('.preferred_state').value = ls.getItem('preferred_state_code');
+      } else {}
 
       try {
         if (result.toLowerCase().trim() != '') {
