@@ -1,0 +1,30 @@
+{
+    "name": "rain-garden-revamp/api",
+    "config": {
+        "platform": {
+            "php": "5.5.38"
+        }
+    },    
+    "description": "Simple PHP API for the rain garden app",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Brian Daley",
+            "email": "brian.daley@uconn.edu"
+        }
+    ],
+    "require": {
+        "slim/slim": "3",
+        "vlucas/phpdotenv": "^4.0"
+    },
+    "scripts": {
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "php -S localhost:8888 -t ./ ./index.php"
+        ]
+    },
+    "autoload": {
+        "files": ["src/database.php"]
+    }    
+}
+    
