@@ -126,7 +126,7 @@
     document.querySelector('.submit_plant_query').addEventListener('click', () => {
       var this_state = document.querySelector('.preferred_state');
       var state_num = state_translations[this_state.options[this_state.selectedIndex].innerHTML.toLowerCase().split(' ').join('_')];
-      $.get('/plants/' + state_num, (data, status) => {
+      $.get('https://rain-gardens-app-d4583.web.app/plants/' + state_num, (data, status) => {
         if(data){
           console.log(data);
         } else {
