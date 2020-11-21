@@ -68,7 +68,7 @@
       </div>
       <div class="scd_options">
         <div class="option">
-          <p>Set Selected State:</p>
+          <p>State:</p>
           <div>
             <select class="preferred_state">
               <option value="CT">Connecticut</option>
@@ -97,6 +97,71 @@
             </select>
           </div>
         </div>
+        <div class="checkboxes row_between align_start">
+          <div class="column_start align_start"><strong>Type</strong>
+              <label>
+                <input type="checkbox" name="type">
+                Fern</label>
+              <label>
+                <input type="checkbox" name="type">
+                Perennial</label>
+              <label>
+                <input type="checkbox" name="type">
+                Grass</label>
+              <label>
+                <input type="checkbox" name="type">
+                Shrub</label>
+              <label>
+                <input type="checkbox" name="type">
+                Tree</label>
+              <label>
+                <input type="checkbox" name="type">
+                Rush/Sedge</label>
+          </div>
+          <div class="column_start align_start"><strong>Bloom Color</strong>
+              <label>
+                <input type="checkbox" name="bloom_color">
+                Blue</label>
+              <label>
+                <input type="checkbox" name="bloom_color">
+                Orange</label>
+              <label>
+                <input type="checkbox" name="bloom_color">
+                Pink</label>
+              <label>
+                <input type="checkbox" name="bloom_color">
+                Purple</label>
+              <label>
+                <input type="checkbox" name="bloom_color">
+                White</label>
+              <label>
+                <input type="checkbox" name="bloom_color">
+                Yellow</label>
+              <label>
+                <input type="checkbox" name="bloom_color">
+                Red</label>
+              <label>
+                <input type="checkbox" name="bloom_color">
+                Multi-color</label>
+              <label>
+                <input type="checkbox" name="bloom_color">
+                None</label>
+          </div>
+          <div class="column_start align_start"><strong>Sun Exposure</strong>
+              <label>
+                <input type="checkbox" name="sun_exposure">
+                Full Sun</label>
+              <label>
+                <input type="checkbox" name="sun_exposure">
+                Some Sun</label>
+              <label>
+                <input type="checkbox" name="sun_exposure">
+                Mostly Shade</label>
+              <label>
+                <input type="checkbox" name="sun_exposure">
+                Full Shade</label>
+          </div>
+        </div>
       </div>
       <button type="button" class="submit_plant_query" name="button">Search</button>
     </div>
@@ -116,23 +181,15 @@
   <script src="../js/index.js" charset="utf-8"></script>
   <script src="../js/jquery3.5.1.min.js" charset="utf-8"></script>
   <script type="text/javascript">
+    var ls = window.localStorage;
 
-  var ls = window.localStorage;
-
-  if(ls.getItem('preferred_state_code')){
-    document.querySelector('.preferred_state').value = ls.getItem('preferred_state_code');
-  } else {}
+    if (ls.getItem('preferred_state_code')) {
+      document.querySelector('.preferred_state').value = ls.getItem('preferred_state_code');
+    } else {}
 
     document.querySelector('.submit_plant_query').addEventListener('click', () => {
       var this_state = document.querySelector('.preferred_state');
-      var state_num = state_translations[this_state.options[this_state.selectedIndex].innerHTML.toLowerCase().split(' ').join('_')];
-      $.get('https://rain-gardens-app-d4583.web.app/plants/' + state_num, (data, status) => {
-        if(data){
-          console.log(data);
-        } else {
-          console.log(status);
-        }
-      });
+      window.location = "state_results.html?q=" + this_state.options[this_state.selectedIndex].innerHTML;
     });
   </script>
 </body>
