@@ -11,6 +11,10 @@ body {
   display: none;
 }
 
+.scrollable{
+  overflow-y: auto !important;
+}
+
 .input_row {
   display: flex;
   flex-direction: row;
@@ -475,7 +479,7 @@ body {
   font-weight: 600;
 }
 
-.ack_cont, .priv_cont, .how_cont{
+.ack_cont, .priv_cont, .how_cont {
   width: 100vw;
   padding: 5vw;
   padding-bottom: 0;
@@ -485,13 +489,13 @@ body {
   justify-content: center;
 }
 
-.ack_cont > p, .priv_cont > p, .how_cont > p{
+.ack_cont>p, .priv_cont>p, .how_cont>p {
   text-align: left;
   font-size: 4vw;
   margin-bottom: 5vw;
 }
 
-.ack_cont > div, .priv_cont > div, .how_cont > div{
+.ack_cont>div, .priv_cont>div, .how_cont>div {
   width: 100vw;
   background: white;
   display: flex;
@@ -501,7 +505,7 @@ body {
   justify-content: center;
 }
 
-.ack_cont > div > img{
+.ack_cont>div>img {
   width: 49%;
   padding: 3vw;
 }
@@ -649,7 +653,7 @@ body {
   font-size: 5vw;
 }
 
-.sizeloc_bar>.content, .plantlist_bar>.content, .reminders_bar>.content {
+.sizeloc_bar>.content, .plantlist_bar>.content{
   height: 100%;
   width: 100%;
   padding-top: 3vw;
@@ -661,40 +665,11 @@ body {
   justify-content: flex-start;
 }
 
-.sizeloc_bar>.btns, .plantlist_bar>.btns, .reminders_bar>.btns {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+.sizeloc_bar>.content>div, .plantlist_bar>.content>div {
   width: 100%;
 }
 
-.sizeloc_bar>.btns>button, .reminders_bar>.btns>button, .plantlist_bar>.btns>button {
-  width: 48%;
-  padding-top: 3vw;
-  outline: none;
-  padding-bottom: 3vw;
-  border-radius: 5px;
-  border: 0;
-  font-size: 4vw;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: .25vw;
-  color: white;
-  background: #4c6c0e;
-}
-
-.sizeloc_bar>.btns>button:first-of-type,
-.reminders_bar>.btns>button:first-of-type,
-.plantlist_bar>.btns>button:first-of-type {
-  background: #b91818;
-}
-
-.sizeloc_bar>.content>div {
-  width: 100%;
-}
-
-.sizeloc_bar>.content>div>.row_between {
+.sizeloc_bar>.content>div>.row_between, .plantlist_bar>.content>div>.row_between {
   margin-bottom: 3vw;
 }
 
@@ -714,7 +689,7 @@ body {
   font-size: 4vw;
 }
 
-.sizeloc_bar>.content>div>button {
+.sizeloc_bar>.content>div>button, .plantlist_bar>.content>div>button {
   width: 100%;
   padding: 4vw 2vw;
   outline: none;
@@ -791,13 +766,13 @@ body {
   align-self: center;
 }
 
-.reminders_bar>div>div>div:last-of-type>a:first-of-type{
+.reminders_bar>div>div>div:last-of-type>a:first-of-type {
   color: #399AB5;
   text-transform: uppercase;
   font-weight: 600;
 }
 
-.reminders_bar>div>div>div:last-of-type>a:last-of-type{
+.reminders_bar>div>div>div:last-of-type>a:last-of-type {
   color: #e24747;
   text-transform: uppercase;
   font-weight: 600;
@@ -825,15 +800,15 @@ body {
   padding: 2vw;
 }
 
-.gray_banner select{
+.gray_banner select {
   padding: 1vw 2vw;
-  background: rgba(0,0,0,0.0625);
+  background: rgba(0, 0, 0, 0.0625);
   border-radius: 5px;
   font-weight: 500;
   border: 0;
 }
 
-.button_row{
+.button_row {
   margin-top: 1vh;
   display: flex;
   flex-direction: row;
@@ -843,11 +818,11 @@ body {
   width: 95vw;
 }
 
-.button_row a{
+.button_row a {
   width: 49%;
 }
 
-.button_row button{
+.button_row button {
   width: 49%;
   padding: 4vw;
   border-radius: 5px;
@@ -857,7 +832,7 @@ body {
   background: #399AB5;
 }
 
-.button_row a button{
+.button_row a button {
   width: 100%;
 }
 
@@ -959,16 +934,16 @@ body {
   font-weight: 700;
 }
 
-.checkboxes{
+.checkboxes {
   width: 100%;
   background: rgba(237, 246, 249, 0.6);
 }
 
-.checkboxes > div{
+.checkboxes>div {
   padding: 2vw;
 }
 
-.checkboxes > div > strong{
+.checkboxes>div>strong {
   border-bottom: 1px solid gray;
   width: 100%;
   padding-bottom: 2vw;
@@ -976,7 +951,7 @@ body {
   font-size: 4vw;
 }
 
-.checkboxes > div > label{
+.checkboxes>div>label {
   margin-bottom: 1vh;
   width: 100%;
   display: flex;
@@ -987,11 +962,11 @@ body {
   font-weight: 500;
 }
 
-.checkboxes > div > label > input{
+.checkboxes>div>label>input {
   margin-right: 2vw;
 }
 
-.submit_plant_query{
+.submit_plant_query {
   width: 100%;
   padding: 3vw;
   font-size: 4vw;
@@ -999,6 +974,59 @@ body {
   color: white;
   border: 0;
   background: #399AB5;
+}
+
+.filtered_plant_results {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 3px 6px lightgray;
+  border-collapse: collapse;
+}
+
+.filtered_plant_results tr {
+  width: 100%;
+  margin: 0;
+}
+
+.filtered_plant_results tr:nth-child(1) {
+  background: rgba(0, 0, 0, 0.125);
+}
+
+.filtered_plant_results tr:nth-child(1)>td {
+  font-weight: 500;
+  border: 1px solid lightgray;
+  margin: 0;
+}
+
+.filtered_plant_results tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.filtered_plant_results tr:nth-child(odd) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.filtered_plant_results tr>td>img {
+  width: 10vw;
+  height: 10vw;
+}
+
+.filtered_plant_results tr>td {
+  font-size: 2.5vw;
+  border: 1px solid lightgray;
+  padding: 1vw;
+}
+
+.filtered_plant_results tr>td>div>h2 {
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  font-size: 3vw;
+}
+
+.filtered_plant_results tr>td>div>p {
+  font-size: 2.5vw;
+  font-style: italic;
 }
 
 @media only screen and (min-width: 768px) {
@@ -1262,38 +1290,38 @@ body {
     font-weight: 600;
   }
 
-  .ack_cont, .priv_cont, .how_cont{
+  .ack_cont, .priv_cont, .how_cont {
     padding: 8vw;
     padding-bottom: 0;
   }
 
-  .ack_cont > p, .priv_cont > p, .how_cont > p{
+  .ack_cont>p, .priv_cont>p, .how_cont>p {
     font-size: 3vw;
   }
 
-  .ack_cont > div, .priv_cont > div, .how_cont > div{
+  .ack_cont>div, .priv_cont>div, .how_cont>div {
     width: 100vw;
   }
 
-  .ack_cont > div > img{
+  .ack_cont>div>img {
     width: 30%;
   }
 
-  .gray_banner > p{
+  .gray_banner>p {
     font-size: 3vw;
   }
 
-  .gray_banner select{
+  .gray_banner select {
     padding: 2vw 2vw;
     font-size: 3vw;
   }
 
-  .button_row{
+  .button_row {
     margin-top: 1vh;
     width: 95vw;
   }
 
-  .button_row button{
+  .button_row button {
     width: 49%;
     padding: 4vw;
     font-size: 3vw;
@@ -1467,37 +1495,59 @@ body {
     font-size: 4vw;
   }
 
-  .checkboxes{
+  .checkboxes {
     width: 100%;
     background: rgba(237, 246, 249, 0.6);
   }
 
-  .checkboxes > div{
+  .checkboxes>div {
     padding: 2vw;
     width: 100%;
   }
 
-  .checkboxes > div > strong{
+  .checkboxes>div>strong {
     padding-bottom: 2vw;
     margin-bottom: 2vh;
     font-size: 2.5vw;
   }
 
-  .checkboxes > div > label{
+  .checkboxes>div>label {
     margin-bottom: 1vh;
     font-size: 2.5vw;
   }
 
-  .checkboxes > div > label > input{
+  .checkboxes>div>label>input {
     margin-right: 2vw;
     --size: 2.5vw;
     width: var(--size);
     height: var(--size);
   }
 
-  .submit_plant_query{
+  .submit_plant_query {
     padding: 2vw;
     font-size: 3vw;
+  }
+
+  .filtered_plant_results tr>td>img {
+    width: 10vw;
+    height: 10vw;
+  }
+
+  .filtered_plant_results tr>td {
+    font-size: 2vw;
+    padding: 1vw;
+  }
+
+  .filtered_plant_results tr>td>div>h2 {
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    font-size: 2.5vw;
+  }
+
+  .filtered_plant_results tr>td>div>p {
+    font-size: 2vw;
+    font-style: italic;
   }
 }
 
@@ -1867,7 +1917,7 @@ body {
     font-weight: 600;
   }
 
-  .ack_cont, .priv_cont, .how_cont{
+  .ack_cont, .priv_cont, .how_cont {
     max-height: 75vh;
     padding: 1vw;
     padding-top: 30vw;
@@ -1878,55 +1928,55 @@ body {
     overflow: auto;
   }
 
-  .how_cont{
+  .how_cont {
     padding-top: 0vw;
   }
 
-  .ack_cont{
+  .ack_cont {
     padding-top: 40vw;
   }
 
-  .ack_cont > p, .priv_cont > p, .how_cont > p{
+  .ack_cont>p, .priv_cont>p, .how_cont>p {
     padding-top: 2vw;
     font-size: .85vw;
     margin-bottom: 1vw;
   }
 
-  .ack_cont > div, .priv_cont > div, .how_cont > div{
+  .ack_cont>div, .priv_cont>div, .how_cont>div {
     width: 100%;
   }
 
-  .ack_cont > div > img{
+  .ack_cont>div>img {
     width: 24%;
   }
 
-  .gray_banner > p{
+  .gray_banner>p {
     font-size: 1vw;
   }
 
-  .gray_banner select{
+  .gray_banner select {
     padding: 1vw 1vw;
     font-size: 1vw;
   }
 
-  .button_row{
+  .button_row {
     margin-top: 1vh;
     width: 50vw;
   }
 
-  .button_row a{
+  .button_row a {
     width: 24%;
     transition: 0.2s ease;
   }
 
-  .button_row button{
+  .button_row button {
     width: 24%;
     padding: 1vw;
     font-size: 1vw;
     transition: 0.2s ease;
   }
 
-  .button_row button:hover{
+  .button_row button:hover {
     cursor: pointer;
     transform: rotate(-2deg);
     background: rgba(57, 154, 181, 0.69);
@@ -2249,39 +2299,68 @@ body {
     font-weight: 700;
   }
 
-  .checkboxes{
+  .checkboxes {
     width: 100%;
   }
 
-  .checkboxes > div{
+  .checkboxes>div {
     padding: 1vw;
     width: 100%;
   }
 
-  .checkboxes > div > strong{
+  .checkboxes>div>strong {
     padding-bottom: 1vw;
     margin-bottom: 2vh;
     font-size: .8vw;
   }
 
-  .checkboxes > div > label{
+  .checkboxes>div>label {
     margin-bottom: 1vh;
     font-size: .8vw;
   }
 
-  .checkboxes > div > label > input{
+  .checkboxes>div>label>input {
     margin-right: 1vw;
     --size: .8vw;
     width: var(--size);
     height: var(--size);
   }
 
-  .submit_plant_query{
+  .submit_plant_query {
     width: min-content;
     align-self: center;
     padding: 1vw 3vw;
     border-radius: 5px;
     margin-top: 1vw;
     font-size: 1vw;
+  }
+
+  .filtered_plant_results {
+    width: 85%;
+    height: 65vh;
+    overflow: auto;
+  }
+
+  .filtered_plant_results tr>td>img {
+    width: 6vw;
+    height: 6vw;
+  }
+
+  .filtered_plant_results tr>td {
+    font-size: .8vw;
+    padding: 0.5vw
+  }
+
+  .filtered_plant_results tr>td>div>h2 {
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    font-size: 1vw;
+    margin-bottom: .5vh;
+  }
+
+  .filtered_plant_results tr>td>div>p {
+    font-size: .8vw;
+    font-style: italic;
   }
 }

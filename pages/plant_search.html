@@ -183,12 +183,42 @@
   <script type="text/javascript">
     var ls = window.localStorage;
 
+    var filters_obj = {
+      exposure: {
+        "Full Shade": 0,
+        "Full Sun": 0,
+        "Mostly Shade": 0,
+        "Some Sun": 0
+      },
+      bloom_color: {},
+      type: {}
+    };
+
     if (ls.getItem('preferred_state_code')) {
       document.querySelector('.preferred_state').value = ls.getItem('preferred_state_code');
     } else {}
 
     document.querySelector('.submit_plant_query').addEventListener('click', () => {
       var this_state = document.querySelector('.preferred_state');
+      var exposure_inputs = document.querySelectorAll('input[name="sun_exposure"]');
+      var bloom_color_inputs = document.querySelectorAll('input[name="bloom_color"]');
+      var type_inputs = document.querySelectorAll('input[name="type"]');
+      exposure_inputs.forEach((input) => {
+        if(input.checked){
+          filters_obj["exposure"][input.labels[0].innerText] = 1;
+        }
+      });
+      bloom_color_inputs.forEach((input) => {
+        if(input.checked){
+          filters_obj["bloom_color"][input.labels[0].innerText] = 1;
+        }
+      });
+      type_inputs.forEach((input) => {
+        if(input.checked){
+          filters_obj["type"][input.labels[0].innerText] = 1;
+        }
+      });
+      window.localStorage.setItem('temp_filters', JSON.stringify(filters_obj));
       window.location = "state_results.html?q=" + this_state.options[this_state.selectedIndex].innerHTML;
     });
   </script>
