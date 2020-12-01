@@ -47,8 +47,15 @@ $app->get('/', function ($request, $response, $args) {
     return $response->withStatus(403);
 });
 
-
-$app->get('/plants/{id:[0-9]+}', function ($request, $response, $args) {
+/**
+ * Endpoint:
+ * /plants/state_id
+ * OR
+ * /plants/state_id/plant_id
+ * 
+ * @url https://www.slimframework.com/docs/v3/objects/router.html#route-placeholders
+ */
+$app->get('/plants/{state_id:[0-9]+}[/{plant_id:[0-9]+}]', function ($request, $response, $args) {
 
     // Old Query from getPlants.php
     $query = 'SELECT rg_app_plant_general_data.plant_id, rg_app_plant_descriptive_data.state_id, common_name, latin_name, type, color_name, full_sun, part_sun, part_shade, full_shade, upland, slope, bottom, height, width, bloom_time, native, notes, image_url, location
@@ -60,10 +67,19 @@ $app->get('/plants/{id:[0-9]+}', function ($request, $response, $args) {
                 ON pcd.color_id = c.color_id
                 LEFT JOIN rg_app_states AS ras
                 ON rg_app_plant_descriptive_data.state_id = ras.state_id
-                WHERE app_supported = 1 AND rg_app_plant_descriptive_data.state_id = ?';
+                WHERE app_supported = 1 AND rg_app_plant_descriptive_data.state_id = :state_id';
+
+    // Named Params for substitution
+    $params = array(':state_id' => $args['state_id']);
+
+    // Limit the results to a specific plant_id
+    if(isset($args['plant_id'])){
+        $query .= ' AND rg_app_plant_general_data.plant_id=:plant_id';
+        $params[':plant_id'] = $args['plant_id'];
+    }
 
     // Run the query 
-    $results = $this->db->run($query, [$args['id']])->fetchAll();
+    $results = $this->db->run($query, $params)->fetchAll();
     
     // Return JSON
     return $response->withJson($results, 200, JSON_UNESCAPED_UNICODE);
