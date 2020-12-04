@@ -647,6 +647,10 @@ body {
   transition: 0.5s ease;
 }
 
+.plantlist_bar{
+  padding: 5vw;
+}
+
 .sizeloc_bar>h3, .plantlist_bar>h3, .reminders_bar>h3 {
   text-transform: uppercase;
   color: #B54542;
@@ -721,61 +725,21 @@ body {
   background: #a12517;
 }
 
-.reminders_bar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.reminders_bar>.content {
-  width: 80vw;
-}
-
-.reminders_bar>div>.add_rm {
-  outline: none;
-  background: #399AB5;
-  border: 0;
-  color: white;
-  width: 100%;
+.plantlist_bar table > tr > td > h1{
+  font-size: 4vw !important;
   padding: 3vw;
-  font-size: 4vw;
-  border-radius: 5px;
+  font-weight: 500;
 }
 
-.reminders_bar>div>div {
-  width: 100%;
+.plantlist_bar table > tr > td:first-of-type {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.reminders_bar>div>div>.reminder {
-  margin-top: 2vh;
-  width: 100%;
-  padding: 4vw;
-  background: white;
-  box-shadow: 0px 3px 6px #c9c9c9;
-  border-radius: 5px;
-}
-
-.reminders_bar>div>div>div:last-of-type {
-  width: 40%;
-  margin-top: 2vh;
-  align-self: center;
-}
-
-.reminders_bar>div>div>div:last-of-type>a:first-of-type {
-  color: #399AB5;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.reminders_bar>div>div>div:last-of-type>a:last-of-type {
-  color: #e24747;
-  text-transform: uppercase;
-  font-weight: 600;
+.plantlist_bar table > tr > td:last-of-type{
+  text-align: center;
 }
 
 .sizing_banner {
@@ -988,21 +952,31 @@ body {
   margin: 0;
 }
 
-.filtered_plant_results tr:nth-child(1) {
+.plantlist_bar table{
+  width: 100%;
+  margin-bottom: 4vw;
+}
+
+.plantlist_bar tr{
+  width: 100%;
+  margin: 0;
+}
+
+.filtered_plant_results tr:nth-child(1), .plantlist_bar tr:nth-child(1) {
   background: rgba(0, 0, 0, 0.125);
 }
 
-.filtered_plant_results tr:nth-child(1)>td {
+.filtered_plant_results tr:nth-child(1)>td, .plantlist_bar tr:nth-child(1)>td {
   font-weight: 500;
   border: 1px solid lightgray;
   margin: 0;
 }
 
-.filtered_plant_results tr:nth-child(even) {
+.filtered_plant_results tr:nth-child(even), .plantlist_bar tr:nth-child(even) {
   background: rgba(0, 0, 0, 0.05);
 }
 
-.filtered_plant_results tr:nth-child(odd) {
+.filtered_plant_results tr:nth-child(odd), .plantlist_bar tr:nth-child(odd) {
   background: rgba(0, 0, 0, 0.1);
 }
 
@@ -1424,7 +1398,7 @@ body {
     font-size: 3vw;
   }
 
-  .sizeloc_bar>.content>div>button {
+  .sizeloc_bar>.content>div>button, .plantlist_bar>.content>div>button {
     width: 100%;
     padding: 2vw 1vw;
     font-size: 2.5vw;
@@ -1442,6 +1416,15 @@ body {
 
   .sizeloc_bar>.content>button:last-of-type {
     background: #a12517;
+  }
+
+  .plantlist_bar table > tr > td > h1{
+    font-size: 3vw !important;
+    padding: 2vw;
+  }
+
+  .plantlist_bar table > tr > td:last-of-type{
+   font-size: 2.5vw;
   }
 
   .sc_options {
@@ -2196,7 +2179,7 @@ body {
     font-size: 1vw;
   }
 
-  .sizeloc_bar>.content>div>button {
+  .sizeloc_bar>.content>div>button, .plantlist_bar>.content>div>button {
     width: 100%;
     padding: .75vw .25vw;
     font-size: 1vw;
@@ -2216,6 +2199,19 @@ body {
 
   .sizeloc_bar>.content>button:last-of-type {
     background: #a12517;
+  }
+
+  .plantlist_bar table > tr > td:first-of-type img {
+    width: 6vw;
+  }
+
+  .plantlist_bar table > tr > td > h1{
+    font-size: 1vw !important;
+    padding: .5vw;
+  }
+
+  .plantlist_bar table > tr > td:last-of-type{
+   font-size: .8vw;
   }
 
   .sizing_banner {

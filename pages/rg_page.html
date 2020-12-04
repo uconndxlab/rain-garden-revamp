@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="../css/general.css">
-  <link rel="stylesheet" href="../css/index2.css">
+  <link rel="stylesheet" href="../css/index.css">
   <link rel="icon" href="../assets/new_icon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rain Garden App Edit Garden</title>
@@ -42,8 +42,15 @@
   <div class="plantlist_bar">
     <h3>Plant List</h3>
     <div class="content">
-      <div class="">
-        <button type="button" class="add_edit_plants">Add/Edit</button>
+      <div class="list">
+        <table>
+          <tr class="legend">
+            <td>Picture</td>
+            <td>Name</td>
+            <td>Details</td>
+          </tr>
+        </table>
+        <button type="button" onclick="add_plants()">Add Plants</button>
         <button type="button" class="plantlist_cancel">Cancel</button>
       </div>
 
@@ -64,9 +71,13 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 191 31.409">
       <g id="Group_32" data-name="Group 32" transform="translate(-15 -20.171)">
         <g id="Group_1" data-name="Group 1" transform="translate(15 1630.462)">
-          <path id="Path_1" data-name="Path 1" d="M8.924-1585.374A10.44,10.44,0,0,0,4.891-1589c-.116-.052,3.912,3.558,4.718,7.546,0,.005.611,0,.611,0s2.59-11.537,11.512-17.731a16.268,16.268,0,0,0-8.015,6.7c-.773,1.314-4.726-11.142,4.663-13.536,7.144-1.822,11.889-.3,11.889-4.222,0-.029.035-.04.084-.042a.286.286,0,0,1,.209.079.285.285,0,0,1,.088.206c0,1,0,4.747,0,4.747v4.861s-.43,10.509-9.033,10.509c-1.181,0-3.7-.27-5.713-.465-.343-.033-4.68,7.4-4.68,11.472H9.1a5.942,5.942,0,0,0-1.679-5.066c-.1-.1-6.415.915-6.415-3.579v-6.194s.138-1.211-.771-1.211,1.077-.028,1.077-.028S12.516-1593.931,8.924-1585.374Z" transform="translate(0)" fill="#fff" fill-rule="evenodd"/>
+          <path id="Path_1" data-name="Path 1"
+            d="M8.924-1585.374A10.44,10.44,0,0,0,4.891-1589c-.116-.052,3.912,3.558,4.718,7.546,0,.005.611,0,.611,0s2.59-11.537,11.512-17.731a16.268,16.268,0,0,0-8.015,6.7c-.773,1.314-4.726-11.142,4.663-13.536,7.144-1.822,11.889-.3,11.889-4.222,0-.029.035-.04.084-.042a.286.286,0,0,1,.209.079.285.285,0,0,1,.088.206c0,1,0,4.747,0,4.747v4.861s-.43,10.509-9.033,10.509c-1.181,0-3.7-.27-5.713-.465-.343-.033-4.68,7.4-4.68,11.472H9.1a5.942,5.942,0,0,0-1.679-5.066c-.1-.1-6.415.915-6.415-3.579v-6.194s.138-1.211-.771-1.211,1.077-.028,1.077-.028S12.516-1593.931,8.924-1585.374Z"
+            transform="translate(0)" fill="#fff" fill-rule="evenodd" />
         </g>
-        <text id="RAIN_GARDEN" data-name="RAIN GARDEN" transform="translate(61 43)" fill="#fff" font-size="20" font-family="RedHatText-Bold, Red Hat Text" font-weight="700"><tspan x="0" y="0">RAIN GARDEN</tspan></text>
+        <text id="RAIN_GARDEN" data-name="RAIN GARDEN" transform="translate(61 43)" fill="#fff" font-size="20" font-family="RedHatText-Bold, Red Hat Text" font-weight="700">
+          <tspan x="0" y="0">RAIN GARDEN</tspan>
+        </text>
       </g>
     </svg>
 
@@ -145,9 +156,16 @@
     var location_input = document.querySelector('.loc_input');
     var size_input = document.querySelector('.size_input');
     var parsed = JSON.parse(ls.rain_gardens)[rg_name];
+    var plant_list_table = document.querySelector('.plantlist_bar table');
+    try {
+      if (split_url[5]) {
+        var plants_bool = split_url[5];
+        open_plantlist();
+      }
+    } catch {}
     try {
       var size = decodeURIComponent(split_url[3]);
-      if (size != "undefined") {
+      if (size != "undefined" && size != "false") {
         update_size_obj(size);
         size_input_update(size);
         open_sizeloc();
@@ -155,6 +173,22 @@
         size_input_update(parsed.size);
       }
     } catch {
+
+    }
+
+    function add_plants() {
+      window.location = 'plant_search.html?ret=' + rg_name;
+    }
+
+    if (!parsed['plants']) {
+      let new_tr = document.createElement('tr');
+      let new_td = document.createElement('td');
+
+      new_td.innerHTML = 'Nothing to show yet. Add some plants to get started!';
+
+      new_tr.appendChild(new_td);
+      plant_list_table.appendChild(new_td);
+    } else {
 
     }
 
@@ -239,6 +273,44 @@
       open_sizeloc();
     });
 
+    function open_plantlist() {
+      var this_bar = document.querySelector('.plantlist_bar');
+      this_bar.style.display = "flex";
+      var x = setTimeout(() => {
+        this_bar.style.opacity = "1";
+        this_bar.style.right = "0";
+      }, 100);
+
+      if (Object.keys(parsed.plants).length > 0) {
+        Object.keys(parsed.plants).forEach((plant) => {
+          var curr_plant = parsed.plants[plant];
+          var new_tr = document.createElement('tr');
+          var new_img_td = document.createElement('td');
+          var new_name_td = document.createElement('td');
+          var new_details_td = document.createElement('td');
+
+          var new_img = document.createElement('img');
+          new_img.src = curr_plant.img;
+          new_img_td.appendChild(new_img);
+
+          var new_name = document.createElement('h1');
+          new_name.innerHTML = curr_plant.name;
+          new_name_td.appendChild(new_name);
+
+          var new_link = document.createElement('a');
+          new_link.innerHTML = "Details";
+          new_link.setAttribute('href', curr_plant.details_link);
+          new_details_td.appendChild(new_link);
+
+          new_tr.appendChild(new_img_td);
+          new_tr.appendChild(new_name_td);
+          new_tr.appendChild(new_details_td);
+
+          plant_list_table.appendChild(new_tr);
+        });
+      }
+    }
+
     function open_sizeloc() {
       var this_bar = document.querySelector('.sizeloc_bar');
       this_bar.style.display = "flex";
@@ -249,12 +321,7 @@
     }
 
     document.querySelector('.plantlist_btn').addEventListener('click', () => {
-      var this_bar = document.querySelector('.plantlist_bar');
-      this_bar.style.display = "flex";
-      var x = setTimeout(() => {
-        this_bar.style.opacity = "1";
-        this_bar.style.right = "0";
-      }, 100);
+      open_plantlist();
     });
 
     document.querySelector('.save_rg').addEventListener('click', () => {
@@ -311,7 +378,7 @@
           pos = [position.coords.latitude, position.coords.longitude];
           url += pos[0] + "," + pos[1] + "&key=AIzaSyC0yoEA92_3gt8-g47lUNQmTioKh1Ty4mA";
           $.get(url, (data, status) => {
-            if(data){
+            if (data) {
               var filtered_state_code = data.results[5].formatted_address.split(',')[1].split(' ')[1];
               var filtered_town = data.results[5].formatted_address.split(',')[0];
               document.querySelector('.loc_input').value = filtered_town + ', ' + filtered_state_code;

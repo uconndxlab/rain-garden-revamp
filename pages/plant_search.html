@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="../css/general.css">
   <link rel="stylesheet" href="../css/index.css">
-  <link rel="icon" href="assets/new_icon.svg">
+  <link rel="icon" href="../assets/new_icon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rain Garden App Home</title>
 </head>
@@ -183,6 +183,9 @@
   <script type="text/javascript">
     var ls = window.localStorage;
 
+    var split_url = window.location.search.split(/[=&]/);
+    var return_rg_name = split_url[1];
+
     var filters_obj = {
       exposure: {
         "Full Shade": 0,
@@ -219,7 +222,11 @@
         }
       });
       window.localStorage.setItem('temp_filters', JSON.stringify(filters_obj));
-      window.location = "state_results.html?q=" + this_state.options[this_state.selectedIndex].innerHTML;
+      if(return_rg_name){
+        window.location = "state_results.html?q=" + this_state.options[this_state.selectedIndex].innerHTML + "&ret=" + return_rg_name;
+      } else {
+        window.location = "state_results.html?q=" + this_state.options[this_state.selectedIndex].innerHTML;
+      }
     });
   </script>
 </body>

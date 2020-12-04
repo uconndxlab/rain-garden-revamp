@@ -99,7 +99,30 @@
 
     var filters = JSON.parse(window.localStorage.getItem('temp_filters'));
 
-    var this_state = window.location.search.split('=')[1];
+    var this_state = window.location.search.split(/[=&]/)[1];
+    var return_rg_name = window.window.location.search.split(/[=&]/)[3];
+
+    var parsed = JSON.parse(ls.rain_gardens)[return_rg_name];
+
+    if(return_rg_name){
+      var save_btn = document.createElement('button');
+      save_btn.className = "save_btn_plants";
+      save_btn.setAttribute('onclick', 'save_plants()');
+      save_btn.innerHTML = "Save to " + return_rg_name;
+      document.querySelector('.section_header').appendChild(save_btn);
+    }
+
+    function remove_from_ls_rg(){
+
+    }
+
+    function save_plants(){
+      var prev_ls = JSON.parse(ls.rain_gardens);
+      prev_ls[return_rg_name.toLowerCase()] = parsed;
+      ls.setItem('rain_gardens', JSON.stringify(prev_ls));
+
+      window.location = "rg_page.html?name=" + return_rg_name.toLowerCase() + "&size=false&plants=true";
+    }
 
     document.querySelector('.state_fillin').innerHTML = this_state;
 
@@ -160,6 +183,42 @@
       }
     }
 
+    if(return_rg_name){
+        var legend_td = document.createElement('td');
+        legend_td.innerHTML = 'Add to ' + return_rg_name.toUpperCase();
+        document.querySelector('.legend').appendChild(legend_td);
+    }
+
+    function remove_from_rg(btn){
+      var plant_name = btn.parentNode.parentNode.children[1].children[0].children[0].innerHTML;
+
+      delete parsed.plants[plant_name];
+
+      btn.parentNode.style.background = "transparent";
+      btn.setAttribute('onclick', 'add_to_rg(this)');
+      btn.innerHTML = "Add";
+    }
+
+    function add_to_rg(btn, plant_id){
+      if(!parsed['plants']){
+        parsed['plants'] = {}
+      }
+
+      var plant_name = btn.parentNode.parentNode.children[1].children[0].children[0].innerHTML;
+
+      parsed['plants'][plant_name] = {};
+
+      parsed['plants'][plant_name]['img'] = btn.parentNode.parentNode.children[0].children[0].src;
+      parsed['plants'][plant_name]['name'] = plant_name;
+      parsed['plants'][plant_name]['details_link'] = 'plant_details.html?id=' + plant_id + "&state=" + state_num;
+
+      // Add confirm/cancel buttons under the scroll area to finish things up
+
+      btn.parentNode.style.background = "#91d100";
+      btn.setAttribute('onclick', 'remove_from_rg(this)');
+      btn.innerHTML = "Remove";
+    }
+
     $.get('https://nemo.uconn.edu/raingardens/api/plants/' + state_num, (data, status) => {
       if (data) {
         data.forEach((result) => {
@@ -172,6 +231,14 @@
             var bloom_time_td = document.createElement('td');
             var location_td = document.createElement('td');
             var notes_td = document.createElement('td');
+            var plant_id = result.plant_id;
+            if(return_rg_name){
+              var add_to_rg = document.createElement('td');
+              var add_btn = document.createElement('button');
+              add_btn.innerHTML = "Add";
+              add_btn.setAttribute('onclick', 'add_to_rg(this, '+ plant_id +')');
+              add_to_rg.appendChild(add_btn);
+            }
 
             var img_td_src = document.createElement('img');
             img_td_src.setAttribute('src', result.image_url);
@@ -203,6 +270,9 @@
             new_tr.appendChild(bloom_time_td);
             new_tr.appendChild(location_td);
             new_tr.appendChild(notes_td);
+            if(return_rg_name){
+              new_tr.appendChild(add_to_rg);
+            }
 
             filtered_plant_results.appendChild(new_tr);
           } else {
