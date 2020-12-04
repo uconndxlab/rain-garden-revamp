@@ -10,54 +10,6 @@
   <title>Rain Garden App Edit Garden</title>
 </head>
 
-<body>
-
-  <div class="update_msg error">
-    <p>"<span class="new_rg_name_span"></span>" already exists.</p>
-  </div>
-
-  <div class="sizeloc_bar">
-    <h3>Size & Location</h3>
-    <div class="content">
-      <div class="location">
-        <div class="row_between">
-          <h3>Location</h3>
-          <input type="text" class="loc_input" placeholder="Set your location...">
-        </div>
-        <button type="button" class="use_currloc" onclick="use_location()">Use my current location</button>
-      </div>
-      <div class="size">
-        <div class="row_between">
-          <h3>Size</h3>
-          <input type="text" class="size_input" placeholder="Set your garden size...">
-        </div>
-        <button type="button" class="use_sc" onclick="use_sc()">Use sizing calculator</button>
-        <button type="button" class="use_sm" onclick="use_sm()">Use sizing map</button>
-      </div>
-      <button type="button" class="save_rg">Save Rain Garden Information</button>
-      <button type="button" class="sizeloc_cancel">Cancel</button>
-
-    </div>
-  </div>
-  <div class="plantlist_bar">
-    <h3>Plant List</h3>
-    <div class="content">
-      <div class="list">
-        <table>
-          <tr class="legend">
-            <td>Picture</td>
-            <td>Name</td>
-            <td>Details</td>
-          </tr>
-        </table>
-        <button type="button" onclick="add_plants()">Add Plants</button>
-        <button type="button" class="plantlist_cancel">Cancel</button>
-      </div>
-
-    </div>
-
-  </div>
-
   <div class="mobile sidebar">
     <img src="../assets/close_sidebar.svg" onclick="toggle_sidebar()">
     <div class="sidebar_hrefs">
@@ -101,7 +53,7 @@
       <div class="row_between">
         <a onclick="window.history.back()" class="row_start">
           <img src="../assets/back_arrow.svg" alt="Back Arrow">
-          <p>Back to Rain Gardens</p>
+          <p>Back</p>
         </a>
         <a href="../index.html" class="row_start">
           <img src="../assets/front_arrow.svg" alt="Front Arrow">
@@ -112,16 +64,36 @@
     </div>
   </div>
 
-  <div class="content_container">
-
+  <div class="content_container plant_details">
+    <h1 class="plant_name header"></h1>
+    <p class="subheader latin_name"></p>
+    <small class="plant_type"></small>
+    <img src="" class="plant_img">
+    <div class="width_height">
+      <div class="width">
+        <h2>Plant Width:</h2>
+        <p class="subheader plant_width"></p>
+      </div>
+      <div class="height">
+        <h2>Plant Height:</h2>
+        <p class="subheader plant_height"></p>
+      </div>
     </div>
-
+    <div class="plant_notes">
+      <h1>Plant Notes:</h1>
+      <p class="notes"></p>
+    </div>
+    <div class="shade_sun">
+      <h1>Shade/Sun:</h1>
+      <div class="shade_sun_res"></div>
+    </div>
   </div>
 
+
   <div class="mobile bottom_bar">
-    <a href="../index.html" class="home_btn row_start">
+    <a  onclick="window.history.back()" class="home_btn row_start">
       <img src="../assets/back_arrow.svg" alt="Back Arrow">
-      <p>Home</p>
+      <p>Back</p>
     </a>
     <a href="settings.html" class="how_btn row_start">
       <img src="../assets/front_arrow.svg" alt="Front Arrow">
@@ -136,9 +108,73 @@
       var split_url = window.location.search.split(/[=&]/);
       var plant_id = parseInt(split_url[1]);
       var state_num = parseInt(split_url[3]);
+      var plant_name = document.querySelector('.plant_name');
+      var latin_name = document.querySelector('.latin_name');
+      var plant_type = document.querySelector('.plant_type');
+      var plant_img = document.querySelector('.plant_img');
+      var plant_width = document.querySelector('.plant_width');
+      var plant_height = document.querySelector('.plant_height');
+      var notes = document.querySelector('.notes');
+      var shade_sun_res = document.querySelector('.shade_sun_res');
 
       $.get('https://nemo.uconn.edu/raingardens/api/plants/' + state_num + '/' + plant_id, (res) => {
         console.log(res);
+        res = res[0];
+        plant_name.innerHTML = res.common_name;
+        latin_name.innerHTML = res.latin_name;
+        plant_type.innerHTML = res.type;
+        plant_img.src = res.image_url;
+        plant_width.innerHTML = res.width + " in.";
+        plant_height.innerHTML = res.height + " in.";
+        notes.innerHTML = res.notes;
+        if(!res.full_sun == 0){
+          var full_sun = document.createElement('div');
+          var label = document.createElement('p');
+          var img = document.createElement('img');
+          img.src = "../assets/full_sun.svg";
+          label.innerHTML = "Full Sun";
+
+          full_sun.appendChild(img);
+          full_sun.appendChild(label);
+
+          shade_sun_res.appendChild(full_sun);
+        }
+        if(!res.full_shade == 0){
+          var full_shade = document.createElement('div');
+          var label = document.createElement('p');
+          var img = document.createElement('img');
+          img.src = "../assets/full_shade.svg";
+          label.innerHTML = "Full Shade";
+
+          full_shade.appendChild(img);
+          full_shade.appendChild(label);
+
+          shade_sun_res.appendChild(full_shade);
+        }
+        if(!res.part_sun == 0){
+          var part_sun = document.createElement('div');
+          var label = document.createElement('p');
+          var img = document.createElement('img');
+          img.src = "../assets/full_shade.svg";
+          label.innerHTML = "Part Sun";
+
+          part_sun.appendChild(img);
+          part_sun.appendChild(label);
+
+          shade_sun_res.appendChild(part_sun);
+        }
+        if(!res.part_shade == 0){
+          var part_shade = document.createElement('div');
+          var label = document.createElement('p');
+          var img = document.createElement('img');
+          img.src = "../assets/part_shade.svg";
+          label.innerHTML = "Part Shade";
+
+          part_shade.appendChild(img);
+          part_shade.appendChild(label);
+
+          shade_sun_res.appendChild(part_shade);
+        }
       });
   </script>
 </body>
