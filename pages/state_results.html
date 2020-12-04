@@ -104,7 +104,7 @@
 
     var parsed = JSON.parse(ls.rain_gardens)[return_rg_name];
 
-    if(return_rg_name){
+    if (return_rg_name) {
       var save_btn = document.createElement('button');
       save_btn.className = "save_btn_plants";
       save_btn.setAttribute('onclick', 'save_plants()');
@@ -112,11 +112,11 @@
       document.querySelector('.section_header').appendChild(save_btn);
     }
 
-    function remove_from_ls_rg(){
+    function remove_from_ls_rg() {
 
     }
 
-    function save_plants(){
+    function save_plants() {
       var prev_ls = JSON.parse(ls.rain_gardens);
       prev_ls[return_rg_name.toLowerCase()] = parsed;
       ls.setItem('rain_gardens', JSON.stringify(prev_ls));
@@ -183,13 +183,13 @@
       }
     }
 
-    if(return_rg_name){
-        var legend_td = document.createElement('td');
-        legend_td.innerHTML = 'Add to ' + return_rg_name.toUpperCase();
-        document.querySelector('.legend').appendChild(legend_td);
+    if (return_rg_name) {
+      var legend_td = document.createElement('td');
+      legend_td.innerHTML = 'Add to ' + return_rg_name.toUpperCase();
+      document.querySelector('.legend').appendChild(legend_td);
     }
 
-    function remove_from_rg(btn){
+    function remove_from_rg(btn) {
       var plant_name = btn.parentNode.parentNode.children[1].children[0].children[0].innerHTML;
 
       delete parsed.plants[plant_name];
@@ -199,8 +199,8 @@
       btn.innerHTML = "Add";
     }
 
-    function add_to_rg(btn, plant_id){
-      if(!parsed['plants']){
+    function add_to_rg(btn, plant_id) {
+      if (!parsed['plants']) {
         parsed['plants'] = {}
       }
 
@@ -232,11 +232,17 @@
             var location_td = document.createElement('td');
             var notes_td = document.createElement('td');
             var plant_id = result.plant_id;
-            if(return_rg_name){
+            if (return_rg_name) {
               var add_to_rg = document.createElement('td');
               var add_btn = document.createElement('button');
-              add_btn.innerHTML = "Add";
-              add_btn.setAttribute('onclick', 'add_to_rg(this, '+ plant_id +')');
+              if (parsed.plants[result.common_name]) {
+                add_btn.innerHTML = "Remove";
+                add_to_rg.style.background = "#91d100";
+                add_btn.setAttribute('onclick', 'remove_from_rg(this, ' + plant_id + ')');
+              } else {
+                add_btn.innerHTML = "Add";
+                add_btn.setAttribute('onclick', 'add_to_rg(this, ' + plant_id + ')');
+              }
               add_to_rg.appendChild(add_btn);
             }
 
@@ -270,14 +276,11 @@
             new_tr.appendChild(bloom_time_td);
             new_tr.appendChild(location_td);
             new_tr.appendChild(notes_td);
-            if(return_rg_name){
+            if (return_rg_name) {
               new_tr.appendChild(add_to_rg);
             }
 
             filtered_plant_results.appendChild(new_tr);
-          } else {
-            // DEBUGGING ONLY
-            //console.log(result);
           }
         });
       } else {
