@@ -212,8 +212,6 @@
       parsed['plants'][plant_name]['name'] = plant_name;
       parsed['plants'][plant_name]['details_link'] = 'plant_details.html?id=' + plant_id + "&state=" + state_num;
 
-      // Add confirm/cancel buttons under the scroll area to finish things up
-
       btn.parentNode.style.background = "#91d100";
       btn.setAttribute('onclick', 'remove_from_rg(this)');
       btn.innerHTML = "Remove";
@@ -235,11 +233,16 @@
             if (return_rg_name) {
               var add_to_rg = document.createElement('td');
               var add_btn = document.createElement('button');
-              if (parsed.plants[result.common_name]) {
-                add_btn.innerHTML = "Remove";
-                add_to_rg.style.background = "#91d100";
-                add_btn.setAttribute('onclick', 'remove_from_rg(this, ' + plant_id + ')');
-              } else {
+              try {
+                if (parsed.plants[result.common_name]) {
+                  add_btn.innerHTML = "Remove";
+                  add_to_rg.style.background = "#91d100";
+                  add_btn.setAttribute('onclick', 'remove_from_rg(this, ' + plant_id + ')');
+                } else {
+                  add_btn.innerHTML = "Add";
+                  add_btn.setAttribute('onclick', 'add_to_rg(this, ' + plant_id + ')');
+                }
+              } catch {
                 add_btn.innerHTML = "Add";
                 add_btn.setAttribute('onclick', 'add_to_rg(this, ' + plant_id + ')');
               }
