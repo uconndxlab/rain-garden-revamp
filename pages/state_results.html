@@ -98,11 +98,13 @@
     }
 
     var filters = JSON.parse(window.localStorage.getItem('temp_filters'));
+    
 
     var this_state = window.location.search.split(/[=&]/)[1];
     var return_rg_name = window.window.location.search.split(/[=&]/)[3];
 
-    var parsed = JSON.parse(ls.rain_gardens)[return_rg_name];
+    if(ls.getItem("rain_gardens") != null)
+      var parsed = JSON.parse(ls.rain_gardens)[return_rg_name];
 
     if (return_rg_name) {
       var save_btn = document.createElement('button');
