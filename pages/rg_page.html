@@ -51,7 +51,7 @@
           </tr>
         </table>
         <button type="button" onclick="add_plants()">Add Plants</button>
-        <button type="button" class="plantlist_cancel">Cancel</button>
+        <button type="button" class="plantlist_cancel">Close</button>
       </div>
 
     </div>
@@ -281,10 +281,17 @@
         this_bar.style.right = "0";
       }, 100);
 
+      var paras = document.getElementsByClassName('plant_saved_item');
+
+      while(paras[0]) {
+          paras[0].parentNode.removeChild(paras[0]);
+      }
+
       if (Object.keys(parsed.plants).length > 0) {
         Object.keys(parsed.plants).forEach((plant) => {
           var curr_plant = parsed.plants[plant];
           var new_tr = document.createElement('tr');
+              new_tr.classList.add("plant_saved_item");
           var new_img_td = document.createElement('td');
           var new_name_td = document.createElement('td');
           var new_details_td = document.createElement('td');

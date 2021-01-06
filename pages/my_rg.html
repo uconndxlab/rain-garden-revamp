@@ -178,7 +178,7 @@
 
       document.querySelector('.submit_name').addEventListener('click', () => {
         // Create an empty object with name.
-        var new_returned = document.querySelector('.name_modal > div > input').value.replace(/\s/g, '');;
+        var new_returned = document.querySelector('.name_modal > div > input').value.replace(/\s/g, '-');;
         if (JSON.parse(window.localStorage.rain_gardens)[new_returned]) {
           document.querySelector('.new_rg_name_span').innerHTML = new_returned;
           show_updated_message();
