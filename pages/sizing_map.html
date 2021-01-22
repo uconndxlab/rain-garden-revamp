@@ -116,7 +116,7 @@
       };
 
       map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
+      map.setOptions({draggableCursor: "pointer"})
       // Try HTML5 geolocation (GPS)
       if (navigator.geolocation) {
 
