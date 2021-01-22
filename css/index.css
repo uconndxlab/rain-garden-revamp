@@ -140,7 +140,7 @@ body {
   z-index: 9999;
 }
 
-.menu_bar svg: {
+.menu_bar svg {
   width: 100%;
   display: flex;
   flex-direction: row;
