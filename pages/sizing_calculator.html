@@ -77,10 +77,7 @@
 
     <div class="content_container">
       <h1 class="section_header">Sizing Calculator</h1>
-      <div class="sizing_banner column_end align_end">
-        <h1 class="total">0 sq. ft.</h1>
-        <small>Recommended rain garden size</small>
-      </div>
+      
       <div class="sizing_calc_opts">
         <div>
           <p class="gray_banner">Drainage Area</p>
@@ -94,34 +91,31 @@
             <p>Length (ft.)</p>
             <input type="number" class="length_input" name="rg_name" placeholder="0">
           </div>
-        </div>
-        <div class="calculated_surface_area">
+          <div class="calc_hr"></div>
+          <div class="option">
+            <p>Drainage Area (sq. ft.)</p>
+            <input type="number" class="sf_area" name="sf_area" placeholder="0.00">
+          </div>
+          <div class="calc_note">
+            <p>Note: Drainage area can either be calculated by the length * width or directly submitted</p>
+          </div>
+          <!--<div class="calculated_surface_area">
           <p>
             <span class="sf_area">0.00</span>
             sq. ft</p>
           <small>Calculated surface area (W*L)</small>
+        </div>-->
+        </div>
+        <div class="sizing_banner column_end align_end">
+          <h1 class="total">0.00 sq. ft.</h1>
+          <small>Recommended rain garden size</small>
         </div>
         <div>
           <p class="gray_banner">Design Storm & Storage Depth</p>
         </div>
         <div class="scd_options">
           <div class="option">
-            <p>Rainfall Depth (in)</p>
-          
-            <div>
-              <input type="range" min="1" max="4" step="0.01" class="range_input strm_depth" name="storm_depth" value="1">
-              <input type="number" class="storm_depth_val" value="0.00">
-            </div>
-          </div>
-          <div class="option">
-            <p>Storage Depth (in)</p>
-            <div>
-              <input type="range" min="1" max="14" step="0.01" class="range_input stge_depth" name="storage_depth" value="6">
-              <input type="number" class="storage_depth_val" value="0.00">
-            </div>
-          </div>
-          <div class="option">
-            <p>Set Selected State:</p>
+            <p>Select State Default Sizing:</p>
             <div>
               <!--select class="preferred_state">
                 <option value="AL">Alabama</option>
@@ -203,6 +197,20 @@
               </select>
             </div>
           </div>
+          <div class="option">
+            <p>Rainfall Depth (in)</p>
+            <div>
+              <input type="range" min="1" max="4" step="0.01" class="range_input strm_depth" name="storm_depth" value="1">
+              <input type="number" class="storm_depth_val" value="0.00">
+            </div>
+          </div>
+          <div class="option">
+            <p>Storage Depth (in)</p>
+            <div>
+              <input type="range" min="1" max="14" step="0.01" class="range_input stge_depth" name="storage_depth" value="6">
+              <input type="number" class="storage_depth_val" value="0.00">
+            </div>
+          </div>
         </div>
         <div id="sizing_map_btns">
           <button class="save_results">Confirm Sizes</button>
@@ -256,7 +264,8 @@
       function clear_inputs(){
         width_input.value = '';
         length_input.value = '';
-        sf_area.innerHTML = "0.00";
+        sf_area.value = '';
+        /*sf_area.innerHTML = "0.00";*/
         storm_depth_slider.value = "0.00";
         storage_depth_slider.value = "6.00";
         storm_depth_span.value = "0.00";
@@ -278,23 +287,28 @@
       storage_depth_span.value = parseFloat(storage_depth_slider.value).toFixed(2);
 
       width_input.addEventListener('input', () => {
-        sf_area.innerHTML = parseFloat(width_input.value * length_input.value).toFixed(2);
+        sf_area.value = parseFloat(width_input.value * length_input.value).toFixed(2);
       });
       length_input.addEventListener('input', () => {
-        sf_area.innerHTML = parseFloat(width_input.value * length_input.value).toFixed(2);
+        sf_area.value = parseFloat(width_input.value * length_input.value).toFixed(2);
       });
 
+      sf_area.addEventListener('input', () => {
+        total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
+        total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
+      });
+      
       storm_depth_slider.addEventListener('input', () => {
         storm_depth_span.value = parseFloat(storm_depth_slider.value).toFixed(2);
         if (!isNaN(storm_depth_span.value) && !isNaN(storage_depth_span.value)) {
-          total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2)) * 10;
+          total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
           total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
         }
       });
       storage_depth_slider.addEventListener('input', () => {
         storage_depth_span.value = parseFloat(storage_depth_slider.value).toFixed(2);
         if (!isNaN(storm_depth_span.value) && !isNaN(storage_depth_span.value)) {
-          total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2)) * 10;
+          total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
           total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
         }
       });
@@ -302,17 +316,18 @@
       storm_depth_span.addEventListener('input', () => {
         storm_depth_slider.value = parseFloat(storm_depth_span.value).toFixed(2);
         if (!isNaN(storm_depth_span.value) && !isNaN(storage_depth_span.value)) {
-          total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2)) * 10;
+          total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
           total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
         }
       });
       storage_depth_span.addEventListener('input', () => {
         storage_depth_slider.value = parseFloat(storage_depth_span.value).toFixed(2);
         if (!isNaN(storm_depth_span.value) && !isNaN(storage_depth_span.value)) {
-          total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2)) * 10;
+          total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2)/ parseFloat(storage_depth_span.value).toFixed(2));
           total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
         }
       });
+      
     </script>
     <script src="../js/index.js"></script>
   </body>
