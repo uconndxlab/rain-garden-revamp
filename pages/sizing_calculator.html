@@ -288,9 +288,13 @@
 
       width_input.addEventListener('input', () => {
         sf_area.value = parseFloat(width_input.value * length_input.value).toFixed(2);
+        total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
+        total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
       });
       length_input.addEventListener('input', () => {
         sf_area.value = parseFloat(width_input.value * length_input.value).toFixed(2);
+        total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
+        total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
       });
 
       sf_area.addEventListener('input', () => {
