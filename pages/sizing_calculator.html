@@ -171,29 +171,29 @@
                 <option value="WY">Wyoming</option>
               </select-->
               <select class="preferred_state">
-                <option value="CT">Connecticut</option>
-                <option value="DE">Delaware</option>
-                <option value="GA">Georgia</option>
-                <option value="HI">Hawaii</option>
-                <option value="IN">Indiana</option>
-                <option value="IA">Iowa</option>
-                <option value="ME">Maine</option>
-                <option value="MD">Maryland</option>
-                <option value="MI">Michigan</option>
-                <option value="MN">Minnesota</option>
-                <option value="NV">Nevada</option>
-                <option value="MA">Massachusetts</option>
-                <option value="NH">New Hampshire</option>
-                <option value="NJ">New Jersey</option>
-                <option value="NY">New York</option>
-                <option value="NC">North Carolina</option>
-                <option value="OH">Ohio</option>
-                <option value="OK">Oklahoma</option>
-                <option value="PA">Pennsylvania</option>
-                <option value="RI">Rhode Island</option>
-                <option value="SC">South Carolina</option>
-                <option value="VT">Vermont</option>
-                <option value="VA">Virginia</option>
+                <option value="1">Connecticut</option>
+                <option value="1">Delaware</option>
+                <option value="1">Georgia</option>
+                <option value="1">Hawaii</option>
+                <option value="1">Indiana</option>
+                <option value="1">Iowa</option>
+                <option value="1">Maine</option>
+                <option value="1">Maryland</option>
+                <option value="1">Michigan</option>
+                <option value="1">Minnesota</option>
+                <option value="1">Nevada</option>
+                <option value="1">Massachusetts</option>
+                <option value="1">New Hampshire</option>
+                <option value="1">New Jersey</option>
+                <option value="1">New York</option>
+                <option value="1">North Carolina</option>
+                <option value="0.9">Ohio</option>
+                <option value="1">Oklahoma</option>
+                <option value="1.2">Pennsylvania</option>
+                <option value="0.9">Rhode Island</option>
+                <option value="1.2">South Carolina</option>
+                <option value="1.5">Vermont</option>
+                <option value="1">Virginia</option>
               </select>
             </div>
           </div>
@@ -271,6 +271,7 @@
         storm_depth_span.value = "0.00";
         storage_depth_span.value = "6.00";
         total.innerHTML = "0.00 sq. ft.";
+        perferred_state_value = 0;
       }
 
       function show_updated_message() {
@@ -288,31 +289,31 @@
 
       width_input.addEventListener('input', () => {
         sf_area.value = parseFloat(width_input.value * length_input.value).toFixed(2);
-        total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
+        total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
         total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
       });
       length_input.addEventListener('input', () => {
         sf_area.value = parseFloat(width_input.value * length_input.value).toFixed(2);
-        total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
+        total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
         total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
       });
 
       sf_area.addEventListener('input', () => {
-        total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
+        total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
         total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
       });
       
       storm_depth_slider.addEventListener('input', () => {
         storm_depth_span.value = parseFloat(storm_depth_slider.value).toFixed(2);
         if (!isNaN(storm_depth_span.value) && !isNaN(storage_depth_span.value)) {
-          total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
+          total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
           total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
         }
       });
       storage_depth_slider.addEventListener('input', () => {
         storage_depth_span.value = parseFloat(storage_depth_slider.value).toFixed(2);
         if (!isNaN(storm_depth_span.value) && !isNaN(storage_depth_span.value)) {
-          total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
+          total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
           total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
         }
       });
@@ -320,16 +321,20 @@
       storm_depth_span.addEventListener('input', () => {
         storm_depth_slider.value = parseFloat(storm_depth_span.value).toFixed(2);
         if (!isNaN(storm_depth_span.value) && !isNaN(storage_depth_span.value)) {
-          total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
+          total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
           total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
         }
       });
       storage_depth_span.addEventListener('input', () => {
         storage_depth_slider.value = parseFloat(storage_depth_span.value).toFixed(2);
         if (!isNaN(storm_depth_span.value) && !isNaN(storage_depth_span.value)) {
-          total.innerHTML = (parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2)/ parseFloat(storage_depth_span.value).toFixed(2));
+          total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2)/ parseFloat(storage_depth_span.value).toFixed(2));
           total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
         }
+      });
+      preferred_state.addEventListener('input', () => {
+        total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2)/ parseFloat(storage_depth_span.value).toFixed(2));
+        total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
       });
       
     </script>
