@@ -105,14 +105,6 @@
             sq. ft</p>
           <small>Calculated surface area (W*L)</small>
         </div>-->
-        </div>
-        <div class="sizing_banner column_end align_end">
-          <h1 class="total">0.00 sq. ft.</h1>
-          <small>Recommended rain garden size</small>
-        </div>
-        <div>
-          <p class="gray_banner">Design Storm & Storage Depth</p>
-        </div>
         <div class="scd_options">
           <div class="option">
             <p>Select State Default Sizing:</p>
@@ -190,13 +182,40 @@
                 <option value="0.9">Ohio</option>
                 <option value="1">Oklahoma</option>
                 <option value="1.2">Pennsylvania</option>
-                <option value="0.9">Rhode Island</option>
+                <option value="0">Rhode Island</option>
                 <option value="1.2">South Carolina</option>
                 <option value="1.5">Vermont</option>
                 <option value="1">Virginia</option>
+                <option value="0.9" style="display:none;">Rhode Island</option>
+                <option value="1.2" style="display:none;">Rhode Island</option>
+                <option value="1.92" style="display:none;">Rhode Island</option>
               </select>
             </div>
           </div>
+        </div>
+      </div>
+        <div class="scd_options" id="soil_type" style="display:none;">
+          <div class = "option">
+            <p>Soil Consistency</p>
+            <div class="select_soil">
+              <button id="sandy_soil" value="2" onclick="sandy_soil()">Sandy</button>
+              <button id="silty_soil" value="4" onclick="silty_soil()">Silty</button>
+              <button id="clayey_soil" value="6" onclick="clayey_soil()">Clayey</button>
+            </div>
+          </div>
+        </div>
+        <div class="sizing_banner" id="calculation_banner">
+          <button onclick="save_rain_garden()"><strong>+</strong></button>
+          <div>
+          <h1 class="total">0.00 sq. ft.</h1>
+          <small>Recommended rain garden size</small>
+          </div>
+        </div>
+        <div>
+          <p class="gray_banner">Custom Design Storm and Storage Depth</p>
+        </div>
+        <div class="scd_options">
+          
           <div class="option">
             <p>Rainfall Depth (in)</p>
             <div>
@@ -230,7 +249,6 @@
     </div>
     <script type="text/javascript">
       const ls = window.localStorage;
-
       var width_input = document.querySelector('.width_input'),
         length_input = document.querySelector('.length_input'),
         sf_area = document.querySelector('.sf_area'),
@@ -242,6 +260,13 @@
         storage_depth_span = document.querySelector('.storage_depth_val'),
         preferred_state = document.querySelector('.preferred_state'),
         save_results = document.querySelector('.save_results'),
+        soil = document.getElementById('soil_type'),
+        sandy = document.getElementById('sandy_soil'),
+        silty = document.getElementById('silty_soil'),
+        clayey = document.getElementById('clayey_soil'),
+        sandysoil = false,
+        siltysoil = false,
+        clayeysoil = false,
         result = window.location.search.split('=')[1];
 
       if(ls.getItem('preferred_state_code')){
@@ -261,16 +286,22 @@
         save_results.style.display = "none";
       }
 
+      /* add function that stores the rain garden size and takes the user to the raingarden page to add it */                 
+      function save_rain_garden(){
+        window.location = "my_rg.html?rg_size=" + total.innerHTML.split(' ')[0];
+      }
+
       function clear_inputs(){
         width_input.value = '';
         length_input.value = '';
         sf_area.value = '';
-        /*sf_area.innerHTML = "0.00";*/
         storm_depth_slider.value = "0.00";
         storage_depth_slider.value = "6.00";
         storm_depth_span.value = "1.00";
         storage_depth_span.value = "6.00";
         total.innerHTML = "0.00 sq. ft.";
+        soil.style.display = "none";
+        soilclear();
         document.getElementById('state_option').getElementsByTagName('option')[0].selected = true;
       }
 
@@ -283,6 +314,39 @@
           update_msg.style.top = "100%";
           update_msg.style.opacity = "0";
         }, 2000);
+      }
+
+      function sandy_soil(){
+        sandy.style.backgroundColor = "#399AB5";
+        silty.style.backgroundColor = "white";
+        clayey.style.backgroundColor = "white";
+        document.getElementById('state_option').getElementsByTagName('option')[23].selected = true;
+        total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
+        total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
+      }
+
+      function silty_soil(){
+        sandy.style.backgroundColor = "white";
+        silty.style.backgroundColor = "#399AB5";
+        clayey.style.backgroundColor = "white";
+        document.getElementById('state_option').getElementsByTagName('option')[24].selected = true;
+        total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
+        total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
+      }
+
+      function clayey_soil(){
+        sandy.style.backgroundColor = "white";
+        silty.style.backgroundColor = "white";
+        clayey.style.backgroundColor = "#399AB5";
+        document.getElementById('state_option').getElementsByTagName('option')[25].selected = true;
+        total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
+        total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
+      }
+
+      function soilclear(){
+        sandy.style.backgroundColor = "white";
+        silty.style.backgroundColor = "white";
+        clayey.style.backgroundColor = "white";
       }
 
       storage_depth_span.value = parseFloat(storage_depth_slider.value).toFixed(2);
@@ -333,8 +397,15 @@
         }
       });
       preferred_state.addEventListener('input', () => {
-        total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2)/ parseFloat(storage_depth_span.value).toFixed(2));
-        total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
+        if (document.getElementById('state_option').getElementsByTagName('option')[19].selected == true){
+          soilclear()
+          soil.style.display = "block";
+        } 
+        else{
+          soil.style.display = "none";
+          total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2)/ parseFloat(storage_depth_span.value).toFixed(2));
+          total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
+        }
       });
       
     </script>
