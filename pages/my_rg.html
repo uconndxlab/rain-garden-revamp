@@ -107,7 +107,7 @@
     </div>
 
     <div class="content_container">
-      <h1 class="section_header">My Rain Gardens</h1>
+      <h1 class="section_header" id="my_rain_gardens">My Rain Gardens</h1>
       <div class="rain_gardens">
         <div class="add_rg">
           <h2>&plus;</h2>
@@ -150,6 +150,20 @@
       }
 
       var rg_sect = document.querySelector('.rain_gardens');
+      var result = window.location.search.split('=')[1];
+      var saved_result = false;
+      
+      try {
+        if (typeof result !== 'undefined') {
+          document.getElementById("my_rain_gardens").innerHTML = "Choose Rain Garden to Update";
+          saved_result = true;
+        } else {
+          document.getElementById("my_rain_gardens").innerHTML = "My Rain Gardens";
+        }
+      } catch  {
+          document.getElementById("my_rain_gardens").innerHTML = "My Rain Gardens";
+      }
+      
 
       // Initializing persistence of Rain Garden data in localstorage, else populate existing ones
       if (window.localStorage.rain_gardens) {
@@ -161,9 +175,14 @@
 
             new_name.innerHTML = key;
             new_div.appendChild(new_name);
-
+            
             new_div.addEventListener('click', () => {
+              if (saved_result = true){
+                window.location = "rg_page.html?name="+key+ "&res=" + result;
+            }
+            else{
               window.location = "rg_page.html?name="+key;
+            }
             });
 
             rg_sect.appendChild(new_div);
@@ -202,8 +221,12 @@
           new_name.innerHTML = new_returned;
           new_div.appendChild(new_name);
 
-          new_div.addEventListener('click', () => {
-            window.location = "rg_page.html?name="+new_returned;
+          new_div.addEventListener('click', () => { 
+            if (saved_result = true){
+                window.location = "rg_page.html?name="+new_returned+ "&res=" + result;
+            }
+            else{
+            window.location = "rg_page.html?name="+new_returned;}
           });
 
           rg_sect.appendChild(new_div);
