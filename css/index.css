@@ -755,6 +755,22 @@ body {
   padding: 4vw;
 }
 
+#calculation_banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#calculation_banner button {
+  height: fit-content;
+  border-radius: 100%;
+  padding: 0% 1.7%;
+  border: none;
+  color: #21a662;
+  font-size: 4vw;
+  cursor: pointer;
+}
+
 .sizing_calc_opts {
   display: flex;
   flex-direction: column;
@@ -902,6 +918,20 @@ body {
   font-size: 4vw;
   box-shadow: 0px 3px 10px lightgray;
   border-radius: 5px;
+}
+
+.select_soil button{
+  padding: 1vw;
+  border: none;
+  box-shadow: 0px 3px 3px lightgray;
+  cursor: pointer;
+}
+
+#sandy_soil{
+  border-radius: 5px 0px 0px 5px;
+}
+#clayey_soil{
+  border-radius: 0px 5px 5px 0px;
 }
 
 .calculated_surface_area {
@@ -2183,6 +2213,22 @@ body {
     font-size: 0.75vw;
   }
 
+  #calculation_banner {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  
+  #calculation_banner button {
+    height: fit-content;
+    border-radius: 100%;
+    padding: 0% 1.7%;
+    border: none;
+    color: #21a662;
+    font-size: 2vw;
+  }
+
   .button_row {
     margin-top: 1vh;
     width: 50vw;
@@ -2496,7 +2542,7 @@ body {
 
   .scd_options>.option {
     width: 100%;
-    padding: 2vw;
+    padding: 1vw;
   }
 
   .scd_options>.option>p {
