@@ -186,15 +186,17 @@
                 <option value="1.2">South Carolina</option>
                 <option value="1.5">Vermont</option>
                 <option value="1">Virginia</option>
-                <option hidden value="0.9" style="display:none;height: 0;
+                <span style="display:none">
+                <option hidden value="0.9" style="display:none!important;height: 0;
                 position: absolute;
                 width: 0;">Rhode Island</option>
-                <option hidden value="1.2" style="display:none;height: 0;
+                <option hidden value="1.2" style="display:none!important;height: 0;
                 position: absolute;
                 width: 0;">Rhode Island</option>
-                <option hidden value="1.92" style="display:none;height: 0;
+                <option hidden value="1.92" style="display:none!important;height: 0;
                 position: absolute;
                 width: 0;">Rhode Island</option>
+                </span>
               </select>
             </div>
           </div>
@@ -274,6 +276,8 @@
         siltysoil = false,
         clayeysoil = false,
         result = window.location.search.split('=')[1];
+      
+     
 
       if(ls.getItem('preferred_state_code')){
         document.querySelector('.preferred_state').value = ls.getItem('preferred_state_code');
@@ -413,6 +417,7 @@
           total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
         }
       });
+
       
     </script>
     <script src="../js/index.js"></script>
