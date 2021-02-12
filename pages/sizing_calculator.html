@@ -182,21 +182,10 @@
                 <option value="0.9">Ohio</option>
                 <option value="1">Oklahoma</option>
                 <option value="1.2">Pennsylvania</option>
-                <option value="0">Rhode Island</option>
+                <option id="rhode_island" value="0">Rhode Island</option>
                 <option value="1.2">South Carolina</option>
                 <option value="1.5">Vermont</option>
                 <option value="1">Virginia</option>
-                <span style="display:none">
-                <option hidden value="0.9" style="display:none!important;height: 0;
-                position: absolute;
-                width: 0;">Rhode Island</option>
-                <option hidden value="1.2" style="display:none!important;height: 0;
-                position: absolute;
-                width: 0;">Rhode Island</option>
-                <option hidden value="1.92" style="display:none!important;height: 0;
-                position: absolute;
-                width: 0;">Rhode Island</option>
-                </span>
               </select>
             </div>
           </div>
@@ -311,6 +300,8 @@
         storage_depth_span.value = "6.00";
         total.innerHTML = "0.00 sq. ft.";
         soil.style.display = "none";
+        var opt= document.getElementById('rhode_island');
+        opt.value =  '0';
         soilclear();
         document.getElementById('state_option').getElementsByTagName('option')[0].selected = true;
       }
@@ -330,7 +321,8 @@
         sandy.style.backgroundColor = "#399AB5";
         silty.style.backgroundColor = "white";
         clayey.style.backgroundColor = "white";
-        document.getElementById('state_option').getElementsByTagName('option')[23].selected = true;
+        var opt= document.getElementById('rhode_island');
+        opt.value =  '0.9';
         total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
         total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
       }
@@ -339,7 +331,8 @@
         sandy.style.backgroundColor = "white";
         silty.style.backgroundColor = "#399AB5";
         clayey.style.backgroundColor = "white";
-        document.getElementById('state_option').getElementsByTagName('option')[24].selected = true;
+        var opt= document.getElementById('rhode_island');
+        opt.value =  '1.2';
         total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
         total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
       }
@@ -348,7 +341,8 @@
         sandy.style.backgroundColor = "white";
         silty.style.backgroundColor = "white";
         clayey.style.backgroundColor = "#399AB5";
-        document.getElementById('state_option').getElementsByTagName('option')[25].selected = true;
+        var opt= document.getElementById('rhode_island');
+        opt.value =  '1.92';
         total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
         total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
       }
