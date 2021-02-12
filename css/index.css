@@ -752,7 +752,7 @@ body {
   width: 95vw;
   background: #21a662;
   color: white;
-  padding: 4vw;
+  padding: 10vw;
 }
 
 #calculation_banner {
@@ -764,11 +764,12 @@ body {
 #calculation_banner button {
   height: fit-content;
   border-radius: 100%;
-  padding: 0% 1.7%;
+  padding: 0vw 2vw;
   border: none;
   color: #21a662;
   font-size: 4vw;
   cursor: pointer;
+  background-color: white;
 }
 
 .sizing_calc_opts {
@@ -1169,6 +1170,15 @@ body {
   color: white;
   font-size: 4vw;
   padding: 3vw 4vw;
+}
+
+@media only screen and (min-width: 400px) {
+  .sizing_banner {
+    padding: 4vw;
+  }
+  #calculation_banner button {
+    padding: 0% 1.9%;
+  }
 }
 
 @media only screen and (min-width: 768px) {
