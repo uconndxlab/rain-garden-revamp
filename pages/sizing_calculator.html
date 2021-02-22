@@ -24,8 +24,7 @@
         <a href="sizing_calculator.html">Sizing Calculator</a>
         <a href="sizing_map.html">Sizing Map</a>
         <a href="soils_map.html">Soil Drainage Map</a>
-        <a class="call_state_cbyd">Call State CBYD</a>
-        <a href="tel:811">Call 811</a>
+        <a href="tel:811">Call 811 (CBYD)</a>
         <a href="settings.html">My Settings</a>
       </div>
       <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 191 31.409">
@@ -163,29 +162,29 @@
                 <option value="WY">Wyoming</option>
               </select-->
               <select class="preferred_state" id="state_option">
-                <option value="1">Connecticut</option>
-                <option value="1">Delaware</option>
-                <option value="1">Georgia</option>
-                <option value="1">Hawaii</option>
-                <option value="1">Indiana</option>
-                <option value="1">Iowa</option>
-                <option value="1">Maine</option>
-                <option value="1">Maryland</option>
-                <option value="1">Michigan</option>
-                <option value="1">Minnesota</option>
-                <option value="1">Nevada</option>
-                <option value="1">Massachusetts</option>
-                <option value="1">New Hampshire</option>
-                <option value="1">New Jersey</option>
-                <option value="1">New York</option>
-                <option value="1">North Carolina</option>
-                <option value="0.9">Ohio</option>
-                <option value="1">Oklahoma</option>
-                <option value="1.2">Pennsylvania</option>
-                <option id="rhode_island" value="0">Rhode Island</option>
-                <option value="1.2">South Carolina</option>
-                <option value="1.5">Vermont</option>
-                <option value="1">Virginia</option>
+                <option id="CT" value="1">Connecticut</option>
+                <option id="DE" value="1">Delaware</option>
+                <option id="GA" value="1">Georgia</option>
+                <option id="HI" value="1">Hawaii</option>
+                <option id="IN" value="1">Indiana</option>
+                <option id="IA" value="1">Iowa</option>
+                <option id="ME" value="1">Maine</option>
+                <option id="MD" value="1">Maryland</option>
+                <option id="MA" value="1">Massachusetts</option>
+                <option id="MI" value="1">Michigan</option>
+                <option id="MN" value="1">Minnesota</option>
+                <option id="NV" value="1">Nevada</option>
+                <option id="NH" value="1">New Hampshire</option>
+                <option id="NJ" value="1">New Jersey</option>
+                <option id="NY" value="1">New York</option>
+                <option id="NC" value="1">North Carolina</option>
+                <option id="OH" value="0.9">Ohio</option>
+                <option id="OK" value="1">Oklahoma</option>
+                <option id="PA" value="1.2">Pennsylvania</option>
+                <option id="RI" value="0">Rhode Island</option>
+                <option id="SC" value="1.2">South Carolina</option>
+                <option id="VT" value="1.5">Vermont</option>
+                <option id="VA" value="1">Virginia</option>
               </select>
             </div>
           </div>
@@ -267,9 +266,19 @@
         result = window.location.search.split('=')[1];
       
      
-
+      
       if(ls.getItem('preferred_state_code')){
-        document.querySelector('.preferred_state').value = ls.getItem('preferred_state_code');
+        if ( document.getElementById(ls.getItem('preferred_state_code'))){
+          document.getElementById(ls.getItem('preferred_state_code')).selected = true;
+          if (document.getElementById('state_option').getElementsByTagName('option')[19].selected == true){
+            soilclear()
+            soil.style.display = "block";
+        } 
+        }
+        else {
+          document.getElementById('CT').selected = true;
+        }
+        /*document.querySelector('.preferred_state').id = ls.getItem('preferred_state_code');*/
       } else {}
 
       try {
@@ -300,10 +309,10 @@
         storage_depth_span.value = "6.00";
         total.innerHTML = "0.00 sq. ft.";
         soil.style.display = "none";
-        var opt= document.getElementById('rhode_island');
+        var opt= document.getElementById('RI');
         opt.value =  '0';
         soilclear();
-        document.getElementById('state_option').getElementsByTagName('option')[0].selected = true;
+        document.getElementById('CT').selected = true;
       }
 
       function show_updated_message() {
@@ -321,7 +330,7 @@
         sandy.style.backgroundColor = "#399AB5";
         silty.style.backgroundColor = "white";
         clayey.style.backgroundColor = "white";
-        var opt= document.getElementById('rhode_island');
+        var opt= document.getElementById('RI');
         opt.value =  '0.9';
         total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
         total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
@@ -331,7 +340,7 @@
         sandy.style.backgroundColor = "white";
         silty.style.backgroundColor = "#399AB5";
         clayey.style.backgroundColor = "white";
-        var opt= document.getElementById('rhode_island');
+        var opt= document.getElementById('RI');
         opt.value =  '1.2';
         total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
         total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
@@ -341,7 +350,7 @@
         sandy.style.backgroundColor = "white";
         silty.style.backgroundColor = "white";
         clayey.style.backgroundColor = "#399AB5";
-        var opt= document.getElementById('rhode_island');
+        var opt= document.getElementById('RI');
         opt.value =  '1.92';
         total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
         total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
