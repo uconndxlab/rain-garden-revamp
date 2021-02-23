@@ -181,7 +181,7 @@
                 <option id="OH" value="0.9">Ohio</option>
                 <option id="OK" value="1">Oklahoma</option>
                 <option id="PA" value="1.2">Pennsylvania</option>
-                <option id="RI" value="0">Rhode Island</option>
+                <option id="RI" value="0.9">Rhode Island</option>
                 <option id="SC" value="1.2">South Carolina</option>
                 <option id="VT" value="1.5">Vermont</option>
                 <option id="VA" value="1">Virginia</option>
@@ -194,9 +194,9 @@
           <div class = "option">
             <p>Soil Consistency</p>
             <div class="select_soil">
-              <button id="sandy_soil" value="2" onclick="sandy_soil()">Sandy</button>
-              <button id="silty_soil" value="4" onclick="silty_soil()">Silty</button>
-              <button id="clayey_soil" value="6" onclick="clayey_soil()">Clayey</button>
+              <button id="sandy_soil" value="0.9" onclick="sandy_soil()">Sandy</button>
+              <button id="silty_soil" value="1.5" onclick="silty_soil()">Silty</button>
+              <button id="clayey_soil" value="1.92" onclick="clayey_soil()">Clayey</button>
             </div>
           </div>
         </div>
@@ -270,11 +270,8 @@
       if(ls.getItem('preferred_state_code')){
         if ( document.getElementById(ls.getItem('preferred_state_code'))){
           document.getElementById(ls.getItem('preferred_state_code')).selected = true;
-          if (document.getElementById('state_option').getElementsByTagName('option')[19].selected == true){
-            soilclear()
-            soil.style.display = "block";
+          default_sizing();
         } 
-        }
         else {
           document.getElementById('CT').selected = true;
         }
@@ -332,6 +329,10 @@
         clayey.style.backgroundColor = "white";
         var opt= document.getElementById('RI');
         opt.value =  '0.9';
+        var opt= document.getElementById('OH');
+        opt.value =  '0.9';
+        var opt= document.getElementById('VT');
+        opt.value =  '0.9';
         total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
         total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
       }
@@ -342,6 +343,10 @@
         clayey.style.backgroundColor = "white";
         var opt= document.getElementById('RI');
         opt.value =  '1.2';
+        var opt= document.getElementById('OH');
+        opt.value =  '1.2';
+        var opt= document.getElementById('VT');
+        opt.value =  '1.2';
         total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
         total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
       }
@@ -351,6 +356,10 @@
         silty.style.backgroundColor = "white";
         clayey.style.backgroundColor = "#399AB5";
         var opt= document.getElementById('RI');
+        opt.value =  '1.92';
+        var opt= document.getElementById('OH');
+        opt.value =  '1.92';
+        var opt= document.getElementById('VT');
         opt.value =  '1.92';
         total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2) / parseFloat(storage_depth_span.value).toFixed(2));
         total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
@@ -410,18 +419,72 @@
         }
       });
       preferred_state.addEventListener('input', () => {
-        if (document.getElementById('state_option').getElementsByTagName('option')[19].selected == true){
-          soilclear()
+        default_sizing();
+      });
+      function default_sizing() {
+        if (document.getElementById('state_option').getElementsByTagName('option')[19].selected == true || document.getElementById('state_option').getElementsByTagName('option')[16].selected == true){
+          storm_depth_slider.value = "0.00";
+          storage_depth_slider.value = "6.00";
+          storm_depth_span.value = "1.00";
+          storage_depth_span.value = "6.00";
+          sandy_soil()
           soil.style.display = "block";
         } 
-        else{
+        else if (document.getElementById('state_option').getElementsByTagName('option')[21].selected == true){
+          storm_depth_slider.value = "0.00";
+          storage_depth_slider.value = "6.00";
+          storm_depth_span.value = "1.00";
+          storage_depth_span.value = "6.00";
+          silty_soil()
+          soil.style.display = "block";
+        }
+        else if (document.getElementById('state_option').getElementsByTagName('option')[17].selected == true){
           soil.style.display = "none";
+          storm_depth_slider.value = "1.15";
+          storage_depth_slider.value = "6.00";
+          storm_depth_span.value = "1.15";
+          storage_depth_span.value = "6.00";
           total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2)/ parseFloat(storage_depth_span.value).toFixed(2));
           total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
         }
-      });
+        else if (document.getElementById('state_option').getElementsByTagName('option')[5].selected == true || document.getElementById('state_option').getElementsByTagName('option')[13].selected == true){
+          soil.style.display = "none";
+          storm_depth_slider.value = "1.25";
+          storage_depth_slider.value = "6.00";
+          storm_depth_span.value = "1.25";
+          storage_depth_span.value = "6.00";
+          total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2)/ parseFloat(storage_depth_span.value).toFixed(2));
+          total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
+        }
+        else if (document.getElementById('state_option').getElementsByTagName('option')[1].selected == true || document.getElementById('state_option').getElementsByTagName('option')[7].selected == true){
+          soil.style.display = "none";
+          storm_depth_slider.value = "1.5";
+          storage_depth_slider.value = "6.00";
+          storm_depth_span.value = "1.5";
+          storage_depth_span.value = "6.00";
+          total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2)/ parseFloat(storage_depth_span.value).toFixed(2));
+          total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
+        }
+        else if (document.getElementById('state_option').getElementsByTagName('option')[15].selected == true){
+          soil.style.display = "none";
+          storm_depth_slider.value = "0.00";
+          storage_depth_slider.value = "10.00";
+          storm_depth_span.value = "1.00";
+          storage_depth_span.value = "10.00";
+          total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2)/ parseFloat(storage_depth_span.value).toFixed(2));
+          total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
+        }
+        else{
+          soil.style.display = "none";
+          storm_depth_slider.value = "0.00";
+          storage_depth_slider.value = "6.00";
+          storm_depth_span.value = "1.00";
+          storage_depth_span.value = "6.00";
+          total.innerHTML = (parseFloat(preferred_state.value).toFixed(2) * parseFloat(storm_depth_span.value).toFixed(2) * parseFloat(sf_area.value).toFixed(2)/ parseFloat(storage_depth_span.value).toFixed(2));
+          total.innerHTML = parseFloat(total.innerHTML).toFixed(2) + " sq. ft.";
+        }
+      }
 
-      
     </script>
     <script src="../js/index.js"></script>
   </body>
