@@ -145,31 +145,31 @@ var basics_obj = {
   gallery: {
     one: {
       title: "Jordan Cove",
-      img_src: "../assets/jordan_cove.jpg"
+      img_src: "../assets/jordancove1.jpeg"
     },
     two: {
       title: "Haddam",
-      img_src: "../assets/haddam.jpg"
+      img_src: "../assets/haddam1.jpeg"
     },
     three: {
       title: "Rutgers",
-      img_src: "../assets/rutgers.jpg"
+      img_src: "../assets/rutgers.jpeg"
     },
     four: {
       title: "Jordan Cove 2",
-      img_src: "../assets/jordan_cove_2.jpg"
+      img_src: "../assets/jordancove2.jpeg"
     },
     five: {
       title: "Haddam 2",
-      img_src: "../assets/haddam_2.jpg"
+      img_src: "../assets/haddam2.jpeg"
     },
     six: {
       title: "Rain Garden",
-      img_src: "../assets/rain_garden.jpg"
+      img_src: "../assets/raingarden.jpeg"
     },
     seven: {
       title: "Tolland",
-      img_src: "../assets/tolland.jpg"
+      img_src: "../assets/tolland-image.jpg"
     }
   },
   videos: {

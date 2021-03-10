@@ -18,8 +18,8 @@
       <a href="sizing_calculator.html">Sizing Calculator</a>
       <a href="sizing_map.html">Sizing Map</a>
       <a href="soils_map.html">Soil Drainage Map</a>
-      <a class="call_state_cbyd">Call State CBYD</a>
-      <a href="tel:811">Call 811</a>
+      <a href="tel:811">Call 811 (CBYD)</a>
+      <a href="settings.html">My Settings</a>
     </div>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 191 31.409">
       <g id="Group_32" data-name="Group 32" transform="translate(-15 -20.171)">
@@ -84,6 +84,9 @@
         <div id="suggestedRainGardenArea">0 sq. ft.</div>
       </div>
     </div>
+    <div>
+      <p class="sizing_map_text">Sizing is based on a 1 inch storm and 6 inch rain garden storage depth. To customize your size to a different depth, storm size or state, use the <a href="./sizing_calculator.html">sizing calculator.</a></p>
+    </div>
   </div>
   <div class="mobile bottom_bar">
     <a href="../index.html" class="row_start">
@@ -109,21 +112,21 @@
     }
 
     function initialize() {
-
+      console.log("init map");
       var mapOptions = {
         zoom: 18,
         mapTypeId: google.maps.MapTypeId.HYBRID
       };
 
       map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
+      map.setOptions({draggableCursor: "pointer"})
       // Try HTML5 geolocation (GPS)
       if (navigator.geolocation) {
-
+        console.log("trying geo");
         navigator.geolocation.getCurrentPosition(function(position) {
-
+          console.log("getting current position");
           var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
+          console.log(pos);
           map.setCenter(pos);
           map.setZoom(18);
 
@@ -186,11 +189,10 @@
         }
 
       });
-
+      
     }
 
     function getUserLocation() {
-
       // Try HTML5 geolocation (GPS)
       if (navigator.geolocation) {
 
@@ -230,13 +232,40 @@
         console.log('Error: Your browser doesn\'t support geolocation.');
       }
 
+      /*
+                <option id="NJ" value="1">New Jersey</option>
+                <option id="NY" value="1">New York</option>
+                <option id="NC" value="1">North Carolina</option>
+                <option id="OH" value="0.9">Ohio</option>
+                <option id="OK" value="1">Oklahoma</option>
+                <option id="PA" value="1.2">Pennsylvania</option>
+                <option id="RI" value="0">Rhode Island</option>
+                <option id="SC" value="1.2">South Carolina</option>
+                <option id="VT" value="1.5">Vermont</option>
+                <option id="VA" value="1">Virginia</option>*/
+
+      var state_dict = {"CT":[41.599998,-72.699997],"DE":[39.000000,-75.500000],"GA":[33.247875,-83.441162],"HI":[21.3069,-157.8583],"IN":[40.273502,-86.126976],"IA":[42.032974,-93.581543],"ME":[45.367584,-68.972168],
+      "MD":[39.045753,-76.641273],"MA":[42.407211,-71.382439],"MI":[44.182205,-84.506836],"MN":[46.392410,-94.636230],"NV":[39.876019,-117.224121],"NH":[44.000000,-71.500000],
+    "NJ":[39.833851,-74.871826],"NY":[43.000000,-75.000000],"NC":[35.782169,-80.793457],"OH":[40.367474,-82.996216],
+  "OK":[36.084621,-96.921387],"PA":[41.203323,-77.194527],"RI":[41.700001,-71.500000],"SC":[33.836082,-81.163727],"VT":[44.000000,-72.699997],"VA":[37.926868,-78.024902]}
+      var lat = 41.8067;
+      var lng = -72.2522;
+      if (localStorage.getItem('preferred_state_code')){
+        var lat = state_dict[localStorage.getItem('preferred_state_code')][0];
+        var lng = state_dict[localStorage.getItem('preferred_state_code')][1];
+      }
+      else{
+        var lat = 41.8067;
+        var lng = -72.2522;
+      }
+
       var options = {
         map: map,
-        position: new google.maps.LatLng(41.807625, -72.253979)
+        position: new google.maps.LatLng(lat, lng)
       };
-
+       
       map.setCenter(options.position);
-      map.setZoom(18);
+      map.setZoom(10);
 
       marker = new google.maps.Marker({
         map: map,

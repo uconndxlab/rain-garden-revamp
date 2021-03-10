@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../css/general.css">
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="icon" href="../assets/new_icon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rain Garden App Home</title>
+</head>
+
+<body>
+  <div class="mobile sidebar">
+    <img src="../assets/close_sidebar.svg" onclick="toggle_sidebar()">
+    <div class="sidebar_hrefs">
+      <a href="video_tutorials.html">Video Tutorials</a>
+      <a href="sizing_calculator.html">Sizing Calculator</a>
+      <a href="sizing_map.html">Sizing Map</a>
+      <a href="soils_map.html">Soil Drainage Map</a>
+      <a href="tel:811">Call 811 (CBYD)</a>
+      <a href="settings.html">My Settings</a>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 191 31.409">
+      <g id="Group_32" data-name="Group 32" transform="translate(-15 -20.171)">
+        <g id="Group_1" data-name="Group 1" transform="translate(15 1630.462)">
+          <path id="Path_1" data-name="Path 1"
+            d="M8.924-1585.374A10.44,10.44,0,0,0,4.891-1589c-.116-.052,3.912,3.558,4.718,7.546,0,.005.611,0,.611,0s2.59-11.537,11.512-17.731a16.268,16.268,0,0,0-8.015,6.7c-.773,1.314-4.726-11.142,4.663-13.536,7.144-1.822,11.889-.3,11.889-4.222,0-.029.035-.04.084-.042a.286.286,0,0,1,.209.079.285.285,0,0,1,.088.206c0,1,0,4.747,0,4.747v4.861s-.43,10.509-9.033,10.509c-1.181,0-3.7-.27-5.713-.465-.343-.033-4.68,7.4-4.68,11.472H9.1a5.942,5.942,0,0,0-1.679-5.066c-.1-.1-6.415.915-6.415-3.579v-6.194s.138-1.211-.771-1.211,1.077-.028,1.077-.028S12.516-1593.931,8.924-1585.374Z"
+            transform="translate(0)" fill="#fff" fill-rule="evenodd" />
+        </g>
+        <text id="RAIN_GARDEN" data-name="RAIN GARDEN" transform="translate(61 43)" fill="#fff" font-size="20" font-family="RedHatText-Bold, Red Hat Text" font-weight="700">
+          <tspan x="0" y="0">RAIN GARDEN</tspan>
+        </text>
+      </g>
+    </svg>
+
+  </div>
+  <div class="menu_bar">
+    <svg xmlns="http://www.w3.org/2000/svg" width="191" height="31.409" viewbox="0 0 191 31.409">
+      <g id="Group_32" data-name="Group 32" transform="translate(-15 -20.171)">
+        <g id="Group_1" data-name="Group 1" transform="translate(15 1630.462)">
+          <path id="Path_1" data-name="Path 1"
+            d="M8.924-1585.374A10.44,10.44,0,0,0,4.891-1589c-.116-.052,3.912,3.558,4.718,7.546,0,.005.611,0,.611,0s2.59-11.537,11.512-17.731a16.268,16.268,0,0,0-8.015,6.7c-.773,1.314-4.726-11.142,4.663-13.536,7.144-1.822,11.889-.3,11.889-4.222,0-.029.035-.04.084-.042a.286.286,0,0,1,.209.079.285.285,0,0,1,.088.206c0,1,0,4.747,0,4.747v4.861s-.43,10.509-9.033,10.509c-1.181,0-3.7-.27-5.713-.465-.343-.033-4.68,7.4-4.68,11.472H9.1a5.942,5.942,0,0,0-1.679-5.066c-.1-.1-6.415.915-6.415-3.579v-6.194s.138-1.211-.771-1.211,1.077-.028,1.077-.028S12.516-1593.931,8.924-1585.374Z"
+            transform="translate(0)" fill="#fff" fill-rule="evenodd" />
+        </g>
+        <text id="RAIN_GARDEN" data-name="RAIN GARDEN" transform="translate(61 43)" fill="#fff" font-size="20" font-family="RedHatText-Bold, Red Hat Text" font-weight="700">
+          <tspan x="0" y="0">RAIN GARDEN</tspan>
+        </text>
+      </g>
+    </svg>
+    <img src="../assets/hamburger.svg" class="mobile hamburger_menu" alt="Hamburger Menu" onclick="toggle_sidebar()">
+    <div class="desktop arrow_collection">
+      <div class="row_between">
+        <a class="back_btn row_start">
+          <img src="../assets/back_arrow.svg" alt="Back Arrow">
+          <p>Filter</p>
+        </a>
+      </div>
+      <p class="copyright">&copy; UConn CLEAR</p>
+    </div>
+  </div>
+
+  <div class="content_container scrollable">
+    <h1 class="section_header column_center">Your Results In
+      <span class="state_fillin">[ State ]</span>
+    </h1>
+    <table class="filtered_plant_results">
+      <tr class="legend">
+        <td>Image</td>
+        <td>Name</td>
+        <td>Height</td>
+        <td>Width</td>
+        <td>Bloom Time</td>
+        <!--td>Location</td-->
+        <td>Notes</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="mobile bottom_bar">
+    <a class="back_btn row_start">
+      <img src="../assets/back_arrow.svg" alt="Back Arrow">
+      <p>Filter</p>
+    </a>
+    <a class="back_btn row_start">
+      <img src="../assets/front_arrow.svg" alt="Front Arrow">
+      <p>Filter</p>
+    </a>
+  </div>
+
+  <script src="../js/jquery3.5.1.min.js" charset="utf-8"></script>
+  <script src="../js/index.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    var ls = window.localStorage;
+
+    if (window.localStorage.getItem('temp_filters') == {}) {
+      window.location = 'plant_search.html';
+    }
+
+    var filters = JSON.parse(window.localStorage.getItem('temp_filters'));
+    
+
+    var this_state = window.location.search.split(/[=&]/)[1];
+    var return_rg_name = window.window.location.search.split(/[=&]/)[3];
+
+    if(ls.getItem("rain_gardens") != null)
+      var parsed = JSON.parse(ls.rain_gardens)[return_rg_name];
+
+    if (return_rg_name) {
+      var save_btn = document.createElement('button');
+      save_btn.className = "save_btn_plants";
+      save_btn.setAttribute('onclick', 'save_plants()');
+      save_btn.innerHTML = "Save to " + return_rg_name;
+      document.querySelector('.section_header').appendChild(save_btn);
+    }
+
+    function remove_from_ls_rg() {
+
+    }
+
+    function save_plants() {
+      var prev_ls = JSON.parse(ls.rain_gardens);
+      prev_ls[return_rg_name] = parsed;
+      ls.setItem('rain_gardens', JSON.stringify(prev_ls));
+
+      window.location = "rg_page.html?name=" + return_rg_name + "&size=false&plants=true";
+    }
+
+    document.querySelector('.state_fillin').innerHTML = this_state;
+
+    document.querySelectorAll('.back_btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        window.history.back();
+      });
+    });
+
+    var filtered_plant_results = document.querySelector('.filtered_plant_results');
+
+    var state_num = state_translations[this_state.toLowerCase().split(' ').join('_')];
+
+    function is_colors_match(color) {
+      if (Object.keys(filters.bloom_color).length == 0) {
+        return true;
+      } else {
+        if (filters.bloom_color[color]) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+
+    function is_type_match(type) {
+      if (Object.keys(filters.type).length == 0) {
+        return true;
+      } else {
+        if (filters.type[type]) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+
+    function is_exposure_match(exposure_arr) {
+      // 0th is Full Shade
+      // 1st is Full Sun
+      // 2nd is Mostly Shade
+      // 3rd is Some Sun
+
+      var exposure_keys = Object.keys(filters.exposure);
+
+      var true_arr = [];
+
+      for (var i = 0; i < exposure_keys.length; i++) {
+        if (filters.exposure[exposure_keys[i]] == exposure_arr[i]) {
+          true_arr.push(1);
+        }
+      }
+
+      if (true_arr.length >= 1) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    if (return_rg_name) {
+      var legend_td = document.createElement('td');
+      legend_td.innerHTML = 'Add to ' + return_rg_name.toUpperCase();
+      document.querySelector('.legend').appendChild(legend_td);
+    }
+
+    function remove_from_rg(btn) {
+      var plant_name = btn.parentNode.parentNode.children[1].children[0].children[0].innerHTML;
+
+      delete parsed.plants[plant_name];
+
+      btn.parentNode.style.background = "transparent";
+      btn.setAttribute('onclick', 'add_to_rg(this)');
+      btn.innerHTML = "Add";
+    }
+
+    function add_to_rg(btn, plant_id) {
+      if (!parsed['plants']) {
+        parsed['plants'] = {}
+      }
+
+      var plant_name = btn.parentNode.parentNode.children[1].children[0].children[0].innerHTML;
+
+      parsed['plants'][plant_name] = {};
+
+      parsed['plants'][plant_name]['img'] = btn.parentNode.parentNode.children[0].children[0].src;
+      parsed['plants'][plant_name]['name'] = plant_name;
+      parsed['plants'][plant_name]['details_link'] = 'plant_details.html?id=' + plant_id + "&state=" + state_num;
+
+      btn.parentNode.style.background = "#91d100";
+      btn.setAttribute('onclick', 'remove_from_rg(this)');
+      btn.innerHTML = "Remove";
+    }
+
+    $.get('https://nemo.uconn.edu/raingardens/api/plants/' + state_num, (data, status) => {
+      if (data) {
+        data.forEach((result) => {
+          if (is_colors_match(result.color_name) && is_type_match(result.type) && is_exposure_match([result.full_shade, result.full_sun, result.part_sun, result.part_shade, result])) {
+            var new_tr = document.createElement('tr');
+            var img_td = document.createElement('td');
+            var name_td = document.createElement('td');
+            var height_td = document.createElement('td');
+            var width_td = document.createElement('td');
+            var bloom_time_td = document.createElement('td');
+            //var location_td = document.createElement('td');
+            var notes_td = document.createElement('td');
+            var plant_id = result.plant_id;
+            if (return_rg_name) {
+              var add_to_rg = document.createElement('td');
+              var add_btn = document.createElement('button');
+              try {
+                if (parsed.plants[result.common_name]) {
+                  add_btn.innerHTML = "Remove";
+                  add_to_rg.style.background = "#91d100";
+                  add_btn.setAttribute('onclick', 'remove_from_rg(this, ' + plant_id + ')');
+                } else {
+                  add_btn.innerHTML = "Add";
+                  add_btn.setAttribute('onclick', 'add_to_rg(this, ' + plant_id + ')');
+                }
+              } catch {
+                add_btn.innerHTML = "Add";
+                add_btn.setAttribute('onclick', 'add_to_rg(this, ' + plant_id + ')');
+              }
+              add_to_rg.appendChild(add_btn);
+            }
+
+            var img_td_src = document.createElement('img');
+            img_td_src.setAttribute('src', result.image_url);
+
+            var plant_name_wrapper = document.createElement('div');
+            plant_name_wrapper.setAttribute('class', 'column_start align_start');
+
+            var plant_cmn = document.createElement('h2');
+            var plant_ltn = document.createElement('p');
+
+            plant_cmn.innerHTML = result.common_name;
+            plant_ltn.innerHTML = result.latin_name;
+
+            plant_name_wrapper.appendChild(plant_cmn);
+            plant_name_wrapper.appendChild(plant_ltn);
+
+            img_td.appendChild(img_td_src);
+            name_td.appendChild(plant_name_wrapper);
+            height_td.innerHTML = result.height;
+            width_td.innerHTML = result.width;
+            bloom_time_td.innerHTML = result.bloom_time;
+            //location_td.innerHTML = result.location;
+            notes_td.innerHTML = result.notes;
+
+            new_tr.appendChild(img_td);
+            new_tr.appendChild(name_td);
+            new_tr.appendChild(height_td);
+            new_tr.appendChild(width_td);
+            new_tr.appendChild(bloom_time_td);
+            //new_tr.appendChild(location_td);
+            new_tr.appendChild(notes_td);
+            if (return_rg_name) {
+              new_tr.appendChild(add_to_rg);
+            }
+
+            filtered_plant_results.appendChild(new_tr);
+          }
+        });
+      } else {
+        console.log(status);
+      }
+    });
+
+    window.onbeforeunload = () => {
+      window.localStorage.setItem('temp_filters', {});
+    }
+  </script>
+</body>
+
+</html>
