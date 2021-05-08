@@ -61,6 +61,7 @@
   <div class="mobile sidebar">
     <img src="../assets/close_sidebar.svg" onclick="toggle_sidebar()">
     <div class="sidebar_hrefs">
+      <a href="../index.html">Home</a>
       <a href="video_tutorials.html">Video Tutorials</a>
       <a href="sizing_calculator.html">Sizing Calculator</a>
       <a href="sizing_map.html">Sizing Map</a>
@@ -85,6 +86,7 @@
 
   <div class="menu_bar">
     <svg xmlns="http://www.w3.org/2000/svg" width="191" height="31.409" viewBox="0 0 191 31.409">
+      <a href="../index.html">
       <g id="Group_32" data-name="Group 32" transform="translate(-15 -20.171)">
         <g id="Group_1" data-name="Group 1" transform="translate(15 1630.462)">
           <path id="Path_1" data-name="Path 1"
@@ -95,6 +97,7 @@
           <tspan x="0" y="0">RAIN GARDEN</tspan>
         </text>
       </g>
+      </a>
     </svg>
     <img src="../assets/hamburger.svg" class="mobile hamburger_menu" alt="Hamburger Menu" onclick="toggle_sidebar()">
     <div class="desktop arrow_collection">
@@ -136,13 +139,12 @@
   </div>
 
   <div class="mobile bottom_bar">
-    <a href="../index.html" class="home_btn row_start">
+    <a href="my_rg.html" class="home_btn row_start">
       <img src="../assets/back_arrow.svg" alt="Back Arrow">
-      <p>Home</p>
+      <p>Back</p>
     </a>
     <a href="settings.html" class="how_btn row_start">
-      <img src="../assets/front_arrow.svg" alt="Front Arrow">
-      <p>Settings</p>
+      
     </a>
   </div>
 
@@ -224,10 +226,10 @@
     if (parsed['name'].toLowerCase() != '') {
       name_input.value = parsed['name'];
     }
-
+    
     size_input.addEventListener('change', () => {
       size_input.value = size_input.value + ' sq. ft.';
-    });
+    })
 
     name_input.addEventListener('change', () => {
       var curr_obj = JSON.parse(window.localStorage.rain_gardens);
