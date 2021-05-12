@@ -135,6 +135,7 @@ body {
   grid-row: 1 / 2;
   width: 100%;
   height: 100%;
+  z-index: 2;
 }
 
 .bottom_bar {
@@ -421,7 +422,8 @@ body {
   padding: 0;
   height: 50vh;
   width: 95vw;
-  z-index: 40;
+  z-index: 1;
+  min-height:250px;
 }
 
 #sizing_map_btns {
@@ -2761,5 +2763,20 @@ body {
 
   .sizing_map_text{
     width: 50vw;
+  }
+}
+
+@media screen and (orientation:landscape) {
+  .sizing_map_text {
+    padding-bottom: 10vh;
+}
+  #address_search{
+    min-height:100px;
+  }
+  #sizing_map_btns{
+    min-height:20px;
+  }
+  #sizingResultsArea{
+    min-height:130px;
   }
 }
