@@ -67,6 +67,7 @@
     <h1 class="section_header column_center">Your Results In
       <span class="state_fillin">[ State ]</span>
     </h1>
+    <div class="save_btn"></div>
     <table class="filtered_plant_results">
       <tr class="legend">
         <td>Image</td>
@@ -112,7 +113,7 @@
       save_btn.className = "save_btn_plants";
       save_btn.setAttribute('onclick', 'save_plants()');
       save_btn.innerHTML = "Save to " + return_rg_name;
-      document.querySelector('.section_header').appendChild(save_btn);
+      document.querySelector('.save_btn').appendChild(save_btn);
     }
 
     function remove_from_ls_rg() {

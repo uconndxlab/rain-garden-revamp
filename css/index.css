@@ -661,6 +661,7 @@ body {
 
 .plantlist_bar {
   padding: 5vw;
+  margin-top:9vh;
 }
 
 .sizeloc_bar>h3, .plantlist_bar>h3, .reminders_bar>h3 {
@@ -1108,7 +1109,7 @@ body {
 }
 
 .plant_details .width_height>div:nth-child(1) {
-  background: rgb(123, 173, 24, 0.8);
+  background: rgb(123, 173, 24, 1);
 }
 
 .plant_details .width_height>div:nth-child(2) {
@@ -1170,12 +1171,16 @@ body {
 .save_btn_plants{
   background: #399AB5;
   border: 0px;
-  border-radius: 5px;
-  margin-top: 2vh;
-  width: 65%;
+  /* border-radius: 5px; */
+  /* margin-top: 2vh; */
+  width: 100%;
   color: white;
   font-size: 4vw;
-  padding: 3vw 4vw;
+  padding: 6% 4% 6% 4%;
+  position: fixed;
+  /* margin-top: 65vh; */
+  top: 85vh;
+  left: 0%;
 }
 
 .sizing_map_text{
@@ -1268,6 +1273,7 @@ body {
     font-size: 3vw;
     margin-bottom: 6vw;
     text-transform: uppercase;
+    padding:10px;
   }
 
   .info_cont {
@@ -1772,7 +1778,7 @@ body {
   }
 
   .plant_details .width_height>div:nth-child(1) {
-    background: rgb(123, 173, 24, 0.8);
+    background: rgb(123, 173, 24, 1);
   }
 
   .plant_details .width_height>div:nth-child(2) {
@@ -1815,9 +1821,10 @@ body {
   }
 
   .save_btn_plants{
-    width: 80%;
+    width: 100;
     font-size: 2.75vw;
     padding: 2vw 0vw;
+    left: 0%;
   }
 
 }
@@ -2713,7 +2720,7 @@ body {
   }
 
   .plant_details .width_height>div:nth-child(1) {
-    background: rgb(123, 173, 24, 0.8);
+    background: rgb(123, 173, 24, 1);
   }
 
   .plant_details .width_height>div:nth-child(2) {
@@ -2756,9 +2763,10 @@ body {
   }
 
   .save_btn_plants{
-    width: 80%;
+    width: 65%;
     font-size: 1vw;
     padding: 1vw 0vw;
+    left: 29.5%;
   }
 
   .sizing_map_text{
@@ -2778,5 +2786,8 @@ body {
   }
   #sizingResultsArea{
     min-height:130px;
+  }
+  .sidebar{
+    height: initial;
   }
 }
