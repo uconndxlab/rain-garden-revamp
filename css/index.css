@@ -1085,9 +1085,13 @@ body {
   font-weight: 500;
 }
 
+.notes{
+  padding: 0 10vw;
+}
+
 .plant_details img {
   margin-top: 3vh;
-  width: auto;
+  width: 50vw;
 }
 
 .plant_details>div {
@@ -1755,7 +1759,7 @@ body {
 
   .plant_details > img {
     margin-top: 3vh;
-    width: auto;
+    width: 300px;
     height: auto;
     border-radius: 5px;
   }
@@ -2699,7 +2703,7 @@ body {
   .plant_details img {
     margin-top: 3vh;
     box-shadow: 0px 3px 6px gray;
-    width: auto;
+    width: 300px;
   }
 
   .plant_details>div {

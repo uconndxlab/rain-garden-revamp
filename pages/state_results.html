@@ -128,7 +128,7 @@
       window.location = "rg_page.html?name=" + return_rg_name + "&size=false&plants=true";
     }
 
-    document.querySelector('.state_fillin').innerHTML = this_state;
+    document.querySelector('.state_fillin').innerHTML = decodeURI(this_state);
 
     document.querySelectorAll('.back_btn').forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -138,7 +138,7 @@
 
     var filtered_plant_results = document.querySelector('.filtered_plant_results');
 
-    var state_num = state_translations[this_state.toLowerCase().split(' ').join('_')];
+    var state_num = state_translations[decodeURI(this_state).toLowerCase().split(' ').join('_')];
 
     function is_colors_match(color) {
       if (Object.keys(filters.bloom_color).length == 0) {
