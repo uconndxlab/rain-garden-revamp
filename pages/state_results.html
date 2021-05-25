@@ -76,7 +76,7 @@
         <td>Width</td>
         <td>Bloom Time</td>
         <!--td>Location</td-->
-        <td>Notes</td>
+        <td>Details</td>
       </tr>
     </table>
   </div>
@@ -256,6 +256,10 @@
             var img_td_src = document.createElement('img');
             img_td_src.setAttribute('src', result.image_url);
 
+            var plant_det = document.createElement('a');
+            plant_det.setAttribute('href', 'plant_details.html?id=' + plant_id + "&state=" + state_num);
+            console.log(plant_det)
+
             var plant_name_wrapper = document.createElement('div');
             plant_name_wrapper.setAttribute('class', 'column_start align_start');
 
@@ -274,7 +278,8 @@
             width_td.innerHTML = result.width;
             bloom_time_td.innerHTML = result.bloom_time;
             //location_td.innerHTML = result.location;
-            notes_td.innerHTML = result.notes;
+            notes_td.appendChild(plant_det);
+            plant_det.innerHTML = 'Details';
 
             new_tr.appendChild(img_td);
             new_tr.appendChild(name_td);
@@ -295,9 +300,11 @@
       }
     });
 
+    /*
     window.onbeforeunload = () => {
       window.localStorage.setItem('temp_filters', {});
     }
+    */ 
   </script>
 </body>
 
