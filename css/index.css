@@ -1085,8 +1085,9 @@ body {
   font-weight: 500;
 }
 
-.notes{
+.notes, .latin_name {
   padding: 0 10vw;
+  text-align: center;
 }
 
 .plant_details img {
@@ -1183,8 +1184,10 @@ body {
   padding: 6% 4% 6% 4%;
   position: fixed;
   /* margin-top: 65vh; */
-  top: 85vh;
+  bottom:60px;
+  z-index: 3;
   left: 0%;
+  margin-top:0px;
 }
 
 .sizing_map_text{
@@ -1829,6 +1832,7 @@ body {
     font-size: 2.75vw;
     padding: 2vw 0vw;
     left: 0%;
+    margin-top:0;
   }
 
 }
@@ -2771,6 +2775,7 @@ body {
     font-size: 1vw;
     padding: 1vw 0vw;
     left: 29.5%;
+    margin-top:0;
   }
 
   .sizing_map_text{
