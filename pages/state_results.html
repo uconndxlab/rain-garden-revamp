@@ -219,7 +219,7 @@
       btn.innerHTML = "Remove";
     }
 
-    $.get('https://nemo.uconn.edu/raingardens/api/plants/' + state_num, (data, status) => {
+    $.get('https://media.nemo.uconn.edu/raingardens/api/plants/' + state_num, (data, status) => {
       if (data) {
         data.forEach((result) => {
           if (is_colors_match(result.color_name) && is_type_match(result.type) && is_exposure_match([result.full_shade, result.full_sun, result.part_sun, result.part_shade, result])) {

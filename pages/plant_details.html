@@ -117,7 +117,7 @@
       var notes = document.querySelector('.notes');
       var shade_sun_res = document.querySelector('.shade_sun_res');
 
-      $.get('https://nemo.uconn.edu/raingardens/api/plants/' + state_num + '/' + plant_id, (res) => {
+      $.get('https://media.nemo.uconn.edu/raingardens/api/plants/' + state_num + '/' + plant_id, (res) => {
         console.log(res);
         res = res[0];
         plant_name.innerHTML = res.common_name;
