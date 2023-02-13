@@ -6,13 +6,14 @@
   <link rel="stylesheet" href="../css/general.css">
   <link rel="stylesheet" href="../css/index.css">
   <link rel="icon" href="../assets/new_icon.svg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
   <title>Rain Garden App Edit Garden</title>
 </head>
 
   <div class="mobile sidebar">
     <img src="../assets/close_sidebar.svg" onclick="toggle_sidebar()">
     <div class="sidebar_hrefs">
+      <a href="../index.html">Home</a>
       <a href="video_tutorials.html">Video Tutorials</a>
       <a href="sizing_calculator.html">Sizing Calculator</a>
       <a href="sizing_map.html">Sizing Map</a>
@@ -37,6 +38,7 @@
 
   <div class="menu_bar">
     <svg xmlns="http://www.w3.org/2000/svg" width="191" height="31.409" viewBox="0 0 191 31.409">
+      <a href="../index.html">
       <g id="Group_32" data-name="Group 32" transform="translate(-15 -20.171)">
         <g id="Group_1" data-name="Group 1" transform="translate(15 1630.462)">
           <path id="Path_1" data-name="Path 1"
@@ -47,6 +49,7 @@
           <tspan x="0" y="0">RAIN GARDEN</tspan>
         </text>
       </g>
+      </a>
     </svg>
     <img src="../assets/hamburger.svg" class="mobile hamburger_menu" alt="Hamburger Menu" onclick="toggle_sidebar()">
     <div class="desktop arrow_collection">
@@ -56,8 +59,6 @@
           <p>Back</p>
         </a>
         <a href="../index.html" class="row_start">
-          <img src="../assets/front_arrow.svg" alt="Front Arrow">
-          <p>Home</p>
         </a>
       </div>
       <p class="copyright">&copy; UConn CLEAR</p>
@@ -96,8 +97,6 @@
       <p>Back</p>
     </a>
     <a href="settings.html" class="how_btn row_start">
-      <img src="../assets/front_arrow.svg" alt="Front Arrow">
-      <p>Settings</p>
     </a>
   </div>
 
@@ -117,7 +116,7 @@
       var notes = document.querySelector('.notes');
       var shade_sun_res = document.querySelector('.shade_sun_res');
 
-      $.get('https://nemo.uconn.edu/raingardens/api/plants/' + state_num + '/' + plant_id, (res) => {
+      $.get('https://media.nemo.uconn.edu/raingardens/api/plants/' + state_num + '/' + plant_id, (res) => {
         console.log(res);
         res = res[0];
         plant_name.innerHTML = res.common_name;

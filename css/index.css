@@ -135,6 +135,7 @@ body {
   grid-row: 1 / 2;
   width: 100%;
   height: 100%;
+  z-index: 2;
 }
 
 .bottom_bar {
@@ -421,7 +422,8 @@ body {
   padding: 0;
   height: 50vh;
   width: 95vw;
-  z-index: 40;
+  z-index: 1;
+  min-height:250px;
 }
 
 #sizing_map_btns {
@@ -659,6 +661,7 @@ body {
 
 .plantlist_bar {
   padding: 5vw;
+  margin-top:9vh;
 }
 
 .sizeloc_bar>h3, .plantlist_bar>h3, .reminders_bar>h3 {
@@ -1082,9 +1085,14 @@ body {
   font-weight: 500;
 }
 
+.notes, .latin_name {
+  padding: 0 10vw;
+  text-align: center;
+}
+
 .plant_details img {
   margin-top: 3vh;
-  width: auto;
+  width: 50vw;
 }
 
 .plant_details>div {
@@ -1106,7 +1114,7 @@ body {
 }
 
 .plant_details .width_height>div:nth-child(1) {
-  background: rgb(123, 173, 24, 0.8);
+  background: rgb(123, 173, 24, 1);
 }
 
 .plant_details .width_height>div:nth-child(2) {
@@ -1168,12 +1176,18 @@ body {
 .save_btn_plants{
   background: #399AB5;
   border: 0px;
-  border-radius: 5px;
-  margin-top: 2vh;
-  width: 65%;
+  /* border-radius: 5px; */
+  /* margin-top: 2vh; */
+  width: 100%;
   color: white;
   font-size: 4vw;
-  padding: 3vw 4vw;
+  padding: 6% 4% 6% 4%;
+  position: fixed;
+  /* margin-top: 65vh; */
+  bottom:60px;
+  z-index: 3;
+  left: 0%;
+  margin-top:0px;
 }
 
 .sizing_map_text{
@@ -1266,6 +1280,7 @@ body {
     font-size: 3vw;
     margin-bottom: 6vw;
     text-transform: uppercase;
+    padding:10px;
   }
 
   .info_cont {
@@ -1747,7 +1762,7 @@ body {
 
   .plant_details > img {
     margin-top: 3vh;
-    width: auto;
+    width: 300px;
     height: auto;
     border-radius: 5px;
   }
@@ -1770,7 +1785,7 @@ body {
   }
 
   .plant_details .width_height>div:nth-child(1) {
-    background: rgb(123, 173, 24, 0.8);
+    background: rgb(123, 173, 24, 1);
   }
 
   .plant_details .width_height>div:nth-child(2) {
@@ -1813,9 +1828,11 @@ body {
   }
 
   .save_btn_plants{
-    width: 80%;
+    width: 100;
     font-size: 2.75vw;
     padding: 2vw 0vw;
+    left: 0%;
+    margin-top:0;
   }
 
 }
@@ -2690,7 +2707,7 @@ body {
   .plant_details img {
     margin-top: 3vh;
     box-shadow: 0px 3px 6px gray;
-    width: auto;
+    width: 300px;
   }
 
   .plant_details>div {
@@ -2711,7 +2728,7 @@ body {
   }
 
   .plant_details .width_height>div:nth-child(1) {
-    background: rgb(123, 173, 24, 0.8);
+    background: rgb(123, 173, 24, 1);
   }
 
   .plant_details .width_height>div:nth-child(2) {
@@ -2754,12 +2771,32 @@ body {
   }
 
   .save_btn_plants{
-    width: 80%;
+    width: 65%;
     font-size: 1vw;
     padding: 1vw 0vw;
+    left: 29.5%;
+    margin-top:0;
   }
 
   .sizing_map_text{
     width: 50vw;
+  }
+}
+
+@media screen and (orientation:landscape) {
+  .sizing_map_text {
+    padding-bottom: 10vh;
+}
+  #address_search{
+    min-height:100px;
+  }
+  #sizing_map_btns{
+    min-height:20px;
+  }
+  #sizingResultsArea{
+    min-height:130px;
+  }
+  .sidebar{
+    height: initial;
   }
 }
